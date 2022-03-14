@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="最近在leetcode刷到了经典的题目&mdash;-反转链表，其中有两种常规的解法：迭代法(双指针，尾接法)和递归法，奈何递归法让我摸不着头脑，因为个人是个&quot;死脑筋&quot;，所以在不断的短点调试下基本理清了原理，神奇的延伸到了递归和执行上下文(调用栈)的关系。
+ 题源：leetcode-206
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="leetcode, 执行上下文"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | 从反转链表到执行上下文</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">从反转链表到执行上下文</h1>
+            <div class="post-meta">
+                <time class="post-time">2022-02-26</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <blockquote>
+<p>最近在leetcode刷到了经典的题目&mdash;-反转链表，其中有两种常规的解法：迭代法(双指针，尾接法)和递归法，奈何递归法让我摸不着头脑，因为个人是个&quot;死脑筋&quot;，所以在不断的短点调试下基本理清了原理，神奇的延伸到了递归和执行上下文(调用栈)的关系。</p>
+</blockquote>
+<p>题源：<a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">leetcode-206</a></p>
+<p>给你单链表的头节点 <code>head</code> ，请你反转链表，并返回反转后的链表。</p>
+<ol>
+<li>
+<p>迭代法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">/**
+</span><span style="color:#6272a4"> * 迭代法
+</span><span style="color:#6272a4"> * @param {Node} head
+</span><span style="color:#6272a4"> * @returns {Node}
+</span><span style="color:#6272a4"> */</span>
+<span style="color:#8be9fd;font-style:italic">var</span> reverseList <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(head) {
+  <span style="color:#8be9fd;font-style:italic">let</span> prev <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span>;
+  <span style="color:#8be9fd;font-style:italic">let</span> current <span style="color:#ff79c6">=</span> head;
+  <span style="color:#ff79c6">while</span>(current) {
+    <span style="color:#ff79c6">const</span> next <span style="color:#ff79c6">=</span> current.next; <span style="color:#6272a4">//保存下一个结点
+</span><span style="color:#6272a4"></span>    current.next <span style="color:#ff79c6">=</span> prev;
+    prev <span style="color:#ff79c6">=</span> current; <span style="color:#6272a4">// 移动prev
+</span><span style="color:#6272a4"></span>    current <span style="color:#ff79c6">=</span> next; <span style="color:#6272a4">// 移动current
+</span><span style="color:#6272a4"></span>  }
+  <span style="color:#ff79c6">return</span> prev;
+}
+reverseList(head);
+</code></pre></div></li>
+<li>
+<p>递归法</p>
+<p>先不贴代码，免得重复。</p>
+</li>
+</ol>
+<p>对于递归法，我真的无从下手，因为本来递归就已经让人觉得混乱了🤪，况且还是加了链表这种数据结构，对此，我立马打断点！然后从网上找了不少资料将其理清了！不过，我们先来讲一下<code>执行上下文</code>吧！</p>
+<h2 id="执行上下文">执行上下文</h2>
+<p><strong>每个<code>函数调用</code>都有自己的上下文。</strong></p>
+<p><a href="https://tc39.github.io/ecma262/#sec-execution-contexts" target="_blank" rel="noopener">执行上下文</a> 是一个内部数据结构，每一个上下文都有一个关联的<strong>变量对象</strong>，它包含有关函数执行时的详细细节：</p>
+<ul>
+<li>variable object 变量对象(对于<code>全局执行上下文</code>)；activation object 活动对象(对于<code>函数执行上下文</code>，活动对象当作变量对象)
+<ul>
+<li>variable object 包含：
+<ul>
+<li>全局对象(在全局执行上下文) - the place where global vars (like <code>window</code>, <code>document</code> or <code>console</code> in a browser) reside</li>
+</ul>
+</li>
+<li>activation object 包含：
+<ul>
+<li><code>arguments</code></li>
+<li>函数内定义的变量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>scope chain 作用域链(相当于链表)
+<ul>
+<li>上下文中的代码在执行的时候，会创建变量对象的一个作用域链(scope chain)。这个作用域链决定了各级上下文中的代码在访问变量和函数时的顺序。代码<code>正在执行的</code>上下文的变量对象始终位于作用域链的<code>最前端</code>，<code>全局执行上下文变量对象</code>始终是<code>最后端</code>一个。</li>
+<li>在<code>定义函数</code>时，就会为它创建作用域链，预装载(父作用域)全局变量对象，并保存在内部的<code>[[Scope]]</code>中。</li>
+</ul>
+</li>
+<li>this的值(在这不讨论)</li>
+</ul>
+<p>上述大部分其实是<code>ES3</code>所定义的(现在我明白为啥那么乱了。。这更新太快了，即便是规范。。)</p>
+<p>分类：</p>
+<ul>
+<li>全局执行上下文
+<ul>
+<li>全局上下文是最外层的上下文。根据 ECMAScript 实现的宿主环境，表示全局上下文的对象可能不一 样。在浏览器中，全局上下文就是我们常说的 <code>window</code>对象。它会执行两件事：创建一个全局的 window 对象（浏览器的情况下），并且设置 <code>this</code> 的值等于这个全局对象。一个程序中只会有一个全局执行上下文。</li>
+</ul>
+</li>
+<li>函数执行上下文
+<ul>
+<li>每当一个函数被调用时, <code>都</code>会为该函数创建一个新的上下文。每个函数都有它自己的执行上下文，不过是在函数被调用时创建的。函数上下文<code>可以有任意多个</code>。</li>
+</ul>
+</li>
+<li>eval函数执行上下文(不讨论&hellip;)</li>
+</ul>
+<p>生命周期：</p>
+<ul>
+<li>创建阶段(函数调用时)
+<ul>
+<li>通过复制函数的[[Scope]]来创建其作用域链。</li>
+<li>确定<code>this</code> 的值</li>
+</ul>
+</li>
+<li>执行阶段(函数执行中)
+<ul>
+<li>JS 代码开始逐条执行，在这个阶段，JS 引擎开始对定义的变量赋值、开始顺着作用域链访问变量、如果内部有函数调用就创建一个新的执行上下文压入执行栈并把控制权交出&hellip;</li>
+</ul>
+</li>
+<li>销毁阶段
+<ul>
+<li>一般来讲当函数执行完成后(<code>return</code>)，当前执行上下文（局部环境）会被弹出执行上下文栈并且销毁，控制权被重新交给执行栈<code>上一层</code>的执行上下文。(全局上下文在应用程序退出前才会被销毁，比如关闭网页或退出浏览器)。</li>
+<li>闭包另说。</li>
+</ul>
+</li>
+</ul>
+<h3 id="执行上下文栈">执行上下文栈</h3>
+<p>当代码执行流进入函数时，函数的上下文被推到一个<code>上下文栈</code>上。 在函数执行完之后，上下文栈会弹出该函数上下文，将控制权返还给之前的执行上下文。ECMAScript 程序的执行流就是通过这个上下文栈进行控制的。</p>
+<p>而对于嵌套执行(即递归)：</p>
+<ul>
+<li>当前函数<code>被暂停</code>；</li>
+<li>与它关联的执行上下文被一个叫做 <strong>执行上下文栈</strong> 的特殊数据结构保存；</li>
+<li>执行嵌套调用；</li>
+<li>嵌套调用结束后，从堆栈中<code>恢复之前的执行上下文</code>，并从停止的位置恢复外部函数。</li>
+</ul>
+<blockquote>
+<p>剪不断，理还乱。</p>
+</blockquote>
+<p>我们停一下，来点代码将它们捋一下好吗？</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> compare(value1, value2) {
+	<span style="color:#ff79c6">if</span>(value1 <span style="color:#ff79c6">&gt;</span> value2){
+    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">true</span>;
+  }<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span>(value1 <span style="color:#ff79c6">&lt;</span> value2){
+    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>;
+  }<span style="color:#ff79c6">else</span> {
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
+  }
+}
+<span style="color:#8be9fd;font-style:italic">let</span> result <span style="color:#ff79c6">=</span> compare(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>);
+</code></pre></div><p>我们直接看图：</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 37.152034261241965%;">
+    <img class="lazyload" data-src="/uploads/context-example.png" alt=""   />
+</figure>
+</p>
+<p>图源：<a href="https://book.douban.com/subject/35175321/" target="_blank" rel="noopener">JavaScript高级程序设计</a></p>
+<h2 id="反转">“反转”</h2>
+<p>了解了上面的内容后(主要是执行上下文栈)，我们可以开始使用这些性质反转链表了！递归解法代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">/**
+</span><span style="color:#6272a4"> * 递归法
+</span><span style="color:#6272a4"> * @param {Node} head 
+</span><span style="color:#6272a4"> * @returns {Node}
+</span><span style="color:#6272a4"> */</span>
+<span style="color:#8be9fd;font-style:italic">var</span> reverseList <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(head) {
+  <span style="color:#ff79c6">if</span>(head <span style="color:#ff79c6">===</span> <span style="color:#ff79c6">null</span> <span style="color:#ff79c6">||</span> head.next <span style="color:#ff79c6">===</span> <span style="color:#ff79c6">null</span>) {
+    <span style="color:#ff79c6">return</span> head;
+  }
+  <span style="color:#8be9fd;font-style:italic">let</span> rset <span style="color:#ff79c6">=</span> reverseList(head.next);
+  head.next.next <span style="color:#ff79c6">=</span> head;
+  head.next <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span>;
+  <span style="color:#ff79c6">return</span> rset;
+}
+reverseList(head);
+</code></pre></div><p>为此我特地画了图(图示用3个结点的链表以方便理解)：</p>
+<ol>
+<li>在全局上下文调用reverseList()</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 22.873563218390807%;">
+    <img class="lazyload" data-src="/uploads/step1.png" alt=""   />
+</figure>
+</p>
+<ol start="2">
+<li>第一次嵌套调用</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 18.470705064548163%;">
+    <img class="lazyload" data-src="/uploads/step2.png" alt=""   />
+</figure>
+</p>
+<ol start="3">
+<li>第二次嵌套调用</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 17.137096774193548%;">
+    <img class="lazyload" data-src="/uploads/step3.png" alt=""   />
+</figure>
+</p>
+<p>此时head.next = null了。而且我们可以看到其实图的左边head的指向原理就是函数调用<code>有各自的执行上下文</code>，其活动对象中保存的变量都是当时的值。</p>
+<ol start="4">
+<li>判断条件成立，return，弹栈。</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 20.049710024855013%;">
+    <img class="lazyload" data-src="/uploads/step4.png" alt=""   />
+</figure>
+</p>
+<ol start="5">
+<li>回到之前的函数(执行上下文)继续执行后面的代码</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 24.694835680751172%;">
+    <img class="lazyload" data-src="/uploads/step5.png" alt=""   />
+</figure>
+</p>
+<ol start="6">
+<li><code>return rset</code> 弹栈</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 20.85661080074488%;">
+    <img class="lazyload" data-src="/uploads/step6.png" alt=""   />
+</figure>
+</p>
+<ol start="7">
+<li>回到之前的函数(执行上下文)继续执行后面的代码</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 25.22851919561243%;">
+    <img class="lazyload" data-src="/uploads/step7.png" alt=""   />
+</figure>
+</p>
+<ol start="8">
+<li><code>return rset</code> 弹栈，栈空，反转完成。</li>
+</ol>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 25%;">
+    <img class="lazyload" data-src="/uploads/step8.png" alt=""   />
+</figure>
+</p>
+<p>Reference参考：</p>
+<p><a href="https://juejin.cn/post/6844904158957404167#heading-28" target="_blank" rel="noopener">https://juejin.cn/post/6844904158957404167#heading-28</a></p>
+<p><a href="https://softwareengineering.stackexchange.com/questions/189967/what-is-an-activation-object-in-javascript" target="_blank" rel="noopener">https://softwareengineering.stackexchange.com/questions/189967/what-is-an-activation-object-in-javascript</a></p>
+<p><a href="https://zh.javascript.info/recursion" target="_blank" rel="noopener">https://zh.javascript.info/recursion</a></p>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/leetcode/" class="post-tag">leetcode</a></li>
+        <li><a href="https://yequalsx.com/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="post-tag">执行上下文</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>

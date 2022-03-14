@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>basic on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/basic/</link>
+    <description>Recent content in basic on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/basic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Js操作符之eval</title>
+      <link>https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/</guid>
+      <description>操作符在JavaScript中用于算术表达式、比较表达式、逻辑表达式、赋值表达式等。
+ eval() eval()接收一个参数。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript表达式</title>
+      <link>https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>表达式是一个可以被求值并产生一个值的JavaScript短语(Phrase)。
+ 主表达式(primary expression) 独立存在，不再包含更简单表达式的表达式为主表达式，为最简单的表达式。</description>
+    </item>
+    
+    <item>
+      <title>Symbol和解构赋值详解</title>
+      <link>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</guid>
+      <description>该文章的内容不限于标题的两个。。
+ 符号Symbol 符号(Symbol)是ES6新增的一种原始类型(primitive data type)，用作非字符串的属性名。我们知道，JavaScript的基础类型Object是一个属性(Property)的无序集合，其中每个属性(Property)都有一个名字(name)和值(value)。</description>
+    </item>
+    
+  </channel>
+</rss>

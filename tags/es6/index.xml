@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ES6 on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/es6/</link>
+    <description>Recent content in ES6 on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 02 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/es6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>作用域和闭包</title>
+      <link>https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/</guid>
+      <description>作用域Scope 作用域是源代码中定义变量的区域；
+作用域是根据名称查找变量的一套规则。
+词法作用域 词法作用域就是定义在词法阶段的作用域，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript之对象</title>
+      <link>https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Sat, 02 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/</guid>
+      <description>对象是JavaScript中最基本的数据类型。
+对象是一个属性(property)的无序集合，每个属性是一对名字(name)和值(value)，属性名通常是字符串(ES6后可为symbol)。
+ 创建对象 对象字面量，new关键字和Object.</description>
+    </item>
+    
+    <item>
+      <title>Symbol和解构赋值详解</title>
+      <link>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</guid>
+      <description>该文章的内容不限于标题的两个。。
+ 符号Symbol 符号(Symbol)是ES6新增的一种原始类型(primitive data type)，用作非字符串的属性名。我们知道，JavaScript的基础类型Object是一个属性(Property)的无序集合，其中每个属性(Property)都有一个名字(name)和值(value)。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript类型、值和变量</title>
+      <link>https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/</guid>
+      <description>概述 计算机是通过操作值(如数值字面量3.14)或文本(如“hello”)来工作的，编程语言中这些可以&amp;quot;表示&amp;quot;和&amp;quot;操作&amp;quot;的值(values)被称为类型(types)。
+程序在需要把某个值保存下来以方便将来使用时，会把这个值赋给(或存入)变量(Variable)。
+  类型Types   原始类型(primitive types)：原始值是不可修改的</description>
+    </item>
+    
+  </channel>
+</rss>

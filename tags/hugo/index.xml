@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/hugo/</link>
+    <description>Recent content in hugo on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 06 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo添加remark42评论系统</title>
+      <link>https://yequalsx.com/2021/10/hugo%E6%B7%BB%E5%8A%A0remark42/</link>
+      <pubDate>Wed, 06 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/hugo%E6%B7%BB%E5%8A%A0remark42/</guid>
+      <description>对于静态博客，有一个很大的缺点就是没有评论系统了。。大部分的静态生成器程序都没有带评论系统的，因此第三方的评论系统层出不穷。
+ 关于为何选择remark42?
+没错，好像有很多很容易部署的评论系统，例如gitment、disqus、valine、waline等等啥的，其实一开始我是用waline的，而且很容易就搭建好了(vercel一键部署几乎😂)，但最近碰到了remark42这个茬，奈何我就是要搞定它，所以最后就是选择了它🤣。</description>
+    </item>
+    
+  </channel>
+</rss>

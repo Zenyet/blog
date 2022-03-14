@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>类型转换 on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+    <description>Recent content in 类型转换 on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>类型转换??</title>
+      <link>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>对于JavaScript的类型转换，会令人感到十分难受，虽说是拥有“灵活”的动态转换能力，但是会让人感到十分的混乱，而且别人很喜欢用这种类似“脑筋急转弯”的东西来考人。下面给个图你感受下：
+  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型(primitive)之间的转换。
+基本类型转换 primitive to primitive 在静态语言中，类型转换发生在编译期间(complie time)，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="概述 计算机是通过操作值(如数值字面量3.14)或文本(如“hello”)来工作的，编程语言中这些可以&quot;表示&quot;和&quot;操作&quot;的值(values)被称为类型(types)。
+程序在需要把某个值保存下来以方便将来使用时，会把这个值赋给(或存入)变量(Variable)。
+  类型Types   原始类型(primitive types)：原始值是不可修改的">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="JavaScript, ES6"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | JavaScript类型、值和变量</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">JavaScript类型、值和变量</h1>
+            <div class="post-meta">
+                <time class="post-time">2021-08-02</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <h3 id="概述">概述</h3>
+<p>计算机是通过操作值(如数值字面量3.14)或文本(如“hello”)来工作的，编程语言中这些可以&quot;表示&quot;和&quot;操作&quot;的值(values)被称为类型(types)。</p>
+<p>程序在需要把某个值保存下来以方便将来使用时，会把这个值赋给(或存入)变量(Variable)。</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 67.80000000000001%;">
+    <img class="lazyload" data-src="/uploads/relationship.png" alt=""   />
+</figure>
+</p>
+<h3 id="类型types">类型Types</h3>
+<ul>
+<li>
+<p>原始类型(primitive types)：原始值是不可修改的</p>
+<ul>
+<li>数值Number</li>
+<li>字符串值String</li>
+<li>布尔值Boolean</li>
+<li>null</li>
+<li>undefined</li>
+</ul>
+</li>
+<li>
+<p>对象类型(object types)</p>
+<ul>
+<li>
+<p>一个普通的JavaScript对象是一个个命名值(properties属性)组成的无序集合。</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 113.9423076923077%;">
+    <img class="lazyload" data-src="/uploads/Object.png" alt=""   />
+</figure>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="值values">值Values</h3>
+<ul>
+<li>
+<p>数值Number</p>
+<p>JavaScript的主要数值类型Number用于表示整型和近似实数。JavaScript使用的是<code>IEEE 754</code>标准定义的<code>64位浮点格式</code>表示数值</p>
+<ul>
+<li>
+<p>整数字面量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#bd93f9">0</span> <span style="color:#6272a4">//默认十进制
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span>
+<span style="color:#bd93f9">99</span>
+<span style="color:#bd93f9">0xff</span> <span style="color:#6272a4">// =&gt; 255 十六进制以0x开头
+</span><span style="color:#6272a4">//ES6后的二进制和八进制表示
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">0b10101</span> <span style="color:#6272a4">// 0b开头
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">0o43</span> <span style="color:#6272a4">// 0o开头
+</span></code></pre></div></li>
+<li>
+<p>浮点字面量</p>
+<ul>
+<li>
+<p>[digits].[digits][(E/e)[(+|-)]digits]</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#bd93f9">0.314</span>
+<span style="color:#bd93f9">.33333</span>
+<span style="color:#bd93f9">6.02e23</span> <span style="color:#6272a4">// =&gt; 6.02x10^23
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1.41415415E-32</span><span style="color:#6272a4">// =&gt; 1.41415415x10^(-32)
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>数值字面量分隔符_</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> billion <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>_000_000_000; <span style="color:#6272a4">// _作为千分位分隔符
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> bytes <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0x89</span>_AB_CD_ef <span style="color:#6272a4">// _作字节分隔符
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> bits <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0b0001</span>_1101_1100 <span style="color:#6272a4">// _作半字节分隔符
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> fraction <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.123</span>_456_789 <span style="color:#6272a4">// 小数中也可用
+</span></code></pre></div></li>
+<li>
+<p>浮点数丢失精度</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> sum1 <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">.3</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">.2</span>;
+<span style="color:#8be9fd;font-style:italic">let</span> sum2 <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">.2</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">.1</span>;
+console.log(sum1 <span style="color:#ff79c6">===</span> sum2); <span style="color:#6272a4">// =&gt; false !!
+</span></code></pre></div></li>
+<li>
+<p>BigInt</p>
+<p>ES2020为JavaScript定义了一种新的数值类型BigInt。该数值类型的值也是整数，能够表示64位整数，但由于没考虑方式时序攻击而不适合加密。</p>
+<p>字面量：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#bd93f9">1234</span>n <span style="color:#6272a4">// 一个BigInt类型字面量
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">0b1101101</span>n <span style="color:#6272a4">//二进制BigInt
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">0o7171</span> <span style="color:#6272a4">//八进制
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">0x12354abf</span> <span style="color:#6272a4">//十六进制
+</span></code></pre></div><p>构造函数BigInt(Number/String) 用于转换为BigInt类型的值。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>文本Text</p>
+<p>JavaScript中表示文本的类型是String，即字符串。字符串是<code>16位(UTF-16)</code>不可修改的有序序列，每一个值都表示一个Unicode字符。</p>
+<ul>
+<li>
+<p>字符串字面量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#6272a4">//空字符串
+</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">&#39;myblog&#39;</span>
+<span style="color:#f1fa8c">&#34;3.1415926&#34;</span>
+<span style="color:#f1fa8c">&#39;name = “Zenyet”&#39;</span>
+<span style="color:#f1fa8c">&#34;Whould&#39;t u perfer Zenyet&#39;s blog?&#34;</span>
+<span style="color:#f1fa8c">&#34;with space &#34;</span>
+<span style="color:#f1fa8c">&#39;inside is &#34;you&#34;&#39;</span>
+<span style="color:#6272a4">//ES5 \ 可以让一行字符串分成若干行
+</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">&#34;one\
+</span><span style="color:#f1fa8c"> two\
+</span><span style="color:#f1fa8c"> three&#34;</span>
+</code></pre></div></li>
+<li>
+<p>模版字面量Template Literals</p>
+<p>ES6及之后版本中，字符串字面量可以用反引号(``)来定界。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Zenyet&#34;</span>;
+<span style="color:#6272a4">// get value by ${varName}
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> greeting <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">`Hello, </span><span style="color:#f1fa8c">${</span>name<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">`</span>; <span style="color:#6272a4">// =&gt; Hello, Zenyet
+</span></code></pre></div><p>String.raw()</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f1fa8c">`\n`</span>.length <span style="color:#6272a4">// =&gt; 1: 字符串中只包含一个换行符
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">String</span>.raw<span style="color:#f1fa8c">`\n`</span>.length <span style="color:#6272a4">// =&gt; 2: 一个反斜杠和一个字母n
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>布尔值Boolean</p>
+<p>布尔值表示真或假、开或关、是或否。这个类型只有两个值:true/false.</p>
+</li>
+<li>
+<p>null和undefined</p>
+<p>null是一个语言关键字，求值为一个特殊值，通常用于表示某个值不存在。</p>
+<p>undefined也表示值不存在，但undefined表示一种更深层次的不存在，一般地，未初始化的值就是undefined。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">console.log(<span style="color:#ff79c6">undefined</span> <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">null</span>); <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>console.log(<span style="color:#ff79c6">undefined</span> <span style="color:#ff79c6">===</span> <span style="color:#ff79c6">null</span>); <span style="color:#6272a4">// =&gt; false
+</span><span style="color:#6272a4"></span>console.log(<span style="color:#ff79c6">typeof</span> <span style="color:#ff79c6">undefined</span>); <span style="color:#6272a4">// =&gt; undefined
+</span><span style="color:#6272a4"></span>console.log(<span style="color:#ff79c6">typeof</span> <span style="color:#ff79c6">null</span>); <span style="color:#6272a4">// =&gt; object
+</span></code></pre></div></li>
+<li>
+<p>符号Symbol</p>
+<p>符号是ES6新增的一种原始类型，用作非字符串的属性名。因为js对象是一个属性(properties)的无序集合，每个属性都是name/value对。属性名在ES6之前必须是字符串，在符号出现后可以作为属性名。</p>
+<p>Symbol没有字面量语法。可以使用构造函数Symbol(optional String parameter)获取一个永远不会返回同一个值的值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> strname <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;string name&#34;</span>;
+<span style="color:#8be9fd;font-style:italic">let</span> symname <span style="color:#ff79c6">=</span> Symbol(<span style="color:#f1fa8c">&#34;propname&#34;</span>);
+<span style="color:#ff79c6">typeof</span> strname; <span style="color:#6272a4">// =&gt; String
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">typeof</span> symname;<span style="color:#6272a4">// =&gt; Symbol
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> {}; <span style="color:#6272a4">// 字面量方式创建一个对象obj
+</span><span style="color:#6272a4"></span>obj[strname] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; <span style="color:#6272a4">//使用字符串名定义一个属性
+</span><span style="color:#6272a4"></span>obj[symname] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>; <span style="color:#6272a4">//使用符号名定一个一个属性
+</span></code></pre></div></li>
+<li>
+<p>全局对象</p>
+<p>全局对象的属性(properties)是全局性定义的标识符，可以在JavaScript程序的任何地方使用。JavaScript解析器启动后，都会创建一个新的全局对象并为其添加一组初始的属性：</p>
+<ul>
+<li>全局常量：undefined、Infinity和NaN</li>
+<li>全局函数：isNaN()、parseInt()、 eval()&hellip;</li>
+<li>构造函数：Date()、RegExp()、Object()、Array()&hellip;</li>
+<li>全局对象：Math、JSON&hellip;</li>
+</ul>
+<p>Node和浏览器中：</p>
+<p>Node: global属性引用全局对象</p>
+<p>浏览器: window属性引用该全局对象</p>
+<p>ES2020:  globalThis</p>
+</li>
+</ul>
+<h3 id="变量声明和赋值variable-declaration-and-assignment">变量声明和赋值Variable Declaration and Assignment</h3>
+<p>计算机编程中最基本的一个技术就是使用名字(或标识符)表示值。</p>
+<ul>
+<li>
+<p>let和const</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> a;
+<span style="color:#8be9fd;font-style:italic">let</span> b;<span style="color:#6272a4">// 未初始化的值为undefined
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">const</span> PI <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>; <span style="color:#6272a4">//const修饰的变量必须要初始化
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">const</span> KEY <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">124</span>; <span style="color:#6272a4">// 建议用大写名字表示
+</span></code></pre></div><p>常量不可改变其值。</p>
+</li>
+<li>
+<p>scope作用域</p>
+<p>通过let和const声明的变量和常量具有块作用域，这意味它们只在let和const语句所在的代码块中有定义。通俗来说，{}里面的属于代码块，但形式参数不在{}内也属于代码块内。</p>
+</li>
+<li>
+<p>var声明的变量</p>
+<ul>
+<li>var声明的变量不再具有作用域。</li>
+<li>函数外部使用var，则该变量为全局变量。var和let声明的全局变量的重要区别：通过var声明的全局变量被实现为全局对象的属性(不能使用delete操作符)。</li>
+<li>var多次声明同名变量合法</li>
+<li>var声明的最重要特性：作用域提升(hoisting)
+<ul>
+<li>在使用var声明变量时，该声明会被提高(或提升)到包含containing function的顶部</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>解构赋值(destructuring assignment)</p>
+<p>ES6实现了一种复合声明与赋值语法为解构赋值。</p>
+<p>在解构赋值中，等号右边的值是数组或对象(&ldquo;结构化&quot;的对象)，而左边通过模拟数组或对象字面量语法指定一个或多个变量。</p>
+<p>其中左边多余的值被设置为undefined；右边多余的被忽略。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> [x,y] <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>]; <span style="color:#6272a4">// 相当于 let x = 1;let y = 2;
+</span><span style="color:#6272a4"></span>[x,y] <span style="color:#ff79c6">=</span> [x<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>,y<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>]; <span style="color:#6272a4">// increment
+</span><span style="color:#6272a4"></span>[x,y] <span style="color:#ff79c6">=</span> [y,x]; <span style="color:#6272a4">//exchange
+</span></code></pre></div><p>in Array:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> exchange(x,y){
+  <span style="color:#ff79c6">return</span> [y,x];
+}
+<span style="color:#8be9fd;font-style:italic">function</span> square(y,x){
+  <span style="color:#ff79c6">return</span> [y<span style="color:#ff79c6">*</span>y,x<span style="color:#ff79c6">*</span>x];
+}
+<span style="color:#8be9fd;font-style:italic">let</span> [a,b] <span style="color:#ff79c6">=</span> exchange(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>); <span style="color:#6272a4">// =&gt; a=2,b=1
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> [y,x] <span style="color:#ff79c6">=</span> square(a,b); <span style="color:#6272a4">// =&gt; x=4,y=1 
+</span></code></pre></div><p>in Object:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span><span style="color:#bd93f9">1</span>,y<span style="color:#ff79c6">:</span><span style="color:#bd93f9">2</span>};
+<span style="color:#ff79c6">for</span>(<span style="color:#ff79c6">const</span>[name,value] <span style="color:#ff79c6">of</span> Ojbect.entries(obj)){
+  console.log(name,value);
+}
+</code></pre></div></li>
+</ul>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/javascript/" class="post-tag">JavaScript</a></li>
+        <li><a href="https://yequalsx.com/tags/es6/" class="post-tag">ES6</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>

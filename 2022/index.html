@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Zenyet&#39;s blog">
+    <meta name="author" content="">
+    <meta name="keywords" content="Zenyet&#39;s blog">
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | 2022s</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+
+
+</body>
+</html>

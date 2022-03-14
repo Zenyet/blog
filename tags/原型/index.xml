@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>原型 on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/%E5%8E%9F%E5%9E%8B/</link>
+    <description>Recent content in 原型 on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/%E5%8E%9F%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>浅谈JavaScript原型</title>
+      <link>https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/</guid>
+      <description>对象是JavaScript中很重要的一种基本数据类型，我们都知道对象是若干属性的无序集合(广义上的集合)，每个对象除了维护自己的属性集外，还需继承另一个对象的prototype属性(即Prototype原型)。
+ 对于开始总结该知识点的时候，信心还是满满的，但是到了现在开始正式整理后，不禁吐槽—这都是啥玩意啊? 咋越整理越迷糊。 😪</description>
+    </item>
+    
+  </channel>
+</rss>

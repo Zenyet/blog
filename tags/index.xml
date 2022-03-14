@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/</link>
+    <description>Recent content in Tags on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript</title>
+      <link>https://yequalsx.com/tags/javascript/</link>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>类型转换</title>
+      <link>https://yequalsx.com/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://yequalsx.com/tags/leetcode/</link>
+      <pubDate>Sat, 26 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>执行上下文</title>
+      <link>https://yequalsx.com/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/</link>
+      <pubDate>Sat, 26 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>https://yequalsx.com/tags/css/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>原型</title>
+      <link>https://yequalsx.com/tags/%E5%8E%9F%E5%9E%8B/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E5%8E%9F%E5%9E%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ES6</title>
+      <link>https://yequalsx.com/tags/es6/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>作用域</title>
+      <link>https://yequalsx.com/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>闭包Closure</title>
+      <link>https://yequalsx.com/tags/%E9%97%AD%E5%8C%85closure/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E9%97%AD%E5%8C%85closure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WebStorm</title>
+      <link>https://yequalsx.com/tags/webstorm/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/webstorm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://yequalsx.com/tags/hugo/</link>
+      <pubDate>Wed, 06 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>remark42</title>
+      <link>https://yequalsx.com/tags/remark42/</link>
+      <pubDate>Wed, 06 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/remark42/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>basic</title>
+      <link>https://yequalsx.com/tags/basic/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/basic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Design pattern</title>
+      <link>https://yequalsx.com/tags/design-pattern/</link>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/design-pattern/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

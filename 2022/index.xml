@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2022s on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/2022/</link>
+    <description>Recent content in 2022s on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/2022/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>类型转换??</title>
+      <link>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>对于JavaScript的类型转换，会令人感到十分难受，虽说是拥有“灵活”的动态转换能力，但是会让人感到十分的混乱，而且别人很喜欢用这种类似“脑筋急转弯”的东西来考人。下面给个图你感受下：
+  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型(primitive)之间的转换。
+基本类型转换 primitive to primitive 在静态语言中，类型转换发生在编译期间(complie time)，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。</description>
+    </item>
+    
+    <item>
+      <title>从反转链表到执行上下文</title>
+      <link>https://yequalsx.com/2022/02/%E4%BB%8E%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E5%88%B0%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/</link>
+      <pubDate>Sat, 26 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/02/%E4%BB%8E%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E5%88%B0%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/</guid>
+      <description>最近在leetcode刷到了经典的题目&amp;mdash;-反转链表，其中有两种常规的解法：迭代法(双指针，尾接法)和递归法，奈何递归法让我摸不着头脑，因为个人是个&amp;quot;死脑筋&amp;quot;，所以在不断的短点调试下基本理清了原理，神奇的延伸到了递归和执行上下文(调用栈)的关系。
+ 题源：leetcode-206
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。</description>
+    </item>
+    
+    <item>
+      <title>实现垂直居中</title>
+      <link>https://yequalsx.com/2022/02/%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/02/%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</guid>
+      <description>对于水平居中，我们可以很自如的使用CSS进行居中，对于行内元素：text-align: center; 对于块级元素：margin： 0 auto; 当对元素进行垂直居中时，就显得格外的麻烦。</description>
+    </item>
+    
+    <item>
+      <title>浅谈JavaScript原型</title>
+      <link>https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/</guid>
+      <description>对象是JavaScript中很重要的一种基本数据类型，我们都知道对象是若干属性的无序集合(广义上的集合)，每个对象除了维护自己的属性集外，还需继承另一个对象的prototype属性(即Prototype原型)。
+ 对于开始总结该知识点的时候，信心还是满满的，但是到了现在开始正式整理后，不禁吐槽—这都是啥玩意啊? 咋越整理越迷糊。 😪</description>
+    </item>
+    
+    <item>
+      <title>作用域和闭包</title>
+      <link>https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/</guid>
+      <description>作用域Scope 作用域是源代码中定义变量的区域；
+作用域是根据名称查找变量的一套规则。
+词法作用域 词法作用域就是定义在词法阶段的作用域，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变。</description>
+    </item>
+    
+  </channel>
+</rss>

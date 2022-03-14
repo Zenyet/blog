@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="对于静态博客，有一个很大的缺点就是没有评论系统了。。大部分的静态生成器程序都没有带评论系统的，因此第三方的评论系统层出不穷。
+ 关于为何选择remark42?
+没错，好像有很多很容易部署的评论系统，例如gitment、disqus、valine、waline等等啥的，其实一开始我是用waline的，而且很容易就搭建好了(vercel一键部署几乎😂)，但最近碰到了remark42这个茬，奈何我就是要搞定它，所以最后就是选择了它🤣。">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="hugo, remark42"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | Hugo添加remark42评论系统</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">Hugo添加remark42评论系统</h1>
+            <div class="post-meta">
+                <time class="post-time">2021-10-06</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <blockquote>
+<p>对于静态博客，有一个很大的缺点就是没有评论系统了。。大部分的静态生成器程序都没有带评论系统的，因此第三方的评论系统层出不穷。</p>
+</blockquote>
+<p>关于为何选择<a href="https://github.com/umputun/remark42" target="_blank" rel="noopener">remark42</a>?</p>
+<p>没错，好像有很多很容易部署的评论系统，例如gitment、disqus、valine、waline等等啥的，其实一开始我是用waline的，而且很容易就搭建好了(vercel一键部署几乎😂)，但最近碰到了remark42这个茬，奈何我就是要搞定它，所以最后就是选择了它🤣。</p>
+<p>关于它的特性可自行去github上看。</p>
+<h2 id="后端部署">后端部署</h2>
+<p>官方文档提供了两种部署方法：docker和自己编译安装。为此我选择了比较容易的docker部署，顺便复习下docker知识。。</p>
+<p>我的服务器环境：</p>
+<ul>
+<li>Debian10(腾讯云HK)</li>
+<li>宝塔面板</li>
+</ul>
+<h3 id="docker配置">docker配置</h3>
+<p>首先在宝塔上新建一个网站(其实这个不是那么重要，主要给个地放docker-compose.yml配置文件)，在网站根目录创建一个dcoker-compose.yml文件，点击编辑，复制以下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff79c6">version</span>: <span style="color:#f1fa8c">&#39;2&#39;</span>
+<span style="color:#ff79c6">services</span>:
+  <span style="color:#ff79c6">remark42</span>:
+    <span style="color:#ff79c6">image</span>: umputun/remark42:latest
+    <span style="color:#ff79c6">restart</span>: always
+    <span style="color:#ff79c6">container_name</span>: <span style="color:#f1fa8c">&#34;remark42&#34;</span>
+    <span style="color:#ff79c6">environment</span>:
+      - REMARK_URL=https://comment.driim.cn  <span style="color:#6272a4"># URL 指向docker的后端remark42</span>
+      - SITE=www.driim.cn                    <span style="color:#6272a4"># site ID, 这个和后面配置的前端的site_id保持一致</span>
+      - SECRET=任意密钥，自己设置          <span style="color:#6272a4"># secret key</span>
+      - AUTH_GITHUB_CID=github的oauth应用的client ID        
+      - AUTH_GITHUB_CSEC=github的oauth应用的client secrets     
+      - AUTH_ANON=true  <span style="color:#6272a4"># 是否开启匿名用户评论</span>
+      - AUTH_EMAIL_ENABLE=true <span style="color:#6272a4"># 是否开启邮件用户评论</span>
+      - AUTH_EMAIL_FROM=你的邮件 <span style="color:#6272a4"># 发送确认消息的smtp邮件</span>
+      - SMTP_HOST=smtp.qq.com <span style="color:#6272a4"># smtp服务器提供者</span>
+      - SMTP_PORT=465 <span style="color:#6272a4"># 之前踩坑gmail和outlook的默认是587,协议STARTTLS，而后面看issue发现居然是</span>
+      								<span style="color:#6272a4"># 不支持的 :(</span>
+      - SMTP_USERNAME=配置SMTP的邮箱,一般是你的邮箱
+      - SMTP_PASSWORD=设置SMTP的邮箱密码(一般是)
+      - SMTP_TLS=true <span style="color:#6272a4"># 上面的一致，只支持TLS</span>
+      - NOTIFY_USERS=email <span style="color:#6272a4"># 以什么方式通知用户，可选值，除了email还有telegram，可自行去项目上看</span>
+      - NOTIFY_ADMINS=email <span style="color:#6272a4"># 以什么方式通知管理员，同上</span>
+      - AUTH_EMAIL_SUBJ=验证你的邮箱并获得token  <span style="color:#6272a4"># 邮件通知自定义信息</span>
+      - ADMIN_SHARED_ID=以GitHub或者其他形式登陆时会有一串id值 <span style="color:#6272a4"># 这个用于设置管理员</span>
+    <span style="color:#ff79c6">volumes</span>:
+      - ./var:/srv/var       <span style="color:#6272a4"># 数据存储位置</span>
+    <span style="color:#ff79c6">ports</span>:
+      - <span style="color:#f1fa8c">&#34;8080:8080&#34;</span> <span style="color:#6272a4"># 端口映射，remark42容器中默认端口为8080，我的80端口用了，所以使用8080</span>
+</code></pre></div><p>关于smtp的服务提供商是否支持TLS465端口可以到<a href="https://github.com/nodemailer/nodemailer/blob/master/lib/well-known/services.json" target="_blank" rel="noopener">这里</a>查看。</p>
+<h3 id="nginx代理设置">nginx代理设置</h3>
+<p>建议提前配置好https，不使用https会有奇奇怪怪的毛病。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#ff79c6">limit_conn</span> <span style="color:#f1fa8c">perip</span> <span style="color:#bd93f9">10</span>;
+<span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+    <span style="color:#ff79c6">proxy_redirect</span>          off;
+    <span style="color:#ff79c6">proxy_set_header</span>        <span style="color:#f1fa8c">X-Real-IP</span> <span style="color:#8be9fd;font-style:italic">$remote_addr</span>;
+    <span style="color:#ff79c6">proxy_set_header</span>        <span style="color:#f1fa8c">X-Forwarded-For</span> <span style="color:#8be9fd;font-style:italic">$proxy_add_x_forwarded_for</span>;
+    <span style="color:#ff79c6">proxy_set_header</span>        <span style="color:#f1fa8c">Host</span> <span style="color:#8be9fd;font-style:italic">$http_host</span>;
+    <span style="color:#ff79c6">proxy_pass</span>              <span style="color:#f1fa8c">http://localhost:8080/</span>;
+}
+</code></pre></div><h3 id="测试后端">测试后端</h3>
+<p>利用终端连接到服务器，切换目录到开头的网站根目录，复制下面命令执行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#拉取镜像并部署</span>
+docker-compose pull <span style="color:#ff79c6">&amp;&amp;</span> docker-compose up -d
+</code></pre></div><p>通过打开demo页面 <code>REMARK_URL/web</code> (REMARK_URL就是docker-compose上设置的).效果如下：</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 76.15207373271889%;">
+    <img class="lazyload" data-src="/uploads/remark42_demo.png" alt="remark_demo"   />
+</figure>
+</p>
+<p>不过这时候还不能进行评论，主要是因为demo页面配置的site_id是remark，而上面我自己设置的不是。</p>
+<h2 id="前端配置">前端配置</h2>
+<p>在想要添加remark42评论的页面中(我的hugo主题是在single页面中)的底部添加以下js代码。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">&lt;</span>script<span style="color:#ff79c6">&gt;</span>
+  	<span style="color:#6272a4">//以下代码是为了自适应系统的深色模式
+</span><span style="color:#6272a4"></span>		<span style="color:#8be9fd;font-style:italic">var</span> body <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#39;#remark42 body&#39;</span>);
+    <span style="color:#8be9fd;font-style:italic">var</span> theme <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;light&#39;</span>;
+    <span style="color:#ff79c6">if</span> (<span style="color:#f1fa8c">&#39;matchMedia&#39;</span> <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">window</span>) {
+        <span style="color:#8be9fd;font-style:italic">var</span> mq <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">window</span>.matchMedia(<span style="color:#f1fa8c">&#39;(prefers-color-scheme: dark)&#39;</span>);
+        <span style="color:#ff79c6">if</span> (mq.matches) {
+            body.classList.add(<span style="color:#f1fa8c">&#39;document_theme_dark&#39;</span>);
+        }
+        <span style="color:#8be9fd;font-style:italic">function</span> getTheme() {
+            <span style="color:#ff79c6">return</span> mq.matches <span style="color:#ff79c6">?</span> <span style="color:#f1fa8c">&#39;dark&#39;</span> <span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;light&#39;</span>;
+        }
+        theme <span style="color:#ff79c6">=</span> getTheme();
+        mq.addListener(<span style="color:#8be9fd;font-style:italic">function</span> () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+    <span style="color:#8be9fd;font-style:italic">var</span> remark_config <span style="color:#ff79c6">=</span> {
+        site_id<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;www.driim.cn&#39;</span>, <span style="color:#6272a4">// 同docker环境变量的SITE
+</span><span style="color:#6272a4"></span>        host<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;https://comment.driim.cn&#39;</span>, <span style="color:#6272a4">//指向remark42服务器的URL，同上docker配置文件
+</span><span style="color:#6272a4"></span>        url<span style="color:#ff79c6">:</span> <span style="color:#8be9fd;font-style:italic">window</span>.location.href,
+        components<span style="color:#ff79c6">:</span> [<span style="color:#f1fa8c">&#39;embed&#39;</span>],
+        theme<span style="color:#ff79c6">:</span> theme, <span style="color:#6272a4">//自适应深色模式
+</span><span style="color:#6272a4"></span>        locale<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;zh&#34;</span> <span style="color:#6272a4">//设置中文
+</span><span style="color:#6272a4"></span>      	<span style="color:#6272a4">//show_email_subscription: false, 这个是显示订阅email通知的
+</span><span style="color:#6272a4"></span>    };
+		<span style="color:#6272a4">//下面为默认配置
+</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">!</span>(<span style="color:#8be9fd;font-style:italic">function</span> (e, n) {
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">var</span> o <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; o <span style="color:#ff79c6">&lt;</span> e.length; o<span style="color:#ff79c6">++</span>) {
+            <span style="color:#8be9fd;font-style:italic">var</span> r <span style="color:#ff79c6">=</span> n.createElement(<span style="color:#f1fa8c">&#39;script&#39;</span>),
+                c <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;.js&#39;</span>,
+                d <span style="color:#ff79c6">=</span> n.head <span style="color:#ff79c6">||</span> n.body
+            <span style="color:#f1fa8c">&#39;noModule&#39;</span> <span style="color:#ff79c6">in</span> r <span style="color:#ff79c6">?</span> ((r.type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;module&#39;</span>), (c <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;.mjs&#39;</span>)) <span style="color:#ff79c6">:</span> (r.<span style="color:#ff79c6">async</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">!</span><span style="color:#bd93f9">0</span>),
+                (r.defer <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">!</span><span style="color:#bd93f9">0</span>),
+                (r.src <span style="color:#ff79c6">=</span> remark_config.host <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;/web/&#39;</span> <span style="color:#ff79c6">+</span> e[o] <span style="color:#ff79c6">+</span> c),
+                d.appendChild(r)
+        }
+    })(remark_config.components <span style="color:#ff79c6">||</span> [<span style="color:#f1fa8c">&#39;embed&#39;</span>], <span style="color:#8be9fd;font-style:italic">document</span>)
+<span style="color:#ff79c6">&lt;</span>script<span style="color:#ff79c6">&gt;</span>
+</code></pre></div><h3 id="测试效果">测试效果</h3>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 64.73372781065089%;">
+    <img class="lazyload" data-src="/uploads/remarktest.png" alt="remark_test"   />
+</figure>
+</p>
+<p>这就是简单的配置，后续邮箱订阅能用时会再更新，其他的配置可以到remark42的GitHub项目上查看，总体上文档还是比较详细的，但有些文档是隐藏在源文件里面。</p>
+<p>后续：</p>
+<p>订阅评论的配置生效了。而想修改嵌入的web的样式或整体结构，可以自行进入已经部署的容器中进行修改。</p>
+<p>进入容器命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker <span style="color:#8be9fd;font-style:italic">exec</span> -it 容器id或名字 sh
+</code></pre></div><p>容器内部：</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 9.141494435612083%;">
+    <img class="lazyload" data-src="/uploads/remark42_inside.png" alt="remark42_inside"   />
+</figure>
+</p>
+<p>Reference：<a href="https://github.com/umputun/remark42" target="_blank" rel="noopener">remark42</a></p>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/hugo/" class="post-tag">hugo</a></li>
+        <li><a href="https://yequalsx.com/tags/remark42/" class="post-tag">remark42</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>

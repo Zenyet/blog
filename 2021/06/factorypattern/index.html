@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="前言：  在我个人认为，在框架的后续学习中占据着挺重要的地位，这些模式让你能够更容易了解各类框架的设计理念，进一步提升你的编程水平，但最重要的是你能更容易的去记住框架的用法，所有东西都是，你想学的东西都是在你前面已经学过理解过一点才能继续学下去。
+本次的代码基于Java编写
+ 简单工厂模式  实现 抽象产品  public abstract class Product{ //Other public business methods  public void businessMethods(){} //different methods of concrete products  public abstract void concreteMethods(); }  具体产品  public class ConcreteProductA extends Product{ /** * 实现业务方法 */ @Override public void methodDiff() { System.">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="Design pattern"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | 工厂设计模式</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">工厂设计模式</h1>
+            <div class="post-meta">
+                <time class="post-time">2021-06-25</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <h3 id="前言">前言：</h3>
+<blockquote>
+<p>在我个人认为，在框架的后续学习中占据着挺重要的地位，这些模式让你能够更容易了解各类框架的设计理念，进一步提升你的编程水平，但最重要的是你能更容易的去记住框架的用法，所有东西都是，你想学的东西都是在你前面已经学过理解过一点才能继续学下去。</p>
+<p>本次的代码基于Java编写</p>
+</blockquote>
+<h4 id="简单工厂模式">简单工厂模式</h4>
+<ul>
+<li>实现</li>
+<li>抽象产品</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">abstract</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Product</span><span style="color:#ff79c6">{</span>
+  <span style="color:#6272a4">//Other public business methods
+</span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">businessMethods</span><span style="color:#ff79c6">(){}</span>
+  <span style="color:#6272a4">//different methods of concrete products
+</span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">abstract</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">concreteMethods</span><span style="color:#ff79c6">();</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><ul>
+<li>具体产品</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ConcreteProductA</span> <span style="color:#8be9fd;font-style:italic">extends</span> Product<span style="color:#ff79c6">{</span>
+    <span style="color:#6272a4">/**
+</span><span style="color:#6272a4">     * 实现业务方法
+</span><span style="color:#6272a4">     */</span>
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">methodDiff</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Product A&#34;</span><span style="color:#ff79c6">);</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ConcreteProductB</span> <span style="color:#8be9fd;font-style:italic">extends</span> Product <span style="color:#ff79c6">{</span>
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">methodDiff</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Product B&#34;</span><span style="color:#ff79c6">);</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><ul>
+<li>工厂角色</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Factory</span> <span style="color:#ff79c6">{</span>
+    <span style="color:#6272a4">//Static factory method
+</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> Product <span style="color:#50fa7b">getProduct</span><span style="color:#ff79c6">(</span>String arg<span style="color:#ff79c6">){</span>
+        Product product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
+        <span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>arg<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equalsIgnoreCase</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;A&#34;</span><span style="color:#ff79c6">)){</span>
+            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcreteProductA<span style="color:#ff79c6">();</span>
+            <span style="color:#6272a4">//Initialize product
+</span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>arg<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equalsIgnoreCase</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;B&#34;</span><span style="color:#ff79c6">)){</span>
+            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcreteProductB<span style="color:#ff79c6">();</span>
+        <span style="color:#ff79c6">}</span>
+        <span style="color:#ff79c6">return</span> product<span style="color:#ff79c6">;</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><ul>
+<li>总结
+<ul>
+<li>
+<p>简单工厂模式是最简单的工厂模式，在开发中用得较少。</p>
+</li>
+<li>
+<p>结构图</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 47.147147147147145%;">
+    <img class="lazyload" data-src="/uploads/simplefactoryUML.png" alt=""   />
+</figure>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="工厂模式">工厂模式</h4>
+<ul>
+<li>
+<p>实现</p>
+<ul>
+<li>抽象产品</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">Product</span> <span style="color:#ff79c6">{</span>
+      <span style="color:#6272a4">//产品默认信息
+</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">info</span><span style="color:#ff79c6">();</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><ul>
+<li>具体产品</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//Product food
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Food</span> <span style="color:#8be9fd;font-style:italic">implements</span> Product<span style="color:#ff79c6">{</span>
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">info</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;I am the food!&#34;</span><span style="color:#ff79c6">);</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//Product clothe
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Clothe</span> <span style="color:#8be9fd;font-style:italic">implements</span> Product <span style="color:#ff79c6">{</span>
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">info</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Iam a clothe!&#34;</span><span style="color:#ff79c6">);</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><ul>
+<li>抽象工厂</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//a interface
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">Factory</span><span style="color:#ff79c6">{</span>
+  Product <span style="color:#50fa7b">produceProduct</span><span style="color:#ff79c6">(</span>String className<span style="color:#ff79c6">);</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><ul>
+<li>具体工厂</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//concrete food factory
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">FoodFactory</span> <span style="color:#8be9fd;font-style:italic">implements</span> Factory<span style="color:#ff79c6">{</span>
+    Product product<span style="color:#ff79c6">;</span>
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> Product <span style="color:#50fa7b">produceProduct</span><span style="color:#ff79c6">(</span>String className<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+        <span style="color:#ff79c6">try</span> <span style="color:#ff79c6">{</span>
+            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Product<span style="color:#ff79c6">)</span> Class<span style="color:#ff79c6">.</span><span style="color:#50fa7b">forName</span><span style="color:#ff79c6">(</span>className<span style="color:#ff79c6">).</span><span style="color:#50fa7b">getDeclaredConstructor</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">newInstance</span><span style="color:#ff79c6">();</span>
+        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">catch</span><span style="color:#ff79c6">(</span>Exception e<span style="color:#ff79c6">){</span>
+            e<span style="color:#ff79c6">.</span><span style="color:#50fa7b">printStackTrace</span><span style="color:#ff79c6">();</span>
+        <span style="color:#ff79c6">}</span>
+        <span style="color:#ff79c6">return</span> product<span style="color:#ff79c6">;</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//concrete clothe factory
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ClotheFactory</span> <span style="color:#8be9fd;font-style:italic">implements</span> Factory <span style="color:#ff79c6">{</span>
+    Product product<span style="color:#ff79c6">;</span>
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> Product <span style="color:#50fa7b">produceProduct</span><span style="color:#ff79c6">(</span>String className<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+        <span style="color:#ff79c6">try</span><span style="color:#ff79c6">{</span>
+            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Product<span style="color:#ff79c6">)</span> Class<span style="color:#ff79c6">.</span><span style="color:#50fa7b">forName</span><span style="color:#ff79c6">(</span>className<span style="color:#ff79c6">).</span><span style="color:#50fa7b">getDeclaredConstructor</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">newInstance</span><span style="color:#ff79c6">();</span>
+        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">catch</span> <span style="color:#ff79c6">(</span>Exception e<span style="color:#ff79c6">){</span>
+            e<span style="color:#ff79c6">.</span><span style="color:#50fa7b">printStackTrace</span><span style="color:#ff79c6">();</span>
+        <span style="color:#ff79c6">}</span>
+        <span style="color:#ff79c6">return</span> product<span style="color:#ff79c6">;</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div></li>
+<li>
+<p>总结</p>
+<ul>
+<li>
+<p>优点：</p>
+<ul>
+<li>隐藏对象实例化细节，用户无需关心创建的细节，只需知道是什么工厂，用户不需再创建对象，由具体工厂来实现，控制权转移给了工厂；基于工厂模式的系统在添加新产品时，源码不需要进行修改，只需添加具体工厂，产品即可，保证了开闭原则。</li>
+</ul>
+</li>
+<li>
+<p>缺点</p>
+<ul>
+<li>虽确保了开闭原则，新增的具体类使得系统体积变得臃肿，增加开销。</li>
+</ul>
+</li>
+<li>
+<p>工厂模式是简单工厂模式的扩展，继承了简单工厂模式的优点，同时弥补其不足，使用频率极高，在Spring全家桶尤其明显(AOC)，是对面向编程中多态极致的体现。</p>
+</li>
+<li>
+<p>结构图</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 52.732240437158474%;">
+    <img class="lazyload" data-src="/uploads/factoryUML.png" alt=""   />
+</figure>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="抽象工厂模式">抽象工厂模式</h4>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/design-pattern/" class="post-tag">Design pattern</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>

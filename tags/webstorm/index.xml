@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WebStorm on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/webstorm/</link>
+    <description>Recent content in WebStorm on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 23 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/webstorm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Webstorm压缩css</title>
+      <link>https://yequalsx.com/2021/10/webstorm%E5%8E%8B%E7%BC%A9css/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/webstorm%E5%8E%8B%E7%BC%A9css/</guid>
+      <description>我们在编写代码时，总会有很多空格、注释或全名变量(引用)，这些对于浏览器加载来说是没什么意义的，反而会降低加载速度；而压缩静态文件就是减少这些无必要的以减少文件大小。
+ 我在网上搜罗了一下，发现大部分人都是用yui compressor这个插件在Webstorm进行压缩css文件或其他静态文件，然后我发现Webstorm官网上是使用CSSO这个插件的，因此我选择了跟随官方文档。</description>
+    </item>
+    
+  </channel>
+</rss>

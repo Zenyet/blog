@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design pattern on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/design-pattern/</link>
+    <description>Recent content in Design pattern on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 25 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工厂设计模式</title>
+      <link>https://yequalsx.com/2021/06/factorypattern/</link>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/06/factorypattern/</guid>
+      <description>前言：  在我个人认为，在框架的后续学习中占据着挺重要的地位，这些模式让你能够更容易了解各类框架的设计理念，进一步提升你的编程水平，但最重要的是你能更容易的去记住框架的用法，所有东西都是，你想学的东西都是在你前面已经学过理解过一点才能继续学下去。
+本次的代码基于Java编写
+ 简单工厂模式  实现 抽象产品  public abstract class Product{ //Other public business methods  public void businessMethods(){} //different methods of concrete products  public abstract void concreteMethods(); }  具体产品  public class ConcreteProductA extends Product{ /** * 实现业务方法 */ @Override public void methodDiff() { System.</description>
+    </item>
+    
+  </channel>
+</rss>

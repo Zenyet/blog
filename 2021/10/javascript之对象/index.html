@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="对象是JavaScript中最基本的数据类型。
+对象是一个属性(property)的无序集合，每个属性是一对名字(name)和值(value)，属性名通常是字符串(ES6后可为symbol)。
+ 创建对象 对象字面量，new关键字和Object.">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="ES6, JavaScript"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | JavaScript之对象</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">JavaScript之对象</h1>
+            <div class="post-meta">
+                <time class="post-time">2021-10-02</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <blockquote>
+<p>对象是JavaScript中最基本的数据类型。</p>
+<p>对象是一个属性(property)的无序集合，每个属性是一对名字(name)和值(value)，属性名通常是字符串(ES6后可为symbol)。</p>
+</blockquote>
+<h3 id="创建对象">创建对象</h3>
+<p>对象字面量，new关键字和Object.create()</p>
+<h4 id="对象字面量">对象字面量</h4>
+<p>这是最简单的语法来创建对象。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">const</span> days <span style="color:#ff79c6">=</span> {}; <span style="color:#6272a4">// 创建一个无属性的对象
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> point <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>,y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">2</span>};
+<span style="color:#8be9fd;font-style:italic">let</span> p2 <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> point.x,y<span style="color:#ff79c6">:</span> point.y};
+<span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> {
+    str<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;string&#34;</span>,
+    cat<span style="color:#ff79c6">:</span> {
+        <span style="color:#f1fa8c">&#34;name&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;orange&#34;</span>,
+        <span style="color:#f1fa8c">&#34;skill&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;sleep&#34;</span>,
+        <span style="color:#f1fa8c">&#34;fav food&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;fish&#34;</span> <span style="color:#6272a4">//属性名包含空格和连字符，因此使用字符串字面量
+</span><span style="color:#6272a4"></span>    }
+};
+</code></pre></div><p>注意的是，对象字面量语法属于表达式，每次求值都会创建并初始化一个新的、不一样的(地址值)对象；因此每个属性的值也会被求值，在重复调用时，可以创建很多新的对象，且这些对象的属性的值可能不同。</p>
+<h4 id="new关键字">new关键字</h4>
+<p>熟悉面向对象类语言的应该不会陌生这个关键字，这种其实就是调用了构造函数(constructor)，以初始化对象。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> emptyObj <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Object</span>(); <span style="color:#6272a4">// {}
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> arrObj <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Array</span>(); <span style="color:#6272a4">// []
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> dateObj <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Date</span>(); <span style="color:#6272a4">// 日期对象let 
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> mapObj <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Map(); <span style="color:#6272a4">//创建Map映射对象，用于存储键值映射
+</span></code></pre></div><h4 id="objectcreate">Object.create()</h4>
+<p>关于这个函数，首先要说的是JavaScript中的原型(prototype)，上面的通过对象字面量创建的对象都有相同的原型对象，Object.prototype引用了这个原型对象。而使用了new关键字和构造函数调用创建的对象，使用了构造函数prototype属性的值作为它们的原型，即继承自Object.prototype。</p>
+<p>类似的，通过new Array()创建的对象以Array.prototype为原型，new Date()则为Date.prototype。</p>
+<p>记住，<code>几乎所有对象都有原型(Object.prototype无原型)，但只有小数对象有prototype属性(Object、多数内置构造函数)。</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.create({x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>,y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">2</span>}); <span style="color:#6272a4">// obj继承属性x和y
+</span><span style="color:#6272a4"></span>console.log(obj.x<span style="color:#ff79c6">+</span>obj.y); <span style="color:#6272a4">// =&gt; 3
+</span><span style="color:#6272a4"></span>
+<span style="color:#6272a4">//传入null可以创建一个没有原型的对象，这个新对象不会继承任何东西，toString()也不会有
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> obj2 <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.create(<span style="color:#ff79c6">null</span>); <span style="color:#6272a4">// 不继承任何属性或方法
+</span><span style="color:#6272a4"></span>
+<span style="color:#8be9fd;font-style:italic">let</span> obj3 <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.create(<span style="color:#8be9fd;font-style:italic">Object</span>.prototype); <span style="color:#6272a4">// 与{} 或 new Object() 类似
+</span><span style="color:#6272a4"></span>
+
+<span style="color:#6272a4">//保护对象不被第三方库修改
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {dontModValue<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;dont change this!!&#34;</span>};
+<span style="color:#6272a4">//pass obj which extends o
+</span><span style="color:#6272a4"></span>library.<span style="color:#8be9fd;font-style:italic">function</span>(<span style="color:#8be9fd;font-style:italic">Object</span>.create(o));
+</code></pre></div><h3 id="查询访问和设置属性">查询(访问)和设置属性</h3>
+<p><a href="https://yequalsx.com/2021/09/javascript%e8%a1%a8%e8%be%be%e5%bc%8f/#%e5%b1%9e%e6%80%a7%e8%ae%bf%e9%97%ae%e8%a1%a8%e8%be%be%e5%bc%8f" target="_blank" rel="noopener">同属性访问表达式的语法</a></p>
+<h4 id="作为关联数组的对象">作为关联数组的对象</h4>
+<p>访问属性：</p>
+<p><strong>object.property</strong></p>
+<p><strong>object.[&ldquo;proprety&rdquo;]</strong></p>
+<p>对于第二种访问方式，和普通数组索引访问相像，只不过索引变成了字符串。而这种数据被称为<code>关联数组</code>，JavaScript对象是关联数组。</p>
+<p>JavaScript程序可以为任意对象创建任意数量的属性。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> addr <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span>;
+<span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> i<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>;i<span style="color:#ff79c6">&lt;</span><span style="color:#bd93f9">4</span>;i<span style="color:#ff79c6">++</span>){
+    addr <span style="color:#ff79c6">+=</span> customer[<span style="color:#f1fa8c">`address</span><span style="color:#f1fa8c">${</span>i<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">`</span><span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#34;\n&#34;</span>]; <span style="color:#6272a4">// address0 address1 address2 address3
+</span><span style="color:#6272a4"></span>}
+</code></pre></div><p><code>字符串是动态的，可以在运行时修改；而标识符是静态的，必须硬编码到程序中。</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> addAuth(user, name, auth){<span style="color:#6272a4">// unit是一个存储用户的对象,该方法用于添加权限
+</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// unit.name = auth;  //addAuth(user,&#34;zhangsan&#34;,auth) =&gt; {name: auth} name是字符串
+</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">//对于unit.name 由于name为字符串，所以先进行求值得到标识符name,添加新属性到unit对象
+</span><span style="color:#6272a4"></span>    unit[name] <span style="color:#ff79c6">=</span> auth; <span style="color:#6272a4">//addAuth(user,&#34;zhangsan&#34;,auth) =&gt; {zhangsan: auth    }
+</span><span style="color:#6272a4"></span>}
+</code></pre></div><h4 id="继承">继承</h4>
+<p>JavaScript对象有一组“自有属性”，同时也从它们的原型对象中继承一组属性。对于继承的属性查找，对象中没有某属性，就会沿上的原型查找该属性，这个过程会一直进行直至查询到一个原型为null的对象。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {};<span style="color:#6272a4">//继承自Object.prototype\
+</span><span style="color:#6272a4"></span>o.x <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; <span style="color:#6272a4">// 添加自有属性
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> p <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.create(o); <span style="color:#6272a4">// p从o和Object.prototype继承属性
+</span><span style="color:#6272a4"></span>p.y <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>; <span style="color:#6272a4">//p自有属性let 
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> q <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.create(p); <span style="color:#6272a4">//q从p、o和Object.prototype继承属性
+</span><span style="color:#6272a4"></span>q.z <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3</span>;
+<span style="color:#8be9fd;font-style:italic">let</span> f <span style="color:#ff79c6">=</span> q.toString();<span style="color:#6272a4">//toString方法继承
+</span><span style="color:#6272a4"></span>console.log(q.x<span style="color:#ff79c6">+</span>q.y); <span style="color:#6272a4">// 3
+</span><span style="color:#6272a4"></span>q.x <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;new value&#34;</span>; <span style="color:#6272a4">//只会修改原始对象的属性，原型不受影响
+</span></code></pre></div><h3 id="删除属性">删除属性</h3>
+<p>使用delete操作符可以从对象中移除属性。同样的只删除对象自有属性，不会删除继承属性。</p>
+<p><strong>delete 属性访问表达式</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> base <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>};
+<span style="color:#8be9fd;font-style:italic">let</span> sub <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.create(base);
+sub.y <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>;
+console.log(sub.x<span style="color:#ff79c6">+</span>sub.y); <span style="color:#6272a4">//3
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">delete</span> sub.x; <span style="color:#6272a4">//虽然true
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">delete</span> sub.y; <span style="color:#6272a4">//true
+</span><span style="color:#6272a4"></span>console.log(sub.x); <span style="color:#6272a4">//1  不会被删除
+</span><span style="color:#6272a4"></span>console.log(sub.y); <span style="color:#6272a4">//undefined
+</span></code></pre></div><p>delete不会删除configurable特性为false的属性。</p>
+<h3 id="测试属性">测试属性</h3>
+<p>in, hasOwnProperty()和propertyIsEnmuerable()。</p>
+<h4 id="in操作符">in操作符</h4>
+<p>in操作符要求左边是一个属性名，右边是一个对象。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>};
+<span style="color:#f1fa8c">&#34;x&#34;</span> <span style="color:#ff79c6">in</span> o; <span style="color:#6272a4">//true
+</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">&#34;y&#34;</span> <span style="color:#ff79c6">in</span> o; <span style="color:#6272a4">//false
+</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">&#34;toString&#34;</span> <span style="color:#ff79c6">in</span> o;<span style="color:#6272a4">// true
+</span></code></pre></div><p>对象属性不是undefined时可利用 !==</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>};
+o.x <span style="color:#ff79c6">!==</span> <span style="color:#ff79c6">undefined</span>; <span style="color:#6272a4">// true o有属性x
+</span><span style="color:#6272a4"></span>o.y <span style="color:#ff79c6">!==</span> <span style="color:#ff79c6">undefined</span>; <span style="color:#6272a4">//flase 无
+</span><span style="color:#6272a4"></span>o.toString <span style="color:#ff79c6">!==</span> <span style="color:#ff79c6">undefined</span>; <span style="color:#6272a4">// true
+</span></code></pre></div><h4 id="hasownproperty">hasOwnProperty()</h4>
+<p>对象的hasOwnProperty()方法用于测试对象是否有给定名字的自有属性。对于继承的属性，返回false。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>};
+o.hasOwnProperty(<span style="color:#f1fa8c">&#34;x&#34;</span>); <span style="color:#6272a4">//true
+</span><span style="color:#6272a4"></span>o.hasOwnProperty(<span style="color:#f1fa8c">&#34;y&#34;</span>); <span style="color:#6272a4">//false
+</span><span style="color:#6272a4"></span>o.hasOwnProperty(<span style="color:#f1fa8c">&#34;toString&#34;</span>); <span style="color:#6272a4">//false
+</span></code></pre></div><h4 id="propertyisenmuerable">propertyIsEnmuerable()</h4>
+<p>propertyIsEnmuerable()方法细化了hasOwnProperty()测试。如果传入的命名属性是自有属性且这个属性的enumerate特性为true，这个方法就返回true.</p>
+<h3 id="枚举属性">枚举属性</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>,y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">2</span>,z<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">3</span>};<span style="color:#6272a4">//3个可枚举属性
+</span><span style="color:#6272a4"></span>o.propertyIsEnmuerable(<span style="color:#f1fa8c">&#34;toString&#34;</span>);<span style="color:#6272a4">// false 不可枚举属性
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> p <span style="color:#ff79c6">in</span> o){
+  console.log(p); <span style="color:#6272a4">//1 2 3
+</span><span style="color:#6272a4"></span>}
+<span style="color:#6272a4">//跳过属性或方法
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> p <span style="color:#ff79c6">in</span> o){
+  <span style="color:#ff79c6">if</span>(<span style="color:#ff79c6">!</span>o.hasOwnProperty(p)) <span style="color:#ff79c6">continue</span>; <span style="color:#6272a4">//跳过继承属性
+</span><span style="color:#6272a4"></span>}
+
+<span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> p <span style="color:#ff79c6">in</span> o){
+  <span style="color:#ff79c6">if</span>(<span style="color:#ff79c6">typeof</span> o[p] <span style="color:#ff79c6">===</span> <span style="color:#f1fa8c">&#34;function&#34;</span>) <span style="color:#ff79c6">continue</span>; <span style="color:#6272a4">// 跳过所有方法
+</span><span style="color:#6272a4"></span>}
+</code></pre></div><h3 id="扩展对象">扩展对象</h3>
+<h4 id="常见的对象复制操作">常见的对象复制操作：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> target <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>}, source <span style="color:#ff79c6">=</span> {y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">2</span>,z<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">3</span>};
+<span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> key <span style="color:#ff79c6">of</span> <span style="color:#8be9fd;font-style:italic">Object</span>.keys(source)){
+  target[key] <span style="color:#ff79c6">=</span> source[key];
+}
+target <span style="color:#6272a4">// =&gt; {x: 1,y: 2,z: 3}
+</span></code></pre></div><h4 id="objectassign">Object.assign()</h4>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/es6/" class="post-tag">ES6</a></li>
+        <li><a href="https://yequalsx.com/tags/javascript/" class="post-tag">JavaScript</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>

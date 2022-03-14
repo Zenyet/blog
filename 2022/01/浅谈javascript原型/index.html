@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="对象是JavaScript中很重要的一种基本数据类型，我们都知道对象是若干属性的无序集合(广义上的集合)，每个对象除了维护自己的属性集外，还需继承另一个对象的prototype属性(即Prototype原型)。
+ 对于开始总结该知识点的时候，信心还是满满的，但是到了现在开始正式整理后，不禁吐槽—这都是啥玩意啊? 咋越整理越迷糊。 😪">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="原型, JavaScript"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | 浅谈JavaScript原型</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">浅谈JavaScript原型</h1>
+            <div class="post-meta">
+                <time class="post-time">2022-01-12</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <blockquote>
+<p>对象是JavaScript中很重要的一种基本数据类型，我们都知道对象是若干属性的无序集合(广义上的集合)，每个对象除了维护自己的属性集外，还需继承另一个对象的prototype属性(即Prototype原型)。</p>
+</blockquote>
+<p>对于开始总结该知识点的时候，信心还是满满的，但是到了现在开始正式整理后，不禁吐槽—这都是啥玩意啊? 咋越整理越迷糊。 😪</p>
+<p>还是从创建对象开始吧。</p>
+<h2 id="创建对象">创建对象</h2>
+<p>JS的创建对象方法总体上分为三种。</p>
+<ul>
+<li>工厂模式</li>
+<li>构造函数</li>
+<li>原型模式</li>
+</ul>
+<h3 id="工厂模式">工厂模式</h3>
+<p>这个工厂模式是一个<code>封装了创建函数</code>的函数，看以下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> createCat(name, age){
+	<span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Object</span>();
+	o.name <span style="color:#ff79c6">=</span> name;
+	o.age <span style="color:#ff79c6">=</span> age;
+	o.sayHi <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() { console.log(<span style="color:#f1fa8c">&#34;Miao~&#34;</span> <span style="color:#ff79c6">+</span> o.name);
+	<span style="color:#ff79c6">return</span> o;
+}
+</code></pre></div><p>这是一个创建对象的方法，无可知类型(新创建的对象是什么类型，即使我们源码知道为Object)。</p>
+<h3 id="构造函数模式">构造函数模式</h3>
+<p>在其他编程语言，我们都知道构造函数是用来<code>初始化</code>对象的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> Cat(name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;orange&#34;</span>, age){
+	<span style="color:#ff79c6">this</span>.name <span style="color:#ff79c6">=</span> name;
+	<span style="color:#ff79c6">this</span>.age <span style="color:#ff79c6">=</span> age;
+	sayHi(){ console.log(<span style="color:#f1fa8c">&#34;Miao~ &#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">this</span>.name);
+}
+<span style="color:#8be9fd;font-style:italic">let</span> orange <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Orange(<span style="color:#f1fa8c">&#34;orange&#34;</span>, <span style="color:#bd93f9">3</span>);
+orange.sayHi(); <span style="color:#6272a4">// =&gt; &#34;Miao~ orange&#34;
+</span></code></pre></div><p>相比工厂模式，构造函数内部没有显式创建对象，属性和方法赋予给了this，没有return语句。</p>
+<p>上面用<code>new操作符调用</code>构造函数会默认执行以下操作：</p>
+<ul>
+<li>在内存中创建一个新对象</li>
+<li>这个对象内部的[[ Prototype ]]特性被赋值为构造函数的prototype属性</li>
+<li>构造函数内部的this被赋值为这个新对象</li>
+<li>执行构造函数内部的代码</li>
+</ul>
+<p>构造函数也可以是函数表达式的形式：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> Cat <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(name, age) {
+    <span style="color:#ff79c6">this</span>.name <span style="color:#ff79c6">=</span> name;
+    <span style="color:#ff79c6">this</span>.age <span style="color:#ff79c6">=</span> age;
+    <span style="color:#ff79c6">this</span>.sleep <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(){console.log(<span style="color:#ff79c6">this</span>.name <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34; zzz&#34;</span>)};
+  	<span style="color:#6272a4">// 等价于
+</span><span style="color:#6272a4"></span>  	<span style="color:#6272a4">// new Function(&#34;console.log(this.name + &#39; zzz&#39;)&#34;);
+</span><span style="color:#6272a4"></span>}
+<span style="color:#8be9fd;font-style:italic">let</span> threeColors <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Cat(<span style="color:#f1fa8c">&#34;threeColors&#34;</span>, <span style="color:#bd93f9">2</span>);
+threeColors.sleep(); <span style="color:#6272a4">// =&gt; &#34;threeColors zzz&#34;
+</span></code></pre></div><p>在JS中几乎所有函数<code>(箭头函数、生成器函数和异步函数除外)</code>都可是是构造函数，而且首字母大写不是非必须的。这意味着构造函数也是能被当作普通函数调用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Cat(<span style="color:#f1fa8c">&#34;liHua&#34;</span>, <span style="color:#bd93f9">5</span>); <span style="color:#6272a4">// 此时this指向的是window全局对象，属性和方法将被添加到全局作用域
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">window</span>.sayHi(); <span style="color:#6272a4">// =&gt; &#34;Miao~ liHua&#34;
+</span><span style="color:#6272a4"></span>console.log(age); <span style="color:#6272a4">// =&gt; 5
+</span></code></pre></div><p>构造函数问题：</p>
+<p>因为使用new操作符会<code>创建新的对象实例</code>，this的值指向不同的实例，因此每一个实例的属性和方法都是<code>不一样</code>的，这样会导致构造函数的方法(即对象)在调用时都会创建一个Function对象。我们知道，在其他面向对象的编程语言会用继承来解决，而JS采用的是原型。</p>
+<h3 id="原型模式">原型模式</h3>
+<p><code>只有</code>函数对象拥有prototype属性。</p>
+<p>在创建函数时，函数会自动拥有一个名为prototype的属性，而prototype属性的值是一个<code>对象(把这个对象称为Prototype原型)</code>，我们就可以说通过new操作符调用构造函数而创建的对象的原型是上面的那个对象(<code>即指向prototype属性</code>)，而原型包含了<code>构造函数创建的对象实例共享的属性和方法</code>，默认情况下<code>原型对象(Prototype)</code>会自动获得一个名为<code>constructor的属性</code>，其<code>反向指回</code>与之关联的构造函数。</p>
+<p>而且，每次调用构造函数创建的对象(实例)内部的[[ Prototype ]]指针会被赋值为构造函数的<code>原型对象</code>。JS脚本没有可以访问[[ Prototype ]]属性的方式，但 Firefox、Safari 和 Chrome 会在每个对象上暴露<code>__proto__</code>属性，通过这个属性可以访问对象的原型( 虽然不推荐)。</p>
+<p>可以得出：</p>
+<p><strong>实例与构造函数原型有直接关系，但是实例和构造函数之间有没有直接关系。</strong></p>
+<p>看以下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> Animal(){};
+Animal.prototype.sleep <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() {
+    console.log(<span style="color:#f1fa8c">&#34;sleeping...&#34;</span>)
+};
+Animal.prototype.eat() <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() {
+ 	console.log(<span style="color:#f1fa8c">&#34;eatting...&#34;</span>);   
+}
+
+<span style="color:#6272a4">//&#34;继承特性&#34;
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> cat <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Animal();
+cat.sleep(); <span style="color:#6272a4">// =&gt; &#34;sleeping...&#34;
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> dog <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Animal();
+dog.sleep(); <span style="color:#6272a4">// =&gt; &#34;sleeping...&#34;
+</span><span style="color:#6272a4"></span>
+<span style="color:#6272a4">//prototype属性
+</span><span style="color:#6272a4"></span>console.log(<span style="color:#ff79c6">typeof</span> Animal.prototype);	<span style="color:#6272a4">// =&gt; &#39;object&#39;
+</span><span style="color:#6272a4"></span>console.log(Animal.prototype); <span style="color:#6272a4">// =&gt; {costructor: f Animal(), __proto__: Object}
+</span><span style="color:#6272a4"></span>
+<span style="color:#6272a4">//constructor属性
+</span><span style="color:#6272a4"></span>console.log(Animal.prototype.constructor <span style="color:#ff79c6">===</span> Animal); <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>
+<span style="color:#6272a4">//__proto__ ([[ Prototype ]])
+</span><span style="color:#6272a4"></span>console.log(Animal.protoype <span style="color:#ff79c6">===</span> cat.__proto__); <span style="color:#6272a4">// =&gt; ture 
+</span></code></pre></div><p>这里用图解会清晰很多：</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 32.06106870229007%;">
+    <img class="lazyload" data-src="/uploads/prototype.png" alt=""   />
+</figure>
+</p>
+<p>原型模式的问题：</p>
+<ul>
+<li>实例默认都取得相同的属性值</li>
+<li>共享特性(原型上的所有属性是在实例间共享的)</li>
+</ul>
+<h2 id="继承">继承</h2>
+<p>在JS中实现继承的方法是<code>原型链</code>。</p>
+<p>上图中实例通过[[ Prototype ]]这个特征指向原型对象查找相应的属性和方法，这个本质就是JS中的继承了。ECMA-262 把原型链定义为 ECMAScript 的主要继承方式。</p>
+<p>看以下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// 定义父类
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">function</span> SuperType() {
+    <span style="color:#ff79c6">this</span>.property <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>;
+}
+<span style="color:#6272a4">// 父类原型对象的方法
+</span><span style="color:#6272a4"></span>SuperType.prototype.getSuperValue <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() {
+    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.property;
+}
+<span style="color:#6272a4">//定义子类
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">function</span> SubType() {
+    <span style="color:#ff79c6">this</span>.subProperty <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>;
+}
+<span style="color:#6272a4">// 将父类的实例对象赋值给子类构造函数的prototype属性，即继承
+</span><span style="color:#6272a4"></span>SubType.prototype <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> SuperType();
+<span style="color:#6272a4">// 子类原型对象的方法
+</span><span style="color:#6272a4"></span>SubType.prototype.getSubValue <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() {
+    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.subProperty;
+}
+
+<span style="color:#8be9fd;font-style:italic">let</span> instance <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> SubType();
+console.log(instance.getSuperValue()); <span style="color:#6272a4">// =&gt; true
+</span></code></pre></div><p>看图！</p>
+<p>
+
+
+
+
+<figure class="img-con" style="padding-top: 106.30733944954129%;">
+    <img class="lazyload" data-src="/uploads/prototype-chain.png" alt=""   />
+</figure>
+</p>
+<p>上面这条蓝色链子就是<code>原型链</code>了！</p>
+<p>一般地，原型链的尽头就是<code>Object.prototype.__proto__ </code>，值为<code>null</code>，代表没有对象。然后几乎所有对象的原型都是Object()的prototype属性。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">Array</span>.prototype.__proto__ <span style="color:#ff79c6">===</span> <span style="color:#8be9fd;font-style:italic">Object</span>.prototype; <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Date</span>.prototype.__proto__ <span style="color:#ff79c6">===</span> <span style="color:#8be9fd;font-style:italic">Object</span>.prototype; <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">String</span>.prototype.__proto__ <span style="color:#ff79c6">===</span> <span style="color:#8be9fd;font-style:italic">Object</span>.prototype; <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>...
+console.log(<span style="color:#8be9fd;font-style:italic">Object</span>.prototype.__proto__); <span style="color:#6272a4">// null
+</span></code></pre></div><h3 id="继承关系判断">继承关系判断：</h3>
+<p>使用<code>instanceof</code>操作符或<code>isPrototypeOf()</code>判断原型和实例的关系。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// instanceof
+</span><span style="color:#6272a4"></span>instance <span style="color:#ff79c6">instanceof</span> <span style="color:#8be9fd;font-style:italic">Object</span>; <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>instance <span style="color:#ff79c6">instanceof</span> SuperType; <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>instance <span style="color:#ff79c6">instanceof</span> SubType; <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4">//isPrototypeOf()
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Object</span>.prototype.isPrototypeOf(instance); <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>SuperType.prototype.isPrototypeOf(instance); <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>SubType.prototype.isPrototypeOf(instance); <span style="color:#6272a4">// =&gt; true
+</span><span style="color:#6272a4"></span>
+<span style="color:#6272a4">//关于constructor的值
+</span><span style="color:#6272a4"></span>console.log(instance.__proto__.constructor); <span style="color:#6272a4">// =&gt; ƒ SuperType() {
+</span><span style="color:#6272a4"></span>    									 <span style="color:#6272a4">//			this.property = true;
+</span><span style="color:#6272a4"></span>										<span style="color:#6272a4">//	   }
+</span><span style="color:#6272a4">// instance本身是没有constructor属性的，它会沿着原型链查找
+</span><span style="color:#6272a4"></span>console.log(instance.constructor); <span style="color:#6272a4">// =&gt;  ƒ SuperType() {
+</span><span style="color:#6272a4"></span>    							<span style="color:#6272a4">//			this.property = true;
+</span><span style="color:#6272a4"></span>								<span style="color:#6272a4">//	  }
+</span><span style="color:#6272a4"></span>
+</code></pre></div><p>instanceof和isPrototypeOf()判断原则是整条原型链里<code>有没有构造函数的原型</code>。</p>
+<p><strong>注意：</strong></p>
+<p>以<code>对象字面量</code>方式创建原型方法会破坏之前的原型链，因为这相当于<code>重写了</code>原型链。</p>
+<p>以下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> SuperType() { 
+ <span style="color:#ff79c6">this</span>.property <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>; 
+} 
+SuperType.prototype.getSuperValue <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() { 
+ <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.property; 
+}; 
+<span style="color:#8be9fd;font-style:italic">function</span> SubType() { 
+ <span style="color:#ff79c6">this</span>.subproperty <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>; 
+}
+<span style="color:#6272a4">// 继承 SuperType 
+</span><span style="color:#6272a4"></span>SubType.prototype <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> SuperType(); 
+<span style="color:#6272a4">// 通过对象字面量添加新方法，这会导致上一行无效
+</span><span style="color:#6272a4"></span>SubType.prototype <span style="color:#ff79c6">=</span> { 
+ getSubValue() { 
+ <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.subproperty; 
+ }, 
+ someOtherMethod() { 
+ <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>; 
+ } 
+}; 
+<span style="color:#8be9fd;font-style:italic">let</span> instance <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> SubType(); 
+console.log(instance.getSuperValue()); <span style="color:#6272a4">// 出错！
+</span></code></pre></div><p>这时覆盖后的原型是一个 Object 的实例，而不再是 SuperType 的实例。</p>
+<h3 id="实例的变量查找">实例的变量查找</h3>
+<p>关于查找规则，JS的都大同小异(作用域)，先从实例自身查找，自身没有找到就<code>沿着原型链一直查找</code>，直到查找为止或者原型的值为null了(Object.prototype.__proto__)。</p>
+<h2 id="小结">小结</h2>
+<ul>
+<li>创建函数时一定会有prototype属性</li>
+<li>prototype属性的值是一个对象，称为Prototype(原型)，一般指的是构造函数的原型</li>
+<li>Prototype原型对象默认会有一个constructor属性，值为构造函数的引用</li>
+<li>实例对象内部有一个指针[[ Prototype ]]指向原型(Prototype)</li>
+<li>原型之间通过[[ Prototype ]]指针相连成原型链</li>
+</ul>
+<p>Reference参考：</p>
+<ul>
+<li><a href="https://book.douban.com/subject/35396470/" target="_blank" rel="noopener">JavaScript权威指南</a></li>
+<li><a href="https://book.douban.com/subject/35175321/" target="_blank" rel="noopener">JavaScript高级程序设计</a></li>
+</ul>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/%E5%8E%9F%E5%9E%8B/" class="post-tag">原型</a></li>
+        <li><a href="https://yequalsx.com/tags/javascript/" class="post-tag">JavaScript</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>

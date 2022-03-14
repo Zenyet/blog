@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2021s on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/2021/</link>
+    <description>Recent content in 2021s on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 23 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/2021/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Webstorm压缩css</title>
+      <link>https://yequalsx.com/2021/10/webstorm%E5%8E%8B%E7%BC%A9css/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/webstorm%E5%8E%8B%E7%BC%A9css/</guid>
+      <description>我们在编写代码时，总会有很多空格、注释或全名变量(引用)，这些对于浏览器加载来说是没什么意义的，反而会降低加载速度；而压缩静态文件就是减少这些无必要的以减少文件大小。
+ 我在网上搜罗了一下，发现大部分人都是用yui compressor这个插件在Webstorm进行压缩css文件或其他静态文件，然后我发现Webstorm官网上是使用CSSO这个插件的，因此我选择了跟随官方文档。</description>
+    </item>
+    
+    <item>
+      <title>Hugo添加remark42评论系统</title>
+      <link>https://yequalsx.com/2021/10/hugo%E6%B7%BB%E5%8A%A0remark42/</link>
+      <pubDate>Wed, 06 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/hugo%E6%B7%BB%E5%8A%A0remark42/</guid>
+      <description>对于静态博客，有一个很大的缺点就是没有评论系统了。。大部分的静态生成器程序都没有带评论系统的，因此第三方的评论系统层出不穷。
+ 关于为何选择remark42?
+没错，好像有很多很容易部署的评论系统，例如gitment、disqus、valine、waline等等啥的，其实一开始我是用waline的，而且很容易就搭建好了(vercel一键部署几乎😂)，但最近碰到了remark42这个茬，奈何我就是要搞定它，所以最后就是选择了它🤣。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript之对象</title>
+      <link>https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Sat, 02 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/</guid>
+      <description>对象是JavaScript中最基本的数据类型。
+对象是一个属性(property)的无序集合，每个属性是一对名字(name)和值(value)，属性名通常是字符串(ES6后可为symbol)。
+ 创建对象 对象字面量，new关键字和Object.</description>
+    </item>
+    
+    <item>
+      <title>Js操作符之eval</title>
+      <link>https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/</guid>
+      <description>操作符在JavaScript中用于算术表达式、比较表达式、逻辑表达式、赋值表达式等。
+ eval() eval()接收一个参数。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript表达式</title>
+      <link>https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>表达式是一个可以被求值并产生一个值的JavaScript短语(Phrase)。
+ 主表达式(primary expression) 独立存在，不再包含更简单表达式的表达式为主表达式，为最简单的表达式。</description>
+    </item>
+    
+    <item>
+      <title>Symbol和解构赋值详解</title>
+      <link>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</guid>
+      <description>该文章的内容不限于标题的两个。。
+ 符号Symbol 符号(Symbol)是ES6新增的一种原始类型(primitive data type)，用作非字符串的属性名。我们知道，JavaScript的基础类型Object是一个属性(Property)的无序集合，其中每个属性(Property)都有一个名字(name)和值(value)。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript类型、值和变量</title>
+      <link>https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/</guid>
+      <description>概述 计算机是通过操作值(如数值字面量3.14)或文本(如“hello”)来工作的，编程语言中这些可以&amp;quot;表示&amp;quot;和&amp;quot;操作&amp;quot;的值(values)被称为类型(types)。
+程序在需要把某个值保存下来以方便将来使用时，会把这个值赋给(或存入)变量(Variable)。
+  类型Types   原始类型(primitive types)：原始值是不可修改的</description>
+    </item>
+    
+    <item>
+      <title>JavaScript语法结构</title>
+      <link>https://yequalsx.com/2021/08/javascript%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/08/javascript%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/</guid>
+      <description>前言： 编程语言的语法结构是一套基本规则，规定了如何使用这门语言编写程序。而语法结构是一门语言最低级的语法。
+程序文本(Text Of JavaScript Program)   JavaScript区分大小写，即其关键字、变量、函数名和其他标识符必须始终保持一致的大小写形式。</description>
+    </item>
+    
+    <item>
+      <title>工厂设计模式</title>
+      <link>https://yequalsx.com/2021/06/factorypattern/</link>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/06/factorypattern/</guid>
+      <description>前言：  在我个人认为，在框架的后续学习中占据着挺重要的地位，这些模式让你能够更容易了解各类框架的设计理念，进一步提升你的编程水平，但最重要的是你能更容易的去记住框架的用法，所有东西都是，你想学的东西都是在你前面已经学过理解过一点才能继续学下去。
+本次的代码基于Java编写
+ 简单工厂模式  实现 抽象产品  public abstract class Product{ //Other public business methods  public void businessMethods(){} //different methods of concrete products  public abstract void concreteMethods(); }  具体产品  public class ConcreteProductA extends Product{ /** * 实现业务方法 */ @Override public void methodDiff() { System.</description>
+    </item>
+    
+  </channel>
+</rss>

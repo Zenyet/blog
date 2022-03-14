@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/css/</link>
+    <description>Recent content in CSS on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实现垂直居中</title>
+      <link>https://yequalsx.com/2022/02/%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/02/%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</guid>
+      <description>对于水平居中，我们可以很自如的使用CSS进行居中，对于行内元素：text-align: center; 对于块级元素：margin： 0 auto; 当对元素进行垂直居中时，就显得格外的麻烦。</description>
+    </item>
+    
+  </channel>
+</rss>

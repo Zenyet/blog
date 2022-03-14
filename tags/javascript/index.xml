@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on Zenyet&#39;s blog</title>
+    <link>https://yequalsx.com/tags/javascript/</link>
+    <description>Recent content in JavaScript on Zenyet&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>类型转换??</title>
+      <link>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>对于JavaScript的类型转换，会令人感到十分难受，虽说是拥有“灵活”的动态转换能力，但是会让人感到十分的混乱，而且别人很喜欢用这种类似“脑筋急转弯”的东西来考人。下面给个图你感受下：
+  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型(primitive)之间的转换。
+基本类型转换 primitive to primitive 在静态语言中，类型转换发生在编译期间(complie time)，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。</description>
+    </item>
+    
+    <item>
+      <title>浅谈JavaScript原型</title>
+      <link>https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/</guid>
+      <description>对象是JavaScript中很重要的一种基本数据类型，我们都知道对象是若干属性的无序集合(广义上的集合)，每个对象除了维护自己的属性集外，还需继承另一个对象的prototype属性(即Prototype原型)。
+ 对于开始总结该知识点的时候，信心还是满满的，但是到了现在开始正式整理后，不禁吐槽—这都是啥玩意啊? 咋越整理越迷糊。 😪</description>
+    </item>
+    
+    <item>
+      <title>作用域和闭包</title>
+      <link>https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/</guid>
+      <description>作用域Scope 作用域是源代码中定义变量的区域；
+作用域是根据名称查找变量的一套规则。
+词法作用域 词法作用域就是定义在词法阶段的作用域，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript之对象</title>
+      <link>https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Sat, 02 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/</guid>
+      <description>对象是JavaScript中最基本的数据类型。
+对象是一个属性(property)的无序集合，每个属性是一对名字(name)和值(value)，属性名通常是字符串(ES6后可为symbol)。
+ 创建对象 对象字面量，new关键字和Object.</description>
+    </item>
+    
+    <item>
+      <title>Js操作符之eval</title>
+      <link>https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/</guid>
+      <description>操作符在JavaScript中用于算术表达式、比较表达式、逻辑表达式、赋值表达式等。
+ eval() eval()接收一个参数。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript表达式</title>
+      <link>https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>表达式是一个可以被求值并产生一个值的JavaScript短语(Phrase)。
+ 主表达式(primary expression) 独立存在，不再包含更简单表达式的表达式为主表达式，为最简单的表达式。</description>
+    </item>
+    
+    <item>
+      <title>Symbol和解构赋值详解</title>
+      <link>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</guid>
+      <description>该文章的内容不限于标题的两个。。
+ 符号Symbol 符号(Symbol)是ES6新增的一种原始类型(primitive data type)，用作非字符串的属性名。我们知道，JavaScript的基础类型Object是一个属性(Property)的无序集合，其中每个属性(Property)都有一个名字(name)和值(value)。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript类型、值和变量</title>
+      <link>https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/</guid>
+      <description>概述 计算机是通过操作值(如数值字面量3.14)或文本(如“hello”)来工作的，编程语言中这些可以&amp;quot;表示&amp;quot;和&amp;quot;操作&amp;quot;的值(values)被称为类型(types)。
+程序在需要把某个值保存下来以方便将来使用时，会把这个值赋给(或存入)变量(Variable)。
+  类型Types   原始类型(primitive types)：原始值是不可修改的</description>
+    </item>
+    
+    <item>
+      <title>JavaScript语法结构</title>
+      <link>https://yequalsx.com/2021/08/javascript%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2021/08/javascript%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/</guid>
+      <description>前言： 编程语言的语法结构是一套基本规则，规定了如何使用这门语言编写程序。而语法结构是一门语言最低级的语法。
+程序文本(Text Of JavaScript Program)   JavaScript区分大小写，即其关键字、变量、函数名和其他标识符必须始终保持一致的大小写形式。</description>
+    </item>
+    
+  </channel>
+</rss>

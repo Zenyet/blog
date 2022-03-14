@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="前言： 编程语言的语法结构是一套基本规则，规定了如何使用这门语言编写程序。而语法结构是一门语言最低级的语法。
+程序文本(Text Of JavaScript Program)   JavaScript区分大小写，即其关键字、变量、函数名和其他标识符必须始终保持一致的大小写形式。">
+    <meta name="author" content="Zenyet">
+    <meta name="keywords" content="JavaScript"/>
+    <link rel="stylesheet" href="/css/style.min.css">
+    
+    
+    <link rel="icon" href="/favicon.ico">
+    
+    
+    <title>Zenyet&#39;s blog | JavaScript语法结构</title>
+
+    
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
+                let hours = new Date().getHours();
+                if((hours >= 19 && hours <=23) || (hours >=0 && hours <=6) ){
+                    document.documentElement.setAttribute("themes", "darks");
+                }
+            }
+            if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
+                document.body.addEventListener('touchstart', () => {}, false);
+            }
+                function setFoxPollyfill(target){
+                    target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
+                }
+                function remFoxPollyfill(target){
+                    target.style = "filter: unset;transition: all .56s ease-out;"
+                }
+                const arrow = document.querySelector(".arrow");
+                const right_post = document.querySelector(".right-side-container");
+                const archive_con = document.querySelector(".archive-container");
+                const tags_con = document.querySelector(".tags-container");
+                const content_con = document.querySelector(".content-container");
+                const taxo_con = document.querySelector(".taxonomy-container");
+                arrow.addEventListener('click', () => {
+                    if (arrow.classList.contains("arrow-active")) {
+                        arrow.classList.remove("arrow-active");
+                        document.body.classList.remove("trans");
+                        if(right_post){
+                            right_post.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.remove("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                remFoxPollyfill(taxo_con);
+                            }
+                        }
+                    } else {
+                        arrow.classList.add("arrow-active");
+                        document.body.classList.add("trans");
+                        if(right_post){
+                            right_post.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(right_post);
+                            }
+                        }
+                        if(archive_con){
+                            archive_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(archive_con);
+                            }
+                        }
+                        if(tags_con){
+                            tags_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(tags_con);
+                            }
+                        }
+                        if(content_con){
+                            content_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(content_con);
+                            }
+                        }
+                        if(taxo_con){
+                            taxo_con.classList.add("drop");
+                            if(window.navigator.userAgent.indexOf("Firefox") !== -1){
+                                setFoxPollyfill(taxo_con);
+                            }
+                        }
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+
+<div class="left-side-container left-light" id="left-side">
+    <ul class="left-ul" >
+        
+        <li class="left-li">
+            
+            <a href="/" class="left-link left-light" title="首页">
+                <span>
+                    
+                    首页
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/about/" class="left-link left-light" title="关于">
+                <span>
+                    
+                    关于
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/archives" class="left-link left-light" title="归档">
+                <span>
+                    
+                    归档
+                </span>
+            </a>
+        </li>
+        
+        <li class="left-li">
+            
+            <a href="/tags/" class="left-link left-light" title="标签">
+                <span>
+                    
+                    标签
+                </span>
+            </a>
+        </li>
+        
+    </ul>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href='https://yequalsx.com'>Zenyet&#39;s blog</a></span>
+    <br>
+    <span>Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></span>
+</footer>
+</div>
+
+<div class="hamburger-container">
+
+
+    <svg t="1641646324838" class="arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4229" width="200" height="200"><path d="M757.792745 435.407215L419.597482 96.904967c-40.010393-40.010393-104.886579-40.010393-144.896972 0-40.010393 40.010393-40.010393 104.988908 0 144.9993L540.344959 507.855701 274.70051 773.807135c-40.010393 40.112721-40.010393 104.988908 0 144.9993 40.010393 40.010393 104.886579 40.010393 144.896972 0l338.092935-338.39992c40.112721-40.010393 40.112721-104.988908 0.102328-144.9993z" p-id="4230"></path></svg>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="/js/lazyload.min.js"></script>
+<div class="content-container">
+    <main class="content-main">
+        <header class="post-header">
+            <h1 class="post-title">JavaScript语法结构</h1>
+            <div class="post-meta">
+                <time class="post-time">2021-08-02</time>
+                <span class="post-author">
+                    &nbsp;·&nbsp;Zenyet  
+                </span>
+            </div>
+        </header>
+        <div class="post-content">
+            
+
+            <h3 id="前言">前言：</h3>
+<p>编程语言的语法结构是一套基本规则，规定了如何使用这门语言编写程序。而语法结构是一门语言最低级的语法。</p>
+<h3 id="程序文本text-of-javascript-program">程序文本(Text Of JavaScript Program)</h3>
+<ul>
+<li>
+<p>JavaScript区分大小写，即其关键字、变量、函数名和其他标识符必须始终保持一致的大小写形式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">//while关键词
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">while</span>(<span style="color:#ff79c6">NaN</span>){
+  <span style="color:#ff79c6">debugger</span>;
+}
+<span style="color:#6272a4">//instead of WHile wHile Nan nAn...
+</span></code></pre></div></li>
+</ul>
+<h3 id="注释comments">注释(Comments)</h3>
+<ul>
+<li>
+<p>JavaScript忽略程序记号(token)之间的空格，除了常规空格，制表符、各种ASCII控制符和Unicode间格也被识别为空格；而换行符和回车/换行序列识别为终止符。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// 单行注释
+</span><span style="color:#6272a4"></span>  
+<span style="color:#6272a4">/*
+</span><span style="color:#6272a4">* 多行注释
+</span><span style="color:#6272a4">* 每一行的*不是必要的，但相对美观一些
+</span><span style="color:#6272a4">*/</span>
+</code></pre></div><h3 id="字面量-literals">字面量 (Literals)</h3>
+<p>字面量是一种直接出现在程序中的数据值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#bd93f9">123</span>  <span style="color:#6272a4">// 数值123
+</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1.23</span> <span style="color:#6272a4">// 数值1.23
+</span><span style="color:#6272a4"></span>“hello javascript” <span style="color:#6272a4">//字符串值
+</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">&#39;Hi&#39;</span> <span style="color:#6272a4">//另一种表现形式
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">true</span> <span style="color:#6272a4">//布尔值
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">null</span> <span style="color:#6272a4">//空
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">undefined</span> <span style="color:#6272a4">//undefined
+</span><span style="color:#6272a4"></span>  
+<span style="color:#6272a4">//Get this
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> sum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span><span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>; <span style="color:#6272a4">// 1+1是表达式(expression)，1是数值字面量
+</span></code></pre></div><h3 id="标识符identifiers">标识符(identifiers)</h3>
+<p>标识符就是一个名字。在JavaScript中，标识符用于命令代码中的常量、变量、属性、函数、和类，以及为某些循环提供标记(label)。</p>
+<ul>
+<li>
+<p>规则</p>
+<p>必须以字母、 下划线(_)或美元符哈$开头。后续字符可以是字母、数字、下划线(_)/$;然后中文也是可以的，但是不推荐。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> varName <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+<span style="color:#ff79c6">const</span> $PI <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
+<span style="color:#8be9fd;font-style:italic">var</span> _var <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;var&#34;</span>;
+<span style="color:#8be9fd;font-style:italic">let</span> bool2 <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>;
+</code></pre></div></li>
+<li>
+<p>保留字</p>
+</li>
+</ul>
+<h3 id="unicode">Unicode</h3>
+<ul>
+<li>JavaScript是使用Unicode字符集编写的，因此在字符串和注释可以使用任意Unicode字符。
+<ul>
+<li>转义符号\u(反斜杠)，后跟十六进制数字</li>
+<li>Unicode归一化，主要是要保证自己的编辑器(或IDE)和自己源码使用相同的字符编码。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Reference: <a href="https://book.douban.com/subject/35396470/" target="_blank" rel="noopener">JavaScript权威指南第七版</a></p>
+
+        </div>
+        
+        <div id="remark42"></div>
+    </main>
+    <ul class="tags">
+        <li><a href="https://yequalsx.com/tags/javascript/" class="post-tag">JavaScript</a></li>
+    </ul>
+
+</div>
+<style>.arrow {right: 4%; }</style>
+<script>
+    "use strict";
+    
+    lazyload();
+    
+    let images = document.body.querySelectorAll(".img-con");
+    
+
+    const remark42 = document.getElementById("remark42");
+    if("IntersectionObserver" in window) {
+        let io = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){
+                    !(function (e, n) {
+                    for (var o = 0; o < e.length; o++) {
+                        var r = n.createElement('script'),
+                            c = '.js',
+                            d = n.head || n.body
+                        'noModule' in r ? ((r.type = 'module'), (c = '.mjs')) : (r.async = !0),
+                            (r.defer = !0),
+                            (r.src = remark_config.host + '/web/' + e[o] + c),
+                            d.appendChild(r)
+                    }
+                })(remark_config.components || ['embed'], document);
+            }
+            })
+        });
+        io.observe(remark42);
+    }
+    var body = document.querySelector('body');
+    var theme = 'light';
+    if ('matchMedia' in window) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        let hours = new Date().getHours();
+        if (mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6))) {
+            body.classList.add('document_theme_dark');
+        }
+
+        function getTheme() {
+            return mq.matches || ((hours >= 19 && hours <=23) || (hours >=0 && hours <=6)) ? 'dark' : 'light';
+        }
+
+        theme = getTheme();
+        mq.addListener(function () {
+            REMARK42.changeTheme(getTheme());
+        });
+    }
+
+    var remark_config = {
+        site_id: 'yequalsx.com',
+        host: 'https://comment.yequalsx.com',
+        url: window.location.href,
+        components: ['embed'],
+        theme: theme,
+        locale: "zh",
+        show_email_subscription: true
+    };
+</script>
+
+</body>
+</html>
