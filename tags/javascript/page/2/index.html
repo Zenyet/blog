@@ -19,7 +19,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -30,10 +29,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -43,70 +42,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -186,6 +183,30 @@
     <header class="taxonomy-header-before" id="taxonomy-header"><span id="tagName"><h2>JavaScript</h2></span></header>
     <div class="taxonomy-post">
         <div class="taxonomy-link-wrapper">
+            <a class="taxonomy-link" href="https://yequalsx.com/2021/10/javascript%E4%B9%8B%E5%AF%B9%E8%B1%A1/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript%e4%b9%8b%e5%af%b9%e8%b1%a1.png);background-position: center;
+                    background-size: cover;">
+                <header class="entry-header">JavaScript之对象</header>
+                <time class="time">2021-10-02</time>
+            </a>
+        </div>
+        
+        <div class="taxonomy-link-wrapper">
+            <a class="taxonomy-link" href="https://yequalsx.com/2021/09/js%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B9%8Beval/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/Js%e6%93%8d%e4%bd%9c%e7%ac%a6%e4%b9%8beval.png);background-position: center;
+                    background-size: cover;">
+                <header class="entry-header">Js操作符之eval</header>
+                <time class="time">2021-09-26</time>
+            </a>
+        </div>
+        
+        <div class="taxonomy-link-wrapper">
+            <a class="taxonomy-link" href="https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript%e8%a1%a8%e8%be%be%e5%bc%8f.webp);background-position: center;
+                    background-size: cover;">
+                <header class="entry-header">JavaScript表达式</header>
+                <time class="time">2021-09-25</time>
+            </a>
+        </div>
+        
+        <div class="taxonomy-link-wrapper">
             <a class="taxonomy-link" href="https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/Symbol%e5%92%8c%e8%a7%a3%e6%9e%84%e8%b5%8b%e5%80%bc%e8%af%a6%e8%a7%a3.png);background-position: center;
                     background-size: cover;">
                 <header class="entry-header">Symbol和解构赋值详解</header>
@@ -221,28 +242,28 @@
     <script>
         "use strict";
         
-        if (window.navigator.appVersion.indexOf("Android") !== -1 || window.navigator.appVersion.indexOf("iPhone") !== -1
-            || window.navigator.appVersion.indexOf("iPad") !== -1
+        if (window.navigator.userAgent.indexOf("Android") !== -1 || window.navigator.userAgent.indexOf("iPhone") !== -1
+            || window.navigator.userAgent.indexOf("iPad") !== -1
         ){
             const pagination = document.querySelector(".pagination");
             pagination.classList.add("mobile");
+        }else {
+            let taxHeader = document.querySelector("#taxonomy-header");
+            taxHeader.addEventListener('mouseenter',() => {
+                if(taxHeader.className === "taxonomy-header-before"){
+                    taxHeader.className = "taxonomy-header-after";
+                }else{
+                    taxHeader.className = "taxonomy-header-before";
+                }
+            });
+            taxHeader.addEventListener('mouseleave',() => {
+                if(taxHeader.className === "taxonomy-header-before"){
+                    taxHeader.className = "taxonomy-header-after";
+                }else{
+                    taxHeader.className = "taxonomy-header-before";
+                }
+            });
         }
-        let taxHeader = document.querySelector("#taxonomy-header");
-        taxHeader.addEventListener('mouseenter',() => {
-            if(taxHeader.className == "taxonomy-header-before"){
-                taxHeader.className = "taxonomy-header-after";
-            }else{
-                taxHeader.className = "taxonomy-header-before";
-            }
-        });
-        taxHeader.addEventListener('mouseleave',() => {
-            if(taxHeader.className == "taxonomy-header-before"){
-                taxHeader.className = "taxonomy-header-after";
-            }else{
-                taxHeader.className = "taxonomy-header-before";
-            }
-        });
-
     </script>
 </div>
 </body>

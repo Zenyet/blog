@@ -21,7 +21,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -32,10 +31,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -45,70 +44,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -188,6 +185,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -216,7 +214,7 @@
 
 
 <figure class="img-con" style="padding-top: 62.209944751381215%;">
-    <img class="lazyload" data-src="/uploads/scope.png" alt="img"   />
+    <img class="lazyload" data-zoomable data-src="/uploads/scope.png" alt="img"   />
 </figure>
 </p>
 <ol>
@@ -229,392 +227,392 @@
 <p>即当前作用域中无法找到某个变量时，引擎就会<code>在外层嵌套的作用域中继续查找</code>，直到找到该变量， 或抵达最外层的作用域(也就是全局作用域)为止。</p>
 <h2 id="函数作用域局部作用域">函数作用域(局部作用域)</h2>
 <p>函数内部拥有自己的函数作用域，外部无法访问到函数内部的变量；即属于这个函数的全部变量都可以在整个函数的范围内使用及复用(事实上在嵌套的作用域中也可以使用)。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> outFun(a){
-    <span style="color:#8be9fd;font-style:italic">var</span> b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
-    <span style="color:#8be9fd;font-style:italic">function</span> inFun(){
-    <span style="color:#6272a4">// ...
-</span><span style="color:#6272a4"></span>    }
-    <span style="color:#8be9fd;font-style:italic">let</span> c <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">outFun</span>(<span style="color:#268bd2">a</span>){
+    <span style="color:#859900">var</span> <span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
+    <span style="color:#859900">function</span> <span style="color:#268bd2">inFun</span>(){
+    <span style="color:#93a1a1;font-style:italic">// ...
+</span><span style="color:#93a1a1;font-style:italic"></span>    }
+    <span style="color:#859900">let</span> <span style="color:#268bd2">c</span> = <span style="color:#2aa198">&#39;c&#39;</span>;
 }
 
-console.log(b); <span style="color:#6272a4">// Refferce Error!
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">b</span>); <span style="color:#93a1a1;font-style:italic">// Refferce Error!
 </span></code></pre></div><p>outFun()的作用域包含了标识符a、b、c和inFun()。而inFun()又会拥有自己的函数作用域。</p>
 <h3 id="var和函数作用域">var和函数作用域</h3>
 <p>var 声明的<code>范围</code>是函数作用域(或全局作用域)。在函数内部使用var关键字声明的变量会成为函数的<code>局部变量</code>，当该函数执行完毕后就会摧毁。而且var声明的变量存在<code>提升</code>（后面有说）。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> test(){
-  <span style="color:#8be9fd;font-style:italic">var</span> str <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;string&#39;</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">function</span> <span style="color:#268bd2">test</span>(){
+  <span style="color:#859900">var</span> <span style="color:#268bd2">str</span> = <span style="color:#2aa198">&#39;string&#39;</span>;
 }
-test();
-console.log(str); <span style="color:#6272a4">// =&gt; Uncaught ReferenceError: str is not defined
+<span style="color:#268bd2">test</span>();
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">str</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; Uncaught ReferenceError: str is not defined
 </span></code></pre></div><p>但是，<code>不使用关键字</code>修饰所定义的变量又回成为全局作用域的全局变量，js就是这么奇奇怪怪。。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> test2(){
-  global <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;global&#34;</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">function</span> <span style="color:#268bd2">test2</span>(){
+  <span style="color:#268bd2">global</span> = <span style="color:#2aa198">&#34;global&#34;</span>;
 }
-test2();
-console.log(global); <span style="color:#6272a4">// =&gt; &#34;global&#34;
+<span style="color:#268bd2">test2</span>();
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">global</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;global&#34;
 </span></code></pre></div><h2 id="隐藏内部实现私有化">隐藏内部实现(私有化)</h2>
 <p>由于函数拥有的独特的作用域，外部不能够访问，所以利用这个特性可以将函数和变量进行隐藏。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> fun(a){
-    <span style="color:#8be9fd;font-style:italic">var</span> privateVar;
-    <span style="color:#8be9fd;font-style:italic">function</span> doSomething(){ <span style="color:#6272a4">// 不能够访问，实现隐藏
-</span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">return</span> a<span style="color:#ff79c6">*</span><span style="color:#bd93f9">3.14</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">fun</span>(<span style="color:#268bd2">a</span>){
+    <span style="color:#859900">var</span> <span style="color:#268bd2">privateVar</span>;
+    <span style="color:#859900">function</span> <span style="color:#268bd2">doSomething</span>(){ <span style="color:#93a1a1;font-style:italic">// 不能够访问，实现隐藏
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#859900">return</span> <span style="color:#268bd2">a</span>*<span style="color:#2aa198;font-weight:bold">3.14</span>;
     }
-    privateVar <span style="color:#ff79c6">=</span> a <span style="color:#ff79c6">+</span> doSomething(); <span style="color:#6272a4">//不能够访问，实现隐藏
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">return</span> privateVar;
+    <span style="color:#268bd2">privateVar</span> = <span style="color:#268bd2">a</span> + <span style="color:#268bd2">doSomething</span>(); <span style="color:#93a1a1;font-style:italic">//不能够访问，实现隐藏
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">return</span> <span style="color:#268bd2">privateVar</span>;
 }
 </code></pre></div><p>隐藏作用域的一个好处就是能够规避<code>同名标识符</code>之间的冲突 .</p>
 <h2 id="命名空间namespace">命名空间Namespace</h2>
 <p>库通常会在全局作用域中声明一个名字足够独特的变量，通常是一个对象。这个对象 被用作库的命名空间，所有需要暴露给外界的功能都会成为这个对象(命名空间)的属性，而不是将自己的标识符暴漏在顶级的词法作用域中.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">const</span> myLir <span style="color:#ff79c6">=</span> {
-    getReq<span style="color:#ff79c6">:</span> <span style="color:#8be9fd;font-style:italic">function</span>(){ <span style="color:#ff79c6">do</span> something...},
-    priVar<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">3.14</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">const</span> <span style="color:#268bd2">myLir</span> = {
+    <span style="color:#268bd2">getReq</span>: <span style="color:#859900">function</span>(){ <span style="color:#859900">do</span> <span style="color:#268bd2">something</span>...},
+    <span style="color:#268bd2">priVar</span>: <span style="color:#2aa198;font-weight:bold">3.14</span>
     ...
 }
 </code></pre></div><h2 id="iife立即执行函数表达式">IIFE立即执行函数表达式</h2>
 <p>在上面的隐藏作用域实现代码中，必须<code>声明</code>一个<code>具名函数</code>，这会污染了所在作用域(一般是全局作用域)，然后<code>必须显式调用</code>才能实现隐藏。所以便出现了立即执行函数<code>表达式</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#6272a4">//格式一
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#93a1a1;font-style:italic">//格式一
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
 (
-    <span style="color:#8be9fd;font-style:italic">function</span>(para) { <span style="color:#6272a4">// 可以匿名可以具名
-</span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">123</span>;
-        console.log(a <span style="color:#ff79c6">+</span> para); <span style="color:#6272a4">// =&gt; &#34;123hi&#34;
-</span><span style="color:#6272a4"></span>    }
-)(<span style="color:#f1fa8c">&#39;hi&#39;</span>);
-console.log(a); <span style="color:#6272a4">// =&gt; 3.14
-</span><span style="color:#6272a4">//具名
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.1415</span>;
+    <span style="color:#859900">function</span>(<span style="color:#268bd2">para</span>) { <span style="color:#93a1a1;font-style:italic">// 可以匿名可以具名
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">123</span>;
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span> + <span style="color:#268bd2">para</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;123hi&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>    }
+)(<span style="color:#2aa198">&#39;hi&#39;</span>);
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 3.14
+</span><span style="color:#93a1a1;font-style:italic">//具名
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">var</span> <span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">3.1415</span>;
 (
-	<span style="color:#8be9fd;font-style:italic">function</span> b(){
-    b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2.15</span>;
-    console.log(b);
+	<span style="color:#859900">function</span> <span style="color:#268bd2">b</span>(){
+    <span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">2.15</span>;
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">b</span>);
   }
 )();
-console.log(b); <span style="color:#6272a4">// =&gt; 3.1415
-</span><span style="color:#6272a4"></span>
-<span style="color:#6272a4">//格式二
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> c <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;hello&#39;</span>;
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">b</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 3.1415
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#93a1a1;font-style:italic">//格式二
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">var</span> <span style="color:#268bd2">c</span> = <span style="color:#2aa198">&#39;hello&#39;</span>;
 (
-    <span style="color:#8be9fd;font-style:italic">function</span>(para) {
-        <span style="color:#8be9fd;font-style:italic">var</span> c <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;world&#39;</span>;
-        console.log(c <span style="color:#ff79c6">+</span> paras); <span style="color:#6272a4">// =&gt; &#34;world123&#34;
-</span><span style="color:#6272a4"></span>    }(<span style="color:#bd93f9">123</span>)
+    <span style="color:#859900">function</span>(<span style="color:#268bd2">para</span>) {
+        <span style="color:#859900">var</span> <span style="color:#268bd2">c</span> = <span style="color:#2aa198">&#39;world&#39;</span>;
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">c</span> + <span style="color:#268bd2">paras</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;world123&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>    }(<span style="color:#2aa198;font-weight:bold">123</span>)
 )
-console.log(c); <span style="color:#6272a4">// =&gt; &#34;hello&#34;
-</span><span style="color:#6272a4"></span>
-<span style="color:#6272a4">//还有经常见到的 !function
-</span><span style="color:#6272a4">//因为匿名 function(){}声明是报语法错误的，注意这现在是一个函数声明
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">function</span> (){console.log(<span style="color:#f1fa8c">&#34;IIFE&#34;</span>);}(); <span style="color:#6272a4">// =&gt; SyntaxError Function statements require a function name
-</span><span style="color:#6272a4"></span>
-<span style="color:#6272a4">//所以在function前面加上感叹号!(英文感叹号)后，function(){} 是一个函数表达式了
-</span><span style="color:#6272a4">//当然该表达式返回值为 !undefined === true
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!</span><span style="color:#8be9fd;font-style:italic">function</span> (){console.log(<span style="color:#f1fa8c">&#34;IIFE&#34;</span>);}(); <span style="color:#6272a4">// =&gt; IIFE
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">c</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;hello&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#93a1a1;font-style:italic">//还有经常见到的 !function
+</span><span style="color:#93a1a1;font-style:italic">//因为匿名 function(){}声明是报语法错误的，注意这现在是一个函数声明
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">function</span> (){<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">&#34;IIFE&#34;</span>);}(); <span style="color:#93a1a1;font-style:italic">// =&gt; SyntaxError Function statements require a function name
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#93a1a1;font-style:italic">//所以在function前面加上感叹号!(英文感叹号)后，function(){} 是一个函数表达式了
+</span><span style="color:#93a1a1;font-style:italic">//当然该表达式返回值为 !undefined === true
+</span><span style="color:#93a1a1;font-style:italic"></span>!<span style="color:#859900">function</span> (){<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">&#34;IIFE&#34;</span>);}(); <span style="color:#93a1a1;font-style:italic">// =&gt; IIFE
 </span></code></pre></div><p>要注意的是IIFE的作用域依旧是<code>函数作用域</code>，我们看以下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">var</span> foo <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;global&#34;</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">var</span> <span style="color:#268bd2">foo</span> = <span style="color:#2aa198">&#34;global&#34;</span>;
 (
-	<span style="color:#8be9fd;font-style:italic">function</span> foo(){
-    console.log(a); <span style="color:#6272a4">// 赋值表达式不提升，var a声明提升
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;a&#34;</span>;
+	<span style="color:#859900">function</span> <span style="color:#268bd2">foo</span>(){
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// 赋值表达式不提升，var a声明提升
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198">&#34;a&#34;</span>;
   }
-)(); <span style="color:#6272a4">// =&gt; undefined
+)(); <span style="color:#93a1a1;font-style:italic">// =&gt; undefined
 </span></code></pre></div><p>但是，<code>具名IIFE</code>(且变量名和函数名一致)是一个特别的存在：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">var</span> same <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;global&#34;</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">var</span> <span style="color:#268bd2">same</span> = <span style="color:#2aa198">&#34;global&#34;</span>;
 (
-	<span style="color:#8be9fd;font-style:italic">function</span> same(){
-    same <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;IIFE&#34;</span>;
-    console.log(same);
+	<span style="color:#859900">function</span> <span style="color:#268bd2">same</span>(){
+    <span style="color:#268bd2">same</span> = <span style="color:#2aa198">&#34;IIFE&#34;</span>;
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">same</span>);
   }
 )(); 
-<span style="color:#6272a4">// =&gt; 
-</span><span style="color:#6272a4"></span><span style="color:#6272a4">/*
-</span><span style="color:#6272a4">		function same(){
-</span><span style="color:#6272a4">    	same = &#34;IIFE&#34;;
-</span><span style="color:#6272a4">    	console.log(same);
-</span><span style="color:#6272a4">  	}
-</span><span style="color:#6272a4">*/</span>
-console.log(same); <span style="color:#6272a4">// =&gt; &#34;global&#34; 
+<span style="color:#93a1a1;font-style:italic">// =&gt; 
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#93a1a1;font-style:italic">/*
+</span><span style="color:#93a1a1;font-style:italic">		function same(){
+</span><span style="color:#93a1a1;font-style:italic">    	same = &#34;IIFE&#34;;
+</span><span style="color:#93a1a1;font-style:italic">    	console.log(same);
+</span><span style="color:#93a1a1;font-style:italic">  	}
+</span><span style="color:#93a1a1;font-style:italic">*/</span>
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">same</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;global&#34; 
 </span></code></pre></div><p>可以看到不使用关键字声明的<code>same = &quot;IIEF&quot;</code>并没有成为全局变量。</p>
 <p>这是因为这个具名函数是立即执行的，这个名字(变量)<code>不能够再重新赋值</code>，这个名字(变量)将会一直<code>直接引用这个函数</code>本身。</p>
 <p>使用<code>严格模式</code>可以让它报错：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f1fa8c">&#34;use strict&#34;</span>;
-<span style="color:#8be9fd;font-style:italic">var</span> same <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;global&#34;</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#2aa198">&#34;use strict&#34;</span>;
+<span style="color:#859900">var</span> <span style="color:#268bd2">same</span> = <span style="color:#2aa198">&#34;global&#34;</span>;
 (
-	<span style="color:#8be9fd;font-style:italic">function</span> same(){
-    same <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;IIFE&#34;</span>;
-    console.log(same);
+	<span style="color:#859900">function</span> <span style="color:#268bd2">same</span>(){
+    <span style="color:#268bd2">same</span> = <span style="color:#2aa198">&#34;IIFE&#34;</span>;
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">same</span>);
   }
 )(); 
-<span style="color:#6272a4">// =&gt; Uncaught TypeError: Assignment to constant variable.
+<span style="color:#93a1a1;font-style:italic">// =&gt; Uncaught TypeError: Assignment to constant variable.
 </span></code></pre></div><h2 id="块作用域">块作用域</h2>
 <p><strong>块级作用域由最近的一对包含花括号{}界定，块级作用域是函数作用域的子集。</strong></p>
 <p>换句话说，if 块、while 块、function 块，甚至连单独的块也是 let 声明变量的作用域。</p>
 <p>JavaScript 的 ES3 规范中规定 try/catch 的 catch 分句会创建一个块作用域，其中声明的变量仅在 catch 内部有效.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">try</span> {
-    <span style="color:#ff79c6">undefined</span>(); <span style="color:#6272a4">// 执行一个非法操作来强制制造一个异常
-</span><span style="color:#6272a4"></span>}
-<span style="color:#ff79c6">catch</span> (err) {
-	console.log( err ); <span style="color:#6272a4">// 能够正常执行! 
-</span><span style="color:#6272a4"></span>}
-console.log( err ); <span style="color:#6272a4">// ReferenceError: err not found
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">try</span> {
+    <span style="color:#859900;font-weight:bold">undefined</span>(); <span style="color:#93a1a1;font-style:italic">// 执行一个非法操作来强制制造一个异常
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#859900">catch</span> (<span style="color:#268bd2">err</span>) {
+	<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#268bd2">err</span> ); <span style="color:#93a1a1;font-style:italic">// 能够正常执行! 
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#268bd2">err</span> ); <span style="color:#93a1a1;font-style:italic">// ReferenceError: err not found
 </span></code></pre></div><h3 id="let">let</h3>
 <p>ES6的新特性之一就是引入了新的<code>let</code>关键字，let 关键字可以将变量<code>绑定</code>到所在的任意作用域中(通常是一对花括号内 { &hellip; } )。即let能过“劫持”所声明变量的块作用域。（即let和后面的const定义范围是块级作用域）。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">var</span> bool <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>;
-<span style="color:#ff79c6">if</span>(bool) {
-    <span style="color:#8be9fd;font-style:italic">let</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3</span>;
-    a <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">**</span>;
-    console.log(a);<span style="color:#6272a4">// =&gt; 9
-</span><span style="color:#6272a4"></span>}
-console.log(a); <span style="color:#6272a4">// ReferenceError
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">var</span> <span style="color:#268bd2">bool</span> = <span style="color:#859900;font-weight:bold">true</span>;
+<span style="color:#859900">if</span>(<span style="color:#268bd2">bool</span>) {
+    <span style="color:#859900">let</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3</span>;
+    <span style="color:#268bd2">a</span> = <span style="color:#268bd2">a</span>**;
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>);<span style="color:#93a1a1;font-style:italic">// =&gt; 9
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// ReferenceError
 </span></code></pre></div><p>let 将变量附加在一个已经存在的块作用域上的行为是<code>隐式</code>的.</p>
 <p>显式的块作用域</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
-     <span style="color:#8be9fd;font-style:italic">let</span> num <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">123</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+     <span style="color:#859900">let</span> <span style="color:#268bd2">num</span> = <span style="color:#2aa198;font-weight:bold">123</span>;
 }
-console.log(num); <span style="color:#6272a4">// ReferenceError
-</span><span style="color:#6272a4"></span>
-<span style="color:#8be9fd;font-style:italic">var</span> bool <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>;
-<span style="color:#ff79c6">if</span>(bool) {
-    <span style="color:#6272a4">// 前面代码
-</span><span style="color:#6272a4"></span>    {  <span style="color:#6272a4">// 这样不会影响前面和后续的代码
-</span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">let</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3</span>;
-        a <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">**</span>;
-        console.log(a);<span style="color:#6272a4">// =&gt; 9  
-</span><span style="color:#6272a4"></span>    }
-    <span style="color:#6272a4">// 后续代码
-</span><span style="color:#6272a4"></span>}
-console.log(a); <span style="color:#6272a4">// ReferenceError
-</span><span style="color:#6272a4"></span>
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">num</span>); <span style="color:#93a1a1;font-style:italic">// ReferenceError
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#859900">var</span> <span style="color:#268bd2">bool</span> = <span style="color:#859900;font-weight:bold">true</span>;
+<span style="color:#859900">if</span>(<span style="color:#268bd2">bool</span>) {
+    <span style="color:#93a1a1;font-style:italic">// 前面代码
+</span><span style="color:#93a1a1;font-style:italic"></span>    {  <span style="color:#93a1a1;font-style:italic">// 这样不会影响前面和后续的代码
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#859900">let</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3</span>;
+        <span style="color:#268bd2">a</span> = <span style="color:#268bd2">a</span>**;
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>);<span style="color:#93a1a1;font-style:italic">// =&gt; 9  
+</span><span style="color:#93a1a1;font-style:italic"></span>    }
+    <span style="color:#93a1a1;font-style:italic">// 后续代码
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// ReferenceError
+</span><span style="color:#93a1a1;font-style:italic"></span>
 </code></pre></div><h4 id="let和循环">let和循环</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> i<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>; i<span style="color:#ff79c6">&lt;</span><span style="color:#bd93f9">10</span>; i<span style="color:#ff79c6">++</span>) { 
-    console.log( i );
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">for</span> (<span style="color:#859900">let</span> <span style="color:#268bd2">i</span>=<span style="color:#2aa198;font-weight:bold">0</span>; <span style="color:#268bd2">i</span>&lt;<span style="color:#2aa198;font-weight:bold">10</span>; <span style="color:#268bd2">i</span>++) { 
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#268bd2">i</span> );
 }
-console.log( i ); <span style="color:#6272a4">// ReferenceError
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#268bd2">i</span> ); <span style="color:#93a1a1;font-style:italic">// ReferenceError
 </span></code></pre></div><p>for 循环头部的 let 不仅将 i 绑定到了 for 循环的块中，事实上它将其<code>重新绑定</code>到了循环的<code>每一个迭代</code>中，确保使用上一个循环迭代结束时的值重新进行赋值。</p>
 <p>我们可以这样理解：</p>
 <p>每一次循环，都会使用let进行声明，而使用let声明可以&quot;劫持&quot;就近的块级作用域(即for语句的花括号)，因此相当于，每一次都相当于下面代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-  <span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
-  console.log(i);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+  <span style="color:#859900">let</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">0</span>;
+  <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>);
 };
 {
-  <span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
-  console.log(i);
+  <span style="color:#859900">let</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">1</span>;
+  <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>);
 };
 ...
 </code></pre></div><h4 id="let和条件声明">let和条件声明</h4>
 <p>使用 var 声明变量时，由于声明会被提升，JavaScript 引擎会自动将多余的声明在作用域顶部<code>合并为一个声明</code>。因为<code> let 的作用域是块</code>，所以不可能检查前面是否已经使用 let 声明过同名变量，同时也就不可能在没有声明的情况下声明它。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-		<span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
-		<span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>;
-		<span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+		<span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">1</span>;
+		<span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">2</span>;
+		<span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3</span>;
 }
-console.log(a); <span style="color:#6272a4">// =&gt; 3 最终只有最后的声明赋值有效
-</span><span style="color:#6272a4"></span>
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 3 最终只有最后的声明赋值有效
+</span><span style="color:#93a1a1;font-style:italic"></span>
 {
-  	<span style="color:#8be9fd;font-style:italic">let</span> pi <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
-  	<span style="color:#8be9fd;font-style:italic">let</span> pi <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.1415926</span>; <span style="color:#6272a4">// Uncaught SyntaxError: Identifier &#39;pi&#39; has already been declared
-</span><span style="color:#6272a4"></span>}
+  	<span style="color:#859900">let</span> <span style="color:#268bd2">pi</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
+  	<span style="color:#859900">let</span> <span style="color:#268bd2">pi</span> = <span style="color:#2aa198;font-weight:bold">3.1415926</span>; <span style="color:#93a1a1;font-style:italic">// Uncaught SyntaxError: Identifier &#39;pi&#39; has already been declared
+</span><span style="color:#93a1a1;font-style:italic"></span>}
 
 </code></pre></div><p>看以下代码：</p>
 <p>你觉得这个代码会错吗？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-  	<span style="color:#8be9fd;font-style:italic">let</span> str;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+  	<span style="color:#859900">let</span> <span style="color:#268bd2">str</span>;
 }
-str <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;123&#34;</span>;
-console.log(str);
+<span style="color:#268bd2">str</span> = <span style="color:#2aa198">&#34;123&#34;</span>;
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">str</span>);
 </code></pre></div><p>答案是不会。{}中的str被限制在{}块的作用域中，而下面的无声明的str声明则是全局赋值，将作为全局对象的属性。</p>
 <h3 id="const">const</h3>
 <p>ES6 同时还增加了 const 关键字。使用 const 声明的变量<code>必须</code>同时初始化为某个值。 一经声明，在其生命周期的任何时候都不能再重新赋予新值。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">const</span> TI; <span style="color:#6272a4">// 报错
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> bool <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>;
-<span style="color:#ff79c6">if</span>(bool){
-    <span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>;
-    <span style="color:#ff79c6">const</span> b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
-    a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">4</span>;
-    b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">6.28</span>;<span style="color:#6272a4">// TypeError: Assignment to constant variable
-</span><span style="color:#6272a4"></span>}
-console.log(a);<span style="color:#6272a4">// 2
-</span><span style="color:#6272a4"></span>console.log(b);<span style="color:#6272a4">//ReferencError
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">const</span> <span style="color:#268bd2">TI</span>; <span style="color:#93a1a1;font-style:italic">// 报错
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">var</span> <span style="color:#268bd2">bool</span> = <span style="color:#859900;font-weight:bold">true</span>;
+<span style="color:#859900">if</span>(<span style="color:#268bd2">bool</span>){
+    <span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">2</span>;
+    <span style="color:#859900">const</span> <span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
+    <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">4</span>;
+    <span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">6.28</span>;<span style="color:#93a1a1;font-style:italic">// TypeError: Assignment to constant variable
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>);<span style="color:#93a1a1;font-style:italic">// 2
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">b</span>);<span style="color:#93a1a1;font-style:italic">//ReferencError
 </span></code></pre></div><p>因此const不能用来声明迭代变量(因为迭代变量会自增)。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">for</span>(<span style="color:#ff79c6">const</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span>;i<span style="color:#ff79c6">++</span>){ <span style="color:#6272a4">// Uncaught TypeError: Assignment to constant variable.
-</span><span style="color:#6272a4"></span>  ...
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">for</span>(<span style="color:#859900">const</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">0</span>;<span style="color:#268bd2">i</span> &lt; <span style="color:#2aa198;font-weight:bold">10</span>;<span style="color:#268bd2">i</span>++){ <span style="color:#93a1a1;font-style:italic">// Uncaught TypeError: Assignment to constant variable.
+</span><span style="color:#93a1a1;font-style:italic"></span>  ...
 }
 </code></pre></div><p>对于const关键字修饰的对象变量，赋值为对象的 const 变量不能再被重新赋值为其他引用值，但对象的<code>键</code>则不受限制。(地址引用不能改变)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">const</span> obj <span style="color:#ff79c6">=</span> {};
-obj.name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cat&#34;</span>; <span style="color:#6272a4">//不会报错
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">const</span> <span style="color:#268bd2">obj</span> = {};
+<span style="color:#268bd2">obj</span>.<span style="color:#268bd2">name</span> = <span style="color:#2aa198">&#34;cat&#34;</span>; <span style="color:#93a1a1;font-style:italic">//不会报错
 </span></code></pre></div><p>如果想让整个对象都不能修改，可以使用 <code>Object.freeze()</code>，这样再给属性赋值时虽然不会报错， 但会静默失败</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">const</span> o3 <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Object</span>.freeze({});
-o3.name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;Jake&#39;</span>;
-console.log(o3.name); <span style="color:#6272a4">// undefined
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">const</span> <span style="color:#268bd2">o3</span> = <span style="color:#cb4b16">Object</span>.<span style="color:#268bd2">freeze</span>({});
+<span style="color:#268bd2">o3</span>.<span style="color:#268bd2">name</span> = <span style="color:#2aa198">&#39;Jake&#39;</span>;
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">o3</span>.<span style="color:#268bd2">name</span>); <span style="color:#93a1a1;font-style:italic">// undefined
 </span></code></pre></div><h3 id="垃圾回收">垃圾回收</h3>
 <p>一个块作用域非常有用的原因和闭包及回收内存垃圾的回收机制相关.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> process(data) {
-    <span style="color:#6272a4">// do something
-</span><span style="color:#6272a4"></span>}
-<span style="color:#8be9fd;font-style:italic">var</span> someBigData <span style="color:#ff79c6">=</span> { ... };
-process(someBigData);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">process</span>(<span style="color:#268bd2">data</span>) {
+    <span style="color:#93a1a1;font-style:italic">// do something
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#859900">var</span> <span style="color:#268bd2">someBigData</span> = { ... };
+<span style="color:#268bd2">process</span>(<span style="color:#268bd2">someBigData</span>);
 
-<span style="color:#8be9fd;font-style:italic">var</span> btn <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#39;#btn&#39;</span>);
-btn.addEventListener(<span style="color:#f1fa8c">&#39;click&#39;</span>, event =&gt; console.log(<span style="color:#f1fa8c">&#34;clicked&#34;</span>));
+<span style="color:#859900">var</span> <span style="color:#268bd2">btn</span> = <span style="color:#cb4b16">document</span>.<span style="color:#268bd2">querySelector</span>(<span style="color:#2aa198">&#39;#btn&#39;</span>);
+<span style="color:#268bd2">btn</span>.<span style="color:#268bd2">addEventListener</span>(<span style="color:#2aa198">&#39;click&#39;</span>, <span style="color:#268bd2">event</span> =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">&#34;clicked&#34;</span>));
 </code></pre></div><p>当点击事件触发回调函数执行后，<code>someBigData</code>就不再需要了，<code>someBigData</code>占用的空间理应被回收，但因为这个回调函数形成了覆盖整个作用域的闭包，JS引擎极有可能依然保留该结构.</p>
 <p>我们可以通过块作用域解决这个问题！</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> process(data) {
-    <span style="color:#6272a4">// do something
-</span><span style="color:#6272a4"></span>}
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">process</span>(<span style="color:#268bd2">data</span>) {
+    <span style="color:#93a1a1;font-style:italic">// do something
+</span><span style="color:#93a1a1;font-style:italic"></span>}
 {
-    <span style="color:#8be9fd;font-style:italic">let</span> someBigData <span style="color:#ff79c6">=</span> { ... }; <span style="color:#6272a4">//显式创建块作用域块，并用let声明劫持
-</span><span style="color:#6272a4"></span>    process(someBigData);
+    <span style="color:#859900">let</span> <span style="color:#268bd2">someBigData</span> = { ... }; <span style="color:#93a1a1;font-style:italic">//显式创建块作用域块，并用let声明劫持
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#268bd2">process</span>(<span style="color:#268bd2">someBigData</span>);
 }
 
-<span style="color:#8be9fd;font-style:italic">var</span> btn <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#39;#btn&#39;</span>);
-btn.addEventListener(<span style="color:#f1fa8c">&#39;click&#39;</span>, event =&gt; console.log(<span style="color:#f1fa8c">&#34;clicked&#34;</span>));
+<span style="color:#859900">var</span> <span style="color:#268bd2">btn</span> = <span style="color:#cb4b16">document</span>.<span style="color:#268bd2">querySelector</span>(<span style="color:#2aa198">&#39;#btn&#39;</span>);
+<span style="color:#268bd2">btn</span>.<span style="color:#268bd2">addEventListener</span>(<span style="color:#2aa198">&#39;click&#39;</span>, <span style="color:#268bd2">event</span> =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">&#34;clicked&#34;</span>));
 </code></pre></div><h2 id="提升hoisting">提升hoisting</h2>
 <h3 id="var">var</h3>
 <p>对于以下代码:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
-<span style="color:#8be9fd;font-style:italic">var</span> a;
-console.log(a); <span style="color:#6272a4">// =&gt; 3.14
-</span><span style="color:#6272a4"></span>
-console.log(b); <span style="color:#6272a4">// =&gt; undefined
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>; <span style="color:#6272a4">// 赋值表达式没有被提升
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
+<span style="color:#859900">var</span> <span style="color:#268bd2">a</span>;
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 3.14
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">b</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; undefined
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">var</span> <span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>; <span style="color:#93a1a1;font-style:italic">// 赋值表达式没有被提升
 </span></code></pre></div><p>可知<code>声明</code>优先于执行，(和C语言的#预变量类似)。</p>
 <p>在使用 var 声明变量时，变量会被自动添加到最接近的上下文。由于声明会被提升，JavaScript引擎会自动将<code>多余的声明</code>在作用域顶部<code>合并</code>为一个声明。</p>
 <p>即<code>var 声明</code>会被拿到函数或全局作用域的<code>顶部</code>，位于作用域中所有代码之前。但是<code>函数表达式</code>和<code>赋值表达式</code>是不会被提升的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> fun(){
-    console.log(a); <span style="color:#6272a4">// =&gt; undefined
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">fun</span>(){
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; undefined
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">var</span> <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
 }
 
-<span style="color:#6272a4">//等价于
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">function</span> fun(){
-    <span style="color:#8be9fd;font-style:italic">var</span> a;  <span style="color:#6272a4">//提升到函数作用域顶部
-</span><span style="color:#6272a4"></span>    console.log(a); <span style="color:#6272a4">// =&gt; undefined
-</span><span style="color:#6272a4"></span>    a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
+<span style="color:#93a1a1;font-style:italic">//等价于
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">function</span> <span style="color:#268bd2">fun</span>(){
+    <span style="color:#859900">var</span> <span style="color:#268bd2">a</span>;  <span style="color:#93a1a1;font-style:italic">//提升到函数作用域顶部
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">a</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; undefined
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
 }
 </code></pre></div><h3 id="函数表达式">函数表达式</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
-    <span style="color:#8be9fd;font-style:italic">var</span> n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>; <span style="color:#6272a4">//被提升到全局作用域
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">let</span> funExpression <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() { 
-        console.log(<span style="color:#f1fa8c">&#39;hello world&#39;</span>);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">{
+    <span style="color:#859900">var</span> <span style="color:#268bd2">n</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>; <span style="color:#93a1a1;font-style:italic">//被提升到全局作用域
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">let</span> <span style="color:#268bd2">funExpression</span> = <span style="color:#859900">function</span>() { 
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">&#39;hello world&#39;</span>);
     }
-    <span style="color:#8be9fd;font-style:italic">function</span> funDeclare(){ 
-        console.log(<span style="color:#f1fa8c">&#39;hi&#39;</span>);
+    <span style="color:#859900">function</span> <span style="color:#268bd2">funDeclare</span>(){ 
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">&#39;hi&#39;</span>);
     }
 }
-n; <span style="color:#6272a4">// =&gt; 3.14
-</span><span style="color:#6272a4"></span>funDeclare();<span style="color:#6272a4">// =&gt; &#39;hi&#39; 同样被提升到全局作用域
-</span><span style="color:#6272a4"></span>funExpression();<span style="color:#6272a4">// ReferenceError
+<span style="color:#268bd2">n</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; 3.14
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">funDeclare</span>();<span style="color:#93a1a1;font-style:italic">// =&gt; &#39;hi&#39; 同样被提升到全局作用域
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">funExpression</span>();<span style="color:#93a1a1;font-style:italic">// ReferenceError
 </span></code></pre></div><p><code>缺省</code>情况下声明的变量会被添加到全局作用域</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> mult(a, b){
-    <span style="color:#8be9fd;font-style:italic">var</span> result <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">*</span>b; <span style="color:#6272a4">//被提升到函数作用域顶部
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">return</span> result;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">mult</span>(<span style="color:#268bd2">a</span>, <span style="color:#268bd2">b</span>){
+    <span style="color:#859900">var</span> <span style="color:#268bd2">result</span> = <span style="color:#268bd2">a</span>*<span style="color:#268bd2">b</span>; <span style="color:#93a1a1;font-style:italic">//被提升到函数作用域顶部
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">return</span> <span style="color:#268bd2">result</span>;
 }
-mult(<span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>); <span style="color:#6272a4">// =&gt; 6
-</span><span style="color:#6272a4"></span>console.log(result); <span style="color:#6272a4">// ReferenceError: result is not defined
-</span><span style="color:#6272a4"></span>
-<span style="color:#8be9fd;font-style:italic">function</span> add(a, b){
-    result <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">+</span>b; <span style="color:#6272a4">// 被提升到全局作用域
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">return</span> result;
+<span style="color:#268bd2">mult</span>(<span style="color:#2aa198;font-weight:bold">2</span>, <span style="color:#2aa198;font-weight:bold">3</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 6
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">result</span>); <span style="color:#93a1a1;font-style:italic">// ReferenceError: result is not defined
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#859900">function</span> <span style="color:#268bd2">add</span>(<span style="color:#268bd2">a</span>, <span style="color:#268bd2">b</span>){
+    <span style="color:#268bd2">result</span> = <span style="color:#268bd2">a</span>+<span style="color:#268bd2">b</span>; <span style="color:#93a1a1;font-style:italic">// 被提升到全局作用域
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">return</span> <span style="color:#268bd2">result</span>;
 }
-add(<span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">3</span>); <span style="color:#6272a4">// =&gt; 5
-</span><span style="color:#6272a4"></span>console.log(result); <span style="color:#6272a4">// =&gt; 5
+<span style="color:#268bd2">add</span>(<span style="color:#2aa198;font-weight:bold">2</span>, <span style="color:#2aa198;font-weight:bold">3</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 5
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">result</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 5
 </span></code></pre></div><p><strong>函数优先于变量</strong></p>
 <p>函数会首先被提升，然后才是变量</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">foo(); <span style="color:#6272a4">// 1
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> foo; <span style="color:#6272a4">// 上面所说的重复声明被忽略
-</span><span style="color:#6272a4"></span>				<span style="color:#6272a4">// 由于声明会被提升，JavaScript引擎会自动将多余的声明在作用域顶部合并为一个声明
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">function</span> foo() { 
-    console.log( <span style="color:#bd93f9">1</span> );
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#268bd2">foo</span>(); <span style="color:#93a1a1;font-style:italic">// 1
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">var</span> <span style="color:#268bd2">foo</span>; <span style="color:#93a1a1;font-style:italic">// 上面所说的重复声明被忽略
+</span><span style="color:#93a1a1;font-style:italic"></span>				<span style="color:#93a1a1;font-style:italic">// 由于声明会被提升，JavaScript引擎会自动将多余的声明在作用域顶部合并为一个声明
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">function</span> <span style="color:#268bd2">foo</span>() { 
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#2aa198;font-weight:bold">1</span> );
 }
-foo <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() { 
-    console.log( <span style="color:#bd93f9">2</span> );
+<span style="color:#268bd2">foo</span> = <span style="color:#859900">function</span>() { 
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#2aa198;font-weight:bold">2</span> );
 };
 
-<span style="color:#6272a4">//js引擎所理解的：
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">function</span> foo() { 
-    console.log( <span style="color:#bd93f9">1</span> );
+<span style="color:#93a1a1;font-style:italic">//js引擎所理解的：
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">function</span> <span style="color:#268bd2">foo</span>() { 
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#2aa198;font-weight:bold">1</span> );
 }
-foo(); <span style="color:#6272a4">// 1
-</span><span style="color:#6272a4"></span>foo <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>() { 
-    console.log( <span style="color:#bd93f9">2</span> );
+<span style="color:#268bd2">foo</span>(); <span style="color:#93a1a1;font-style:italic">// 1
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">foo</span> = <span style="color:#859900">function</span>() { 
+    <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>( <span style="color:#2aa198;font-weight:bold">2</span> );
 };
 </code></pre></div><h1 id="闭包-closure">闭包 Closure</h1>
 <p>闭包一直是JavaScript中比较晦涩难懂的概念。在计算机科学中是这样定义闭包的 —&gt; 函数对象与作用域<code>(一组变量绑定)</code>组合起来解析函数变量的机制。</p>
 <p>而JS为了实现其词法作用域，其函数对象不仅要包含函数代码，还得包括对<code>函数定义所在的作用域的引用</code>。</p>
 <p>即<code>闭包指的是那些引用了另一个函数作用域中变量的函数</code>。</p>
 <p>对于以下代码:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> outter() {
-    <span style="color:#8be9fd;font-style:italic">let</span> scope <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;hello world&#34;</span>;
-    <span style="color:#8be9fd;font-style:italic">function</span> inner(){
-        console.log(scope);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">outter</span>() {
+    <span style="color:#859900">let</span> <span style="color:#268bd2">scope</span> = <span style="color:#2aa198">&#34;hello world&#34;</span>;
+    <span style="color:#859900">function</span> <span style="color:#268bd2">inner</span>(){
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">scope</span>);
     }
 }
-outter(); <span style="color:#6272a4">// &#34;hello world&#34;
+<span style="color:#268bd2">outter</span>(); <span style="color:#93a1a1;font-style:italic">// &#34;hello world&#34;
 </span></code></pre></div><p>上面代码还不能说算真正意义的闭包，只能说是词法作用域查找规则。</p>
 <p>一个典型诠释闭包的例子就是 函数的<code>返回值是一个函数对象</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">let</span> scope <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;global scope&#34;</span>;
-<span style="color:#8be9fd;font-style:italic">function</span> checkscope() {
-    <span style="color:#8be9fd;font-style:italic">let</span> scope <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;local scope&#34;</span>;
-    <span style="color:#8be9fd;font-style:italic">function</span> fun(){
-        console.log(scope);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">let</span> <span style="color:#268bd2">scope</span> = <span style="color:#2aa198">&#34;global scope&#34;</span>;
+<span style="color:#859900">function</span> <span style="color:#268bd2">checkscope</span>() {
+    <span style="color:#859900">let</span> <span style="color:#268bd2">scope</span> = <span style="color:#2aa198">&#34;local scope&#34;</span>;
+    <span style="color:#859900">function</span> <span style="color:#268bd2">fun</span>(){
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">scope</span>);
     }
-    reutrn fun;
+    <span style="color:#268bd2">reutrn</span> <span style="color:#268bd2">fun</span>;
 }
-<span style="color:#8be9fd;font-style:italic">let</span> f <span style="color:#ff79c6">=</span> checkscope();
-f(); <span style="color:#6272a4">// &#34;local scope&#34; 这就是闭包的作用
+<span style="color:#859900">let</span> <span style="color:#268bd2">f</span> = <span style="color:#268bd2">checkscope</span>();
+<span style="color:#268bd2">f</span>(); <span style="color:#93a1a1;font-style:italic">// &#34;local scope&#34; 这就是闭包的作用
 </span></code></pre></div><p>checkscope()函数调用后返回fun()函数的引用，然后赋值给变量f，正是因为fun()函数对象依然含有对定义自己函数的作用域的引用，使得函数调用正常执行。可以看到的是，fun()在自己定义的<code>词法作用域以外</code>的地方执行了。</p>
 <h2 id="阻止垃圾回收">阻止垃圾回收</h2>
 <p>在上面代码中，函数checkscope() 执行完毕后通常其整个作用域都被销毁，因为引擎引擎有垃圾回收器用来释放不再使用的内存空间。但是闭包的神奇之处就是能够阻止其被回收，这是因为fun()函数声明的位置在checkscope()内部，它覆盖了checkscope()内部作用域的闭包，使得作用域能够一直存活。</p>
 <h2 id="回调函数与闭包">回调函数与闭包</h2>
 <p>看一个经典定时器回调函数例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">function</span> wait(message) {
-    setTimeout(<span style="color:#8be9fd;font-style:italic">function</span>(){
-        console.log(message);
-    },<span style="color:#bd93f9">1000</span>);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">function</span> <span style="color:#268bd2">wait</span>(<span style="color:#268bd2">message</span>) {
+    <span style="color:#268bd2">setTimeout</span>(<span style="color:#859900">function</span>(){
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">message</span>);
+    },<span style="color:#2aa198;font-weight:bold">1000</span>);
 }
-wait(<span style="color:#f1fa8c">&#34;hello closure&#34;</span>); <span style="color:#6272a4">// 回调函数依旧包含对函数wait(...)作用域的闭包
+<span style="color:#268bd2">wait</span>(<span style="color:#2aa198">&#34;hello closure&#34;</span>); <span style="color:#93a1a1;font-style:italic">// 回调函数依旧包含对函数wait(...)作用域的闭包
 </span></code></pre></div><p>深入到引擎的内部原理中，内置的工具函数 setTimeout(..) 持有对一个参数的引用，这个参数也许叫作 fn 或者 func，或者其他类似的名字。引擎会调用这个函数，在例子中就是 内部的 timer 函数，而词法作用域在这个过程中<code>保持完整</code>。</p>
 <h2 id="iife和闭包">IIFE和闭包</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#8be9fd;font-style:italic">let</span> n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">let</span> <span style="color:#268bd2">n</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
 (
-    <span style="color:#8be9fd;font-style:italic">function</span> IIFE() {
-        console.log(n);
+    <span style="color:#859900">function</span> <span style="color:#268bd2">IIFE</span>() {
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">n</span>);
     }
-)(); <span style="color:#6272a4">// =&gt; 3.14
+)(); <span style="color:#93a1a1;font-style:italic">// =&gt; 3.14
 </span></code></pre></div><h2 id="循环和闭包">循环和闭包</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">var</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; i <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">5</span>; i<span style="color:#ff79c6">++</span>) {
-    setTimeout(() =&gt; console.log(i), i<span style="color:#ff79c6">*</span><span style="color:#bd93f9">1000</span>); 
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">for</span>(<span style="color:#859900">var</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">1</span>; <span style="color:#268bd2">i</span> &lt;= <span style="color:#2aa198;font-weight:bold">5</span>; <span style="color:#268bd2">i</span>++) {
+    <span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>), <span style="color:#268bd2">i</span>*<span style="color:#2aa198;font-weight:bold">1000</span>); 
 }
 </code></pre></div><p>上面代码会输出数字6连续5次，并不是预期的1~5，显而易见，setTimeout()函数中<code>回调函数</code>(形成闭包！)会在for循环之后才能被执行，而i的值最后是6，以上代码等价于下面的代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">var</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; i<span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">5</span>; i<span style="color:#ff79c6">++</span>){}; <span style="color:#6272a4">// i =&gt; 6
-</span><span style="color:#6272a4"></span>setTimeout(() =&gt; console.log(i), <span style="color:#bd93f9">1000</span>);  <span style="color:#6272a4">// 6
-</span><span style="color:#6272a4"></span>setTimeout(() =&gt; console.log(i), <span style="color:#bd93f9">2000</span>);  <span style="color:#6272a4">// 6
-</span><span style="color:#6272a4"></span>setTimeout(() =&gt; console.log(i), <span style="color:#bd93f9">3000</span>);  <span style="color:#6272a4">// 6
-</span><span style="color:#6272a4"></span>setTimeout(() =&gt; console.log(i), <span style="color:#bd93f9">4000</span>);  <span style="color:#6272a4">// 6
-</span><span style="color:#6272a4"></span>setTimeout(() =&gt; console.log(i), <span style="color:#bd93f9">5000</span>);  <span style="color:#6272a4">// 6
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">for</span>(<span style="color:#859900">var</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">1</span>; <span style="color:#268bd2">i</span>&lt;= <span style="color:#2aa198;font-weight:bold">5</span>; <span style="color:#268bd2">i</span>++){}; <span style="color:#93a1a1;font-style:italic">// i =&gt; 6
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>), <span style="color:#2aa198;font-weight:bold">1000</span>);  <span style="color:#93a1a1;font-style:italic">// 6
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>), <span style="color:#2aa198;font-weight:bold">2000</span>);  <span style="color:#93a1a1;font-style:italic">// 6
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>), <span style="color:#2aa198;font-weight:bold">3000</span>);  <span style="color:#93a1a1;font-style:italic">// 6
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>), <span style="color:#2aa198;font-weight:bold">4000</span>);  <span style="color:#93a1a1;font-style:italic">// 6
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>), <span style="color:#2aa198;font-weight:bold">5000</span>);  <span style="color:#93a1a1;font-style:italic">// 6
 </span></code></pre></div><p>我们看到for语句参数是用<code>var关键字</code>进行声明定义的，所以变量<code>提升</code>，具有<code>函数作用域</code>，循环结束后，重复的var声明合并为最后一个声明(即i = 6)，而这些回调函数共用该词法作用域，i的值始终为6.</p>
 <p>因此我们需要更多的闭包(作用域绑定)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">var</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;i <span style="color:#ff79c6">&lt;=</span><span style="color:#bd93f9">5</span>; i<span style="color:#ff79c6">++</span>){
-    (<span style="color:#8be9fd;font-style:italic">function</span>() {
-        <span style="color:#8be9fd;font-style:italic">var</span> j <span style="color:#ff79c6">=</span> i; <span style="color:#6272a4">// j记住了i的值，并绑定到了匿名函数 
-</span><span style="color:#6272a4"></span>      						 <span style="color:#6272a4">// 此时最后的值为5，因为for内部的判断条件已经不满足了，i为6的值赋值不了
-</span><span style="color:#6272a4"></span>        setTimeout(() =&gt; console.log(j), j<span style="color:#ff79c6">*</span><span style="color:#bd93f9">1000</span>);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">for</span> (<span style="color:#859900">var</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">1</span>;<span style="color:#268bd2">i</span> &lt;=<span style="color:#2aa198;font-weight:bold">5</span>; <span style="color:#268bd2">i</span>++){
+    (<span style="color:#859900">function</span>() {
+        <span style="color:#859900">var</span> <span style="color:#268bd2">j</span> = <span style="color:#268bd2">i</span>; <span style="color:#93a1a1;font-style:italic">// j记住了i的值，并绑定到了匿名函数 
+</span><span style="color:#93a1a1;font-style:italic"></span>      						 <span style="color:#93a1a1;font-style:italic">// 此时最后的值为5，因为for内部的判断条件已经不满足了，i为6的值赋值不了
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#268bd2">setTimeout</span>(() =&gt; <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">j</span>), <span style="color:#268bd2">j</span>*<span style="color:#2aa198;font-weight:bold">1000</span>);
     })();
 }
-<span style="color:#6272a4">// =&gt; 1 2 3 4 5
+<span style="color:#93a1a1;font-style:italic">// =&gt; 1 2 3 4 5
 </span></code></pre></div><h3 id="使用let关键字块级作用域">使用let关键字(块级作用域)</h3>
 <p>将一个块转换成一个可以被关闭的作用域。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">var</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;i <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">5</span>; i<span style="color:#ff79c6">++</span>){
-    <span style="color:#8be9fd;font-style:italic">let</span> j <span style="color:#ff79c6">=</span> i;
-    setTimeout( <span style="color:#8be9fd;font-style:italic">function</span>(){
-        console.log(j);
-    }, j<span style="color:#ff79c6">*</span><span style="color:#bd93f9">1000</span>);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#859900">for</span>(<span style="color:#859900">var</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">1</span>;<span style="color:#268bd2">i</span> &lt;= <span style="color:#2aa198;font-weight:bold">5</span>; <span style="color:#268bd2">i</span>++){
+    <span style="color:#859900">let</span> <span style="color:#268bd2">j</span> = <span style="color:#268bd2">i</span>;
+    <span style="color:#268bd2">setTimeout</span>( <span style="color:#859900">function</span>(){
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">j</span>);
+    }, <span style="color:#268bd2">j</span>*<span style="color:#2aa198;font-weight:bold">1000</span>);
 }
 
-<span style="color:#6272a4">// 终极形态
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;i <span style="color:#ff79c6">&lt;=</span><span style="color:#bd93f9">6</span>; i<span style="color:#ff79c6">++</span>) {
-    setTimeout(<span style="color:#8be9fd;font-style:italic">function</span>() {
-        console.log(i);
-    }, i<span style="color:#ff79c6">*</span><span style="color:#bd93f9">1000</span>);
+<span style="color:#93a1a1;font-style:italic">// 终极形态
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">for</span>(<span style="color:#859900">let</span> <span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">1</span>;<span style="color:#268bd2">i</span> &lt;=<span style="color:#2aa198;font-weight:bold">6</span>; <span style="color:#268bd2">i</span>++) {
+    <span style="color:#268bd2">setTimeout</span>(<span style="color:#859900">function</span>() {
+        <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">i</span>);
+    }, <span style="color:#268bd2">i</span>*<span style="color:#2aa198;font-weight:bold">1000</span>);
 }
 </code></pre></div><p>JavaScript 引擎会为 for 循环中的 let 声明分别创建<code>独立的变量实例</code>。</p>
 <p>Reference：</p>
@@ -647,10 +645,9 @@ wait(<span style="color:#f1fa8c">&#34;hello closure&#34;</span>); <span style="c
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -666,7 +663,8 @@ wait(<span style="color:#f1fa8c">&#34;hello closure&#34;</span>); <span style="c
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -701,6 +699,5 @@ wait(<span style="color:#f1fa8c">&#34;hello closure&#34;</span>); <span style="c
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

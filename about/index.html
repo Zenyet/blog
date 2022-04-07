@@ -19,7 +19,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -30,10 +29,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -43,70 +42,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }

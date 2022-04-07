@@ -5,7 +5,39 @@
     <link>https://yequalsx.com/tags/javascript/</link>
     <description>Recent content in JavaScript on Zenyet&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>异步和事件循环</title>
+      <link>https://yequalsx.com/2022/04/%E5%BC%82%E6%AD%A5%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/04/%E5%BC%82%E6%AD%A5%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</guid>
+      <description>JavaScript是一种同步的、阻塞的、单线程的语言。
+ 在开启文章的主题前，我必须要说一下并行和并发这两个概念。
+并行和并发 并行 Parallel  do multiple things at once.</description>
+    </item>
+    
+    <item>
+      <title>事件委托</title>
+      <link>https://yequalsx.com/2022/03/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</link>
+      <pubDate>Sat, 26 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/03/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</guid>
+      <description>事件委托其实不是什么特别晦涩难懂的知识，其背后的知识点是关于事件的机制 (事件冒泡)。
+我们知道，为单独一个元素注册事件监听器可以使用 on&amp;lt;event&amp;gt;、 元素行内属性和 addEventListener() 这些方法轻松实现，但是，当这些元素的数量递增时：</description>
+    </item>
+    
+    <item>
+      <title>JavaScript中的this</title>
+      <link>https://yequalsx.com/2022/03/javascript%E4%B8%AD%E7%9A%84this/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/2022/03/javascript%E4%B8%AD%E7%9A%84this/</guid>
+      <description>通过谁调用的函数，谁就是this。
+ JavaScript中的this的值的和其他语言的会更怪(weird)。
+由之前从反转链表到执行上下文中我们知道this是执行上下文的一个属性，其值在执行上下文创建阶段(函数被调用时)时确定。</description>
+    </item>
+    
     <item>
       <title>类型转换??</title>
       <link>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
@@ -13,8 +45,7 @@
       
       <guid>https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
       <description>对于JavaScript的类型转换，会令人感到十分难受，虽说是拥有“灵活”的动态转换能力，但是会让人感到十分的混乱，而且别人很喜欢用这种类似“脑筋急转弯”的东西来考人。下面给个图你感受下：
-  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型(primitive)之间的转换。
-基本类型转换 primitive to primitive 在静态语言中，类型转换发生在编译期间(complie time)，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。</description>
+  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型 (primitive)s之间的转换。</description>
     </item>
     
     <item>

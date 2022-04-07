@@ -6,8 +6,7 @@
           content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="对于JavaScript的类型转换，会令人感到十分难受，虽说是拥有“灵活”的动态转换能力，但是会让人感到十分的混乱，而且别人很喜欢用这种类似“脑筋急转弯”的东西来考人。下面给个图你感受下：
-  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型(primitive)之间的转换。
-基本类型转换 primitive to primitive 在静态语言中，类型转换发生在编译期间(complie time)，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。">
+  是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型 (primitive)s之间的转换。">
     <meta name="author" content="Zenyet">
     <meta name="keywords" content="类型转换, JavaScript"/>
     <link rel="stylesheet" href="/css/style.min.css">
@@ -21,7 +20,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -32,10 +30,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -45,70 +43,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -188,6 +184,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -209,25 +206,25 @@
 
 
 <figure class="img-con" style="padding-top: 10.438413361169102%;">
-    <img class="lazyload" data-src="/uploads/wtf.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/wtf.png" alt=""   />
 </figure>
 </p>
-<p>是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型(primitive)之间的转换。</p>
+<p>是不是很难顶？？想摸清楚是什么情况。所以我先说一下最常用的基本类型 (primitive)s之间的转换。</p>
 <h2 id="基本类型转换--primitive-to-primitive">基本类型转换  primitive to primitive</h2>
-<p>在静态语言中，类型转换发生在编译期间(complie time)，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。</p>
-<p>实际上，使用基本类型作为操作数时，类型转换最后都是<code>String</code>、<code>Boolean</code>、<code>Number</code>这三种类型。而且，转换还分为<code>显式</code>和<code>隐式</code>的强制转换。</p>
+<p>在静态语言中，类型转换发生在编译期间 (complie time) ，而像JS这种动态语言则发生在运行时(running time)，这都是一些抽象的概念。</p>
+<p>实际上，使用基本类型作为操作数时，类型转换最后都是 <code>String</code>、<code>Boolean</code>、<code>Number</code> 这三种类型。而且，转换还分为<code>显式</code>和<code>隐式</code>的强制转换。</p>
 <h3 id="隐式强制转换">隐式强制转换</h3>
 <p>一个典型例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> num <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.14</span>;
-<span style="color:#8be9fd;font-style:italic">let</span> toStr <span style="color:#ff79c6">=</span> num <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#39;&#39;</span>; <span style="color:#6272a4">// =&gt; &#34;3.14&#34; 
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">num</span> = <span style="color:#2aa198;font-weight:bold">3.14</span>;
+<span style="color:#859900">let</span> <span style="color:#268bd2">toStr</span> = <span style="color:#268bd2">num</span> + <span style="color:#2aa198">&#39;&#39;</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;3.14&#34; 
 </span></code></pre></div><p>对于上面的通过 <code>+ ''</code>将num转换为字符串，这个行为就是隐式的。</p>
 <p>隐式强制转换发生的一些场景：</p>
 <ul>
-<li>(1)if (..)语句中的条件判断表达式。</li>
-<li>(2)for ( .. ; .. ; .. )语句中的条件判断表达式(第二个)。</li>
+<li>(1) if (..)语句中的条件判断表达式。</li>
+<li>(2) for( .. ; .. ; .. ) 语句中的条件判断表达式(第二个)。</li>
 <li>(3) while (..) 和 do..while(..) 循环中的条件判断表达式。</li>
-<li>(4)? :中的条件判断表达式。</li>
-<li>(5) 逻辑运算符 ||(逻辑或)和 &amp;&amp;(逻辑与)左边的操作数(作为条件判断表达式)。</li>
+<li>(4) ? :中的条件判断表达式。</li>
+<li>(5) 逻辑运算符 || (逻辑或)和 &amp;&amp; (逻辑与)左边的操作数(作为条件判断表达式)。</li>
 </ul>
 <p>直接用表格来表示一些转换规则：</p>
 <div class=table-wrapper> <table>
@@ -312,69 +309,69 @@
 <ol>
 <li>
 <p>使用内建构造函数封装</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// String
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">String</span>(<span style="color:#bd93f9">123</span>); <span style="color:#6272a4">// =&gt; &#34;123&#34;
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">String</span>(<span style="color:#bd93f9">3.14</span>); <span style="color:#6272a4">// =&gt; &#34;3.14&#34;
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">String</span>(<span style="color:#ff79c6">NaN</span>); <span style="color:#6272a4">// =&gt; &#34;NaN&#34;
-</span><span style="color:#6272a4"></span>...
-<span style="color:#6272a4">// Boolean
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Boolean</span>(<span style="color:#bd93f9">1</span>); <span style="color:#6272a4">// =&gt; true
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Boolean</span>(<span style="color:#ff79c6">-</span><span style="color:#bd93f9">0</span>); <span style="color:#6272a4">// =&gt; false
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Boolean</span>(<span style="color:#ff79c6">undefined</span>); <span style="color:#6272a4">// =&gt; false
-</span><span style="color:#6272a4"></span>...
-<span style="color:#6272a4">// Number
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Number</span>(<span style="color:#ff79c6">null</span>); <span style="color:#6272a4">// =&gt; 0
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Number</span>(<span style="color:#ff79c6">undefined</span>);<span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Number</span>(<span style="color:#f1fa8c">&#34;not a Number&#34;</span>); <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Number</span>(<span style="color:#ff79c6">true</span>); <span style="color:#6272a4">// =&gt; 1
-</span></code></pre></div><p>对于to Number，还可以使用<code>Number</code>内置静态函数<code>parseInt()</code>和<code>parseFloat()</code>，这两个函数期待一个String类型的参数。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">Number</span>.<span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#f1fa8c">&#34;3.14&#34;</span>); <span style="color:#6272a4">// =&gt; 3
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">Number</span>.<span style="color:#8be9fd;font-style:italic">parseFloat</span>(<span style="color:#f1fa8c">&#34;3.14&#34;</span>); <span style="color:#6272a4">// =&gt; 3.14
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#ff79c6">NaN</span>); <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">parseFloat</span>(<span style="color:#ff79c6">NaN</span>); <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#ff79c6">true</span>); <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#f1fa8c">&#34;123word&#34;</span>); <span style="color:#6272a4">// =&gt; 123
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#f1fa8c">&#34;s1341&#34;</span>); <span style="color:#6272a4">// =&gt; NaN
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#93a1a1;font-style:italic">// String
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">String</span>(<span style="color:#2aa198;font-weight:bold">123</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;123&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">String</span>(<span style="color:#2aa198;font-weight:bold">3.14</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;3.14&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">String</span>(<span style="color:#859900;font-weight:bold">NaN</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;NaN&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>...
+<span style="color:#93a1a1;font-style:italic">// Boolean
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Boolean</span>(<span style="color:#2aa198;font-weight:bold">1</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; true
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Boolean</span>(-<span style="color:#2aa198;font-weight:bold">0</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Boolean</span>(<span style="color:#859900;font-weight:bold">undefined</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span><span style="color:#93a1a1;font-style:italic"></span>...
+<span style="color:#93a1a1;font-style:italic">// Number
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Number</span>(<span style="color:#859900;font-weight:bold">null</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 0
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Number</span>(<span style="color:#859900;font-weight:bold">undefined</span>);<span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Number</span>(<span style="color:#2aa198">&#34;not a Number&#34;</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Number</span>(<span style="color:#859900;font-weight:bold">true</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 1
+</span></code></pre></div><p>对于 to Number ，还可以使用 <code>Number</code> 内置静态函数 <code>parseInt()</code> 和 <code>parseFloat()</code>，这两个函数期待一个 String  类型的参数。</p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#cb4b16">Number</span>.<span style="color:#cb4b16">parseInt</span>(<span style="color:#2aa198">&#34;3.14&#34;</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 3
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">Number</span>.<span style="color:#cb4b16">parseFloat</span>(<span style="color:#2aa198">&#34;3.14&#34;</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 3.14
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">parseInt</span>(<span style="color:#859900;font-weight:bold">NaN</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">parseFloat</span>(<span style="color:#859900;font-weight:bold">NaN</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">parseInt</span>(<span style="color:#859900;font-weight:bold">true</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">parseInt</span>(<span style="color:#2aa198">&#34;123word&#34;</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; 123
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">parseInt</span>(<span style="color:#2aa198">&#34;s1341&#34;</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
 </span></code></pre></div></li>
 <li>
 <p>使用运算符</p>
-<p>对于<code>Boolean</code>使用两次取反操作符<code>!!</code>可强制转换为布尔值。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">!!</span><span style="color:#ff79c6">NaN</span>; <span style="color:#6272a4">// =&gt; false
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!!</span><span style="color:#bd93f9">0</span>; <span style="color:#6272a4">// =&gt; false
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!!</span><span style="color:#f1fa8c">&#39;0&#39;</span> <span style="color:#6272a4">// =&gt; true
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!!</span><span style="color:#ff79c6">null</span> <span style="color:#6272a4">// =&gt; flase
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!!</span><span style="color:#f1fa8c">&#39;&#39;</span> <span style="color:#6272a4">// =&gt; false
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!!</span><span style="color:#ff79c6">null</span> <span style="color:#6272a4">// =&gt; false
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">!!</span><span style="color:#ff79c6">undefined</span> <span style="color:#6272a4">// =&gt; false
-</span></code></pre></div><p>对于<code>Number</code>则使用四则运算<code>+ - * /</code>，一般使用<code>+</code>或<code>-</code>多。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">+</span><span style="color:#ff79c6">NaN</span> <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;&#39;</span> <span style="color:#6272a4">// =&gt; 0
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#ff79c6">undefined</span> <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#ff79c6">null</span> <span style="color:#6272a4">// =&gt; 0
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#ff79c6">true</span> <span style="color:#6272a4">// =&gt; 1
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#ff79c6">false</span> <span style="color:#6272a4">// =&gt; 0
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#34;3.14&#34;</span> <span style="color:#6272a4">// =&gt; 3.14
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#34;s123&#34;</span> <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#39;123s&#39;</span> <span style="color:#6272a4">// =&gt; NaN
+<p>对于 <code>Boolean</code> 使用两次取反操作符 <code>!!</code> 可强制转换为布尔值。</p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">!!<span style="color:#859900;font-weight:bold">NaN</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span><span style="color:#93a1a1;font-style:italic"></span>!!<span style="color:#2aa198;font-weight:bold">0</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span><span style="color:#93a1a1;font-style:italic"></span>!!<span style="color:#2aa198">&#39;0&#39;</span> <span style="color:#93a1a1;font-style:italic">// =&gt; true
+</span><span style="color:#93a1a1;font-style:italic"></span>!!<span style="color:#859900;font-weight:bold">null</span> <span style="color:#93a1a1;font-style:italic">// =&gt; flase
+</span><span style="color:#93a1a1;font-style:italic"></span>!!<span style="color:#2aa198">&#39;&#39;</span> <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span><span style="color:#93a1a1;font-style:italic"></span>!!<span style="color:#859900;font-weight:bold">null</span> <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span><span style="color:#93a1a1;font-style:italic"></span>!!<span style="color:#859900;font-weight:bold">undefined</span> <span style="color:#93a1a1;font-style:italic">// =&gt; false
+</span></code></pre></div><p>对于<code>Number</code>则使用四则运算 <code>+ - * /</code> ，一般使用 <code>+</code> 或 <code>-</code> 多。</p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">+<span style="color:#859900;font-weight:bold">NaN</span> <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#2aa198">&#39;&#39;</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 0
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#859900;font-weight:bold">undefined</span> <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#859900;font-weight:bold">null</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 0
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#859900;font-weight:bold">true</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 1
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#859900;font-weight:bold">false</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 0
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#2aa198">&#34;3.14&#34;</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 3.14
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#2aa198">&#34;s123&#34;</span> <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span>+<span style="color:#2aa198">&#39;123s&#39;</span> <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
 </span></code></pre></div><p>当<code>+</code>为<code>二元运算符</code>时比较特殊：</p>
 <ul>
 <li>当有一个操作数为<code>String</code>类型时，此时作为字符串连接符。</li>
 <li>当有一个操作数为<code>Number</code>类型，另一个为其他基本类型(除String)，此时为数学加法，不为Number类型被转换为Number类型。</li>
 <li>当有一个操作数为<code>Number</code>类型(或者两个都是引用类型)，另一个为对象(引用类型)，双方<code>都转为字符串</code>。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#bd93f9">123</span> <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;str&#34;</span> =&gt; <span style="color:#6272a4">// &#34;123str&#34;
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">2</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">false</span> <span style="color:#6272a4">// =&gt; 2+0=2
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">true</span> <span style="color:#6272a4">// =&gt; 1+1=2
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">NaN</span> <span style="color:#6272a4">// =&gt; NaN
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">null</span> <span style="color:#6272a4">// =&gt; 1+0=1
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">undefined</span> <span style="color:#6272a4">// =&gt; 1+NaN=NaN
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> obj1 <span style="color:#ff79c6">=</span> {};
-<span style="color:#8be9fd;font-style:italic">let</span> ojb2 <span style="color:#ff79c6">=</span> {};
-obj1 <span style="color:#ff79c6">+</span> obj2 <span style="color:#6272a4">// =&gt; &#39;[object Object][object Object]&#39;
-</span><span style="color:#6272a4"></span>   
-<span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> [] <span style="color:#6272a4">// =&gt; &#39;1&#39;
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> {} <span style="color:#6272a4">// =&gt; &#39;1[object Object]&#39;
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">function</span>(){} <span style="color:#6272a4">// =&gt; &#39;1function(){}&#39;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#2aa198;font-weight:bold">123</span> + <span style="color:#2aa198">&#34;str&#34;</span> =&gt; <span style="color:#93a1a1;font-style:italic">// &#34;123str&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">2</span> + <span style="color:#859900;font-weight:bold">false</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 2+0=2
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + <span style="color:#859900;font-weight:bold">true</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 1+1=2
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + <span style="color:#859900;font-weight:bold">NaN</span> <span style="color:#93a1a1;font-style:italic">// =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + <span style="color:#859900;font-weight:bold">null</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 1+0=1
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + <span style="color:#859900;font-weight:bold">undefined</span> <span style="color:#93a1a1;font-style:italic">// =&gt; 1+NaN=NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">obj1</span> = {};
+<span style="color:#859900">let</span> <span style="color:#268bd2">ojb2</span> = {};
+<span style="color:#268bd2">obj1</span> + <span style="color:#268bd2">obj2</span> <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;[object Object][object Object]&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span>   
+<span style="color:#2aa198;font-weight:bold">1</span> + [] <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;1&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + {} <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;1[object Object]&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + <span style="color:#859900">function</span>(){} <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;1function(){}&#39;
 </span></code></pre></div></li>
 </ol>
 <h2 id="对象转换为基本类型">对象转换为基本类型</h2>
@@ -384,29 +381,29 @@ obj1 <span style="color:#ff79c6">+</span> obj2 <span style="color:#6272a4">// =&
 <h3 id="hint">Hint</h3>
 <p><code>&quot;string&quot;</code></p>
 <p>对象到字符串的转换，当我们对<code>期望一个字符串</code>的对象执行操作，如作为<code>alert</code>的参数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// 输出
-</span><span style="color:#6272a4"></span>alert(obj); <span style="color:#6272a4">// 此时hint的值为&#34;string&#34;
-</span><span style="color:#6272a4"></span>
-<span style="color:#6272a4">// 将对象作为属性键
-</span><span style="color:#6272a4"></span>anotherObj[obj] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">123</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#93a1a1;font-style:italic">// 输出
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">alert</span>(<span style="color:#268bd2">obj</span>); <span style="color:#93a1a1;font-style:italic">// 此时hint的值为&#34;string&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#93a1a1;font-style:italic">// 将对象作为属性键
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">anotherObj</span>[<span style="color:#268bd2">obj</span>] = <span style="color:#2aa198;font-weight:bold">123</span>;
 </code></pre></div><p><code>&quot;number&quot;</code></p>
 <p>对象到数字的转换，例如当我们进行<code>数学运算</code>时：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// 显式转换
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> num <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Number</span>(obj);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#93a1a1;font-style:italic">// 显式转换
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">num</span> = <span style="color:#cb4b16">Number</span>(<span style="color:#268bd2">obj</span>);
 
-<span style="color:#6272a4">// 数学运算（除了二元加法）
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> n <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">+</span>obj; <span style="color:#6272a4">// 一元加法
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> delta <span style="color:#ff79c6">=</span> date1 <span style="color:#ff79c6">-</span> date2;
+<span style="color:#93a1a1;font-style:italic">// 数学运算（除了二元加法）
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">n</span> = +<span style="color:#268bd2">obj</span>; <span style="color:#93a1a1;font-style:italic">// 一元加法
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">delta</span> = <span style="color:#268bd2">date1</span> - <span style="color:#268bd2">date2</span>;
 
-<span style="color:#6272a4">// 小于/大于的比较
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> greater <span style="color:#ff79c6">=</span> user1 <span style="color:#ff79c6">&gt;</span> user2;
+<span style="color:#93a1a1;font-style:italic">// 小于/大于的比较
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">greater</span> = <span style="color:#268bd2">user1</span> &gt; <span style="color:#268bd2">user2</span>;
 </code></pre></div><p><code>&quot;default&quot;</code></p>
 <p>二元加法<code>+</code>，不严格相等 <code>==</code>，<code>&lt;</code>和<code>&gt;</code>操作符。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">// 二元加法使用默认 hint
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> total <span style="color:#ff79c6">=</span> obj1 <span style="color:#ff79c6">+</span> obj2;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#93a1a1;font-style:italic">// 二元加法使用默认 hint
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">total</span> = <span style="color:#268bd2">obj1</span> + <span style="color:#268bd2">obj2</span>;
 
-<span style="color:#6272a4">// obj == number 使用默认 hint
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">if</span> (user <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">1</span>) { ... };
+<span style="color:#93a1a1;font-style:italic">// obj == number 使用默认 hint
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">if</span> (<span style="color:#268bd2">user</span> == <span style="color:#2aa198;font-weight:bold">1</span>) { ... };
 </code></pre></div><p>为了实现转换，JavaScript会遵循以下规则(按<code>1-3</code>顺序):</p>
 <ol>
 <li>调用 <code>obj[Symbol.toPrimitive](hint)</code> —— 带有 symbol 键 <code>Symbol.toPrimitive</code>（系统 symbol）的方法，如果这个方法<code>存在</code>的话</li>
@@ -415,23 +412,23 @@ obj1 <span style="color:#ff79c6">+</span> obj2 <span style="color:#6272a4">// =&
 </ol>
 <p><code>Symbol.toPrimitive</code></p>
 <p>这是个有趣的特性，来点代码～ 顺便理解下hint：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> {};
-obj[Symbol.toPrimitive] <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(hint){
-  console.log(<span style="color:#f1fa8c">`hint: </span><span style="color:#f1fa8c">${</span>hint<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">`</span>);
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">obj</span> = {};
+<span style="color:#268bd2">obj</span>[<span style="color:#268bd2">Symbol</span>.<span style="color:#268bd2">toPrimitive</span>] = <span style="color:#859900">function</span>(<span style="color:#268bd2">hint</span>){
+  <span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#2aa198">`hint: </span><span style="color:#2aa198">${</span><span style="color:#268bd2">hint</span><span style="color:#2aa198">}</span><span style="color:#2aa198">`</span>);
 }
 
-<span style="color:#ff79c6">+</span>obj; <span style="color:#6272a4">// =&gt; hint: number
-</span><span style="color:#6272a4"></span>alert(obj) <span style="color:#6272a4">// =&gt; hint: string
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">if</span>(obj <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">3.14</span>){} <span style="color:#6272a4">// =&gt; hint: default
-</span><span style="color:#6272a4"></span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> obj; <span style="color:#6272a4">// =&gt; hint: default
++<span style="color:#268bd2">obj</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; hint: number
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">alert</span>(<span style="color:#268bd2">obj</span>) <span style="color:#93a1a1;font-style:italic">// =&gt; hint: string
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">if</span>(<span style="color:#268bd2">obj</span> == <span style="color:#2aa198;font-weight:bold">3.14</span>){} <span style="color:#93a1a1;font-style:italic">// =&gt; hint: default
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198;font-weight:bold">1</span> + <span style="color:#268bd2">obj</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; hint: default
 </span></code></pre></div><p><code>Symbol.toPrimitive</code>必须返回一个原始值，否则就按上面不存在对待。</p>
 <p>由上面可知<code>Symbol.toPrimitive</code>的优先级较高(后面的toString()和valueOf()也可)，我们可以用它来实现一些特别的操作！</p>
 <p>如：让 <code>a==1 &amp;&amp; a==2 &amp;&amp; a==3</code>返回<code>true </code>?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> a <span style="color:#ff79c6">=</span> {value<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">0</span>};
-a[Symbol.toPrimitive] <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(hint) { <span style="color:#6272a4">// 此时 hint为default
-</span><span style="color:#6272a4"></span>	<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.value<span style="color:#ff79c6">++</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">a</span> = {<span style="color:#268bd2">value</span>: <span style="color:#2aa198;font-weight:bold">0</span>};
+<span style="color:#268bd2">a</span>[<span style="color:#268bd2">Symbol</span>.<span style="color:#268bd2">toPrimitive</span>] = <span style="color:#859900">function</span>(<span style="color:#268bd2">hint</span>) { <span style="color:#93a1a1;font-style:italic">// 此时 hint为default
+</span><span style="color:#93a1a1;font-style:italic"></span>	<span style="color:#859900">return</span> <span style="color:#859900">this</span>.<span style="color:#268bd2">value</span>++;
 }
-a<span style="color:#ff79c6">==</span><span style="color:#bd93f9">1</span> <span style="color:#ff79c6">&amp;&amp;</span> a<span style="color:#ff79c6">==</span><span style="color:#bd93f9">2</span> <span style="color:#ff79c6">&amp;&amp;</span> a<span style="color:#ff79c6">==</span><span style="color:#bd93f9">3</span>; <span style="color:#6272a4">// =&gt; true
+<span style="color:#268bd2">a</span>==<span style="color:#2aa198;font-weight:bold">1</span> &amp;&amp; <span style="color:#268bd2">a</span>==<span style="color:#2aa198;font-weight:bold">2</span> &amp;&amp; <span style="color:#268bd2">a</span>==<span style="color:#2aa198;font-weight:bold">3</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; true
 </span></code></pre></div><p><code>toString()</code>和<code>valueof()</code></p>
 <p>如果没有 <code>Symbol.toPrimitive</code>(这也是目前默认的)，那么 JavaScript 将尝试寻找 <code>toString</code> 和 <code>valueOf</code> 方法：</p>
 <ul>
@@ -446,31 +443,32 @@ a<span style="color:#ff79c6">==</span><span style="color:#bd93f9">1</span> <span
 </ul>
 <p>一般地，<code>toString()</code>作为“全能”的方法来处理转换。</p>
 <p>看代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> {};
-<span style="color:#ff79c6">if</span>(obj.hasOwnProperty(Symbol.toPrimitive)){
-  alert(obj); <span style="color:#6272a4">// =&gt; &#34;[object Object]&#34;
-</span><span style="color:#6272a4"></span>}
-obj <span style="color:#ff79c6">===</span> obj.valueOf() <span style="color:#6272a4">// =&gt; true
-</span><span style="color:#6272a4"></span>
-</code></pre></div><p>讨论一些让人觉得怪(Wried)的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">+</span>[]; <span style="color:#6272a4">// =&gt; 此时hint明显为number, [].valueOf()返回自身(对象),直接当不存在，因此调用toString() =&gt; &#39;&#39; =&gt; 0
-</span><span style="color:#6272a4"></span>		 <span style="color:#6272a4">// 原始类型转换 &#39;&#39; =&gt; 0
-</span><span style="color:#6272a4"></span>alert([]); <span style="color:#6272a4">// =&gt; hint: string =&gt; [].toString() =&gt; &#39;&#39;
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">+</span>{}; <span style="color:#6272a4">// =&gt; hint: number =&gt; {}.valueOf() =&gt; {} =&gt; {}.toString() =&gt; &#39;[object Object]&#39; =&gt; NaN
-</span><span style="color:#6272a4"></span>alert({}); <span style="color:#6272a4">// =&gt; hint: string =&gt; toString() =&gt; &#39;[object Object]&#39;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">obj</span> = {};
+<span style="color:#859900">if</span>(<span style="color:#268bd2">obj</span>.<span style="color:#268bd2">hasOwnProperty</span>(<span style="color:#268bd2">Symbol</span>.<span style="color:#268bd2">toPrimitive</span>)){
+  <span style="color:#268bd2">alert</span>(<span style="color:#268bd2">obj</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;[object Object]&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>}
+<span style="color:#268bd2">obj</span> === <span style="color:#268bd2">obj</span>.<span style="color:#268bd2">valueOf</span>() <span style="color:#93a1a1;font-style:italic">// =&gt; true
+</span><span style="color:#93a1a1;font-style:italic"></span>
+</code></pre></div><p>讨论一些让人觉得怪(weird)的。</p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">+[]; <span style="color:#93a1a1;font-style:italic">// =&gt; 此时hint明显为number, [].valueOf()返回自身(对象),直接当不存在，因此调用toString() =&gt; &#39;&#39; =&gt; 0
+</span><span style="color:#93a1a1;font-style:italic"></span>		 <span style="color:#93a1a1;font-style:italic">// 原始类型转换 &#39;&#39; =&gt; 0
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">alert</span>([]); <span style="color:#93a1a1;font-style:italic">// =&gt; hint: string =&gt; [].toString() =&gt; &#39;&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span>+{}; <span style="color:#93a1a1;font-style:italic">// =&gt; hint: number =&gt; {}.valueOf() =&gt; {} =&gt; {}.toString() =&gt; &#39;[object Object]&#39; =&gt; NaN
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">alert</span>({}); <span style="color:#93a1a1;font-style:italic">// =&gt; hint: string =&gt; toString() =&gt; &#39;[object Object]&#39;
 </span></code></pre></div><p><code>hint</code>为<code>&quot;default&quot;</code>，更是怪异：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">[] <span style="color:#ff79c6">==</span> {}; <span style="color:#6272a4">// =&gt; &#39;&#39; == &#39;[object Object]&#39; 明显为false
-</span><span style="color:#6272a4"></span>[] <span style="color:#ff79c6">+</span> {}; <span style="color:#6272a4">// =&gt; &#39;&#39; + &#39;[object Object]&#39; =&gt; &#39;[object Object]&#39;
-</span><span style="color:#6272a4"></span>{} <span style="color:#ff79c6">+</span> []; <span style="color:#6272a4">// =&gt; 0 ??? 这是为什么？
-</span><span style="color:#6272a4"></span>				 <span style="color:#6272a4">// 因为{}在这里是代码块(什么也不执行), 而 + 则作为显示强制转换，hint为number
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">[] == {}; <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;&#39; == &#39;[object Object]&#39; 明显为false
+</span><span style="color:#93a1a1;font-style:italic"></span>[] + {}; <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;&#39; + &#39;[object Object]&#39; =&gt; &#39;[object Object]&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span>{} + []; <span style="color:#93a1a1;font-style:italic">// =&gt; 0 ??? 这是为什么？
+</span><span style="color:#93a1a1;font-style:italic"></span>				 <span style="color:#93a1a1;font-style:italic">// 因为{}在这里是代码块(什么也不执行), 而 + 则作为显示强制转换，hint为number
 </span></code></pre></div><p>有了这些知识后，我们可以将开头的打印 &lsquo;nb&rsquo;解出来了：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">([][[]] <span style="color:#ff79c6">+</span> [])[<span style="color:#ff79c6">+!!</span>[]] <span style="color:#ff79c6">+</span> ([] <span style="color:#ff79c6">+</span> {})[<span style="color:#ff79c6">!+</span>[] <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">!!</span>[]]; <span style="color:#6272a4">// =&gt; &#39;nb&#39;
-</span><span style="color:#6272a4"></span> [][[]] <span style="color:#6272a4">//=&gt; 这是一个数组访问表达式，hint为number =&gt; [].toString() =&gt; &#39;&#39; =&gt; 0,而[][0]明显为undefined
-</span><span style="color:#6272a4"></span> [][[]] <span style="color:#ff79c6">+</span> [] <span style="color:#6272a4">// =&gt; undefined + [] hint为default =&gt; &#34;undefined&#34; + &#39;&#39; =&gt; &#34;undefined&#34;
-</span><span style="color:#6272a4"></span>             [<span style="color:#ff79c6">+!!</span>[]] <span style="color:#6272a4">// =&gt; +true =&gt; 1 即 &#34;undefined&#34;[1] === &#39;n&#39;
-</span><span style="color:#6272a4"></span>                        [] <span style="color:#ff79c6">+</span> {} <span style="color:#6272a4">// =&gt; &#39;[object Object]&#39;
-</span><span style="color:#6272a4"></span>                                 <span style="color:#ff79c6">!+</span>[] <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">!!</span>[] <span style="color:#6272a4">// =&gt; !0 + true =&gt; true + true =&gt; 2
-</span></code></pre></div><p>说实话我是挺烦这种脑筋急转弯的。。就像耍小聪明！在最后说一下不严格相等操作符 <code>==</code></p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">([][[]] + [])[+!![]] + ([] + {})[!+[] + !![]]; <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;nb&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span> [][[]] <span style="color:#93a1a1;font-style:italic">//=&gt; 这是一个数组访问表达式，hint为number =&gt; [].toString() =&gt; &#39;&#39; =&gt; 0,而[][0]明显为undefined
+</span><span style="color:#93a1a1;font-style:italic"></span> [][[]] + [] <span style="color:#93a1a1;font-style:italic">// =&gt; undefined + [] hint为default =&gt; &#34;undefined&#34; + &#39;&#39; =&gt; &#34;undefined&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>             [+!![]] <span style="color:#93a1a1;font-style:italic">// =&gt; +true =&gt; 1 即 &#34;undefined&#34;[1] === &#39;n&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span>                        [] + {} <span style="color:#93a1a1;font-style:italic">// =&gt; &#39;[object Object]&#39;
+</span><span style="color:#93a1a1;font-style:italic"></span>                                 !+[] + !![] <span style="color:#93a1a1;font-style:italic">// =&gt; !0 + true =&gt; true + true =&gt; 2
+</span></code></pre></div><p>说实话我是挺烦这种脑筋急转弯的。。就像耍小聪明！在最后说一下不严格相等操作符 <code>==</code>和严格相等操作符 <code>===</code>：</p>
+<h3 id="heading">==</h3>
 <p>等于运算符（<code>==</code>）检查其两个操作数是否相等，并返回<code>Boolean</code>结果。与严格相等运算符（<code>===</code>）不同，它会尝试强制类型转换并且比较不同类型的操作数。</p>
 <p>相等运算符（<code>==</code>和<code>!=</code>）使用<a href="https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3" target="_blank" rel="noopener">抽象相等比较算法</a>比较两个操作数。可以大致概括如下：</p>
 <ul>
@@ -493,6 +491,21 @@ obj <span style="color:#ff79c6">===</span> obj.valueOf() <span style="color:#627
 <li><code>String</code>：<code>true</code>仅当两个操作数具有相同顺序的相同字符时才返回。</li>
 <li><code>Number</code>：<code>true</code>仅当两个操作数具有相同的值时才返回。<code>+0</code>并被<code>-0</code>视为相同的值。如果任一操作数为<code>NaN</code>，则返回<code>false</code>。</li>
 <li><code>Boolean</code>：<code>true</code>仅当操作数为两个<code>true</code>或两个<code>false</code>时才返回<code>true</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-1">===</h3>
+<p>全等运算符（<code>===</code>和 <code>!==</code>）使用<a href="https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.6" target="_blank" rel="noopener">全等比较算法</a>来比较两个操作数。</p>
+<ul>
+<li>如果操作数的类型不同，则返回 <code>false</code>。</li>
+<li>如果两个操作数都是对象，只有当它们指向同一个对象时才返回 <code>true</code>。</li>
+<li>如果两个操作数都为 <code>null</code>，或者两个操作数都为 <code>undefined</code>，返回 <code>true</code>。</li>
+<li>如果两个操作数有任意一个为 <code>NaN</code>，返回 <code>false</code>。</li>
+<li>否则，比较两个操作数的值：
+<ul>
+<li>数字类型必须拥有相同的数值。<code>+0</code> 和 <code>-0</code> 会被认为是相同的值。</li>
+<li>字符串类型必须拥有相同顺序的相同字符。</li>
+<li>布尔运算符必须同时为 <code>true</code> 或同时为 <code>false</code>。</li>
 </ul>
 </li>
 </ul>
@@ -520,10 +533,9 @@ obj <span style="color:#ff79c6">===</span> obj.valueOf() <span style="color:#627
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -539,7 +551,8 @@ obj <span style="color:#ff79c6">===</span> obj.valueOf() <span style="color:#627
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -574,6 +587,5 @@ obj <span style="color:#ff79c6">===</span> obj.valueOf() <span style="color:#627
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

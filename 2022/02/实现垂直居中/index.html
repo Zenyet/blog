@@ -19,7 +19,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -30,10 +29,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -43,70 +42,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -186,6 +183,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -212,28 +210,28 @@
 <h4 id="方式一默认">方式一：默认</h4>
 <p>只需简单地设置一下padding就可以达到垂直居中。</p>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#6272a4">&lt;!-- HTML --&gt;</span>
-&lt;<span style="color:#ff79c6">main</span>&gt;
-  &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;#0&#34;</span>&gt;a元素&lt;/<span style="color:#ff79c6">a</span>&gt;
-	&lt;<span style="color:#ff79c6">span</span>&gt;span元素&lt;/<span style="color:#ff79c6">span</span>&gt;
-&lt;/<span style="color:#ff79c6">main</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#93a1a1;font-style:italic">&lt;!-- HTML --&gt;</span>
+&lt;<span style="color:#268bd2;font-weight:bold">main</span>&gt;
+  &lt;<span style="color:#268bd2;font-weight:bold">a</span> <span style="color:#268bd2">href</span>=<span style="color:#2aa198">&#34;#0&#34;</span>&gt;a元素&lt;/<span style="color:#268bd2;font-weight:bold">a</span>&gt;
+	&lt;<span style="color:#268bd2;font-weight:bold">span</span>&gt;span元素&lt;/<span style="color:#268bd2;font-weight:bold">span</span>&gt;
+&lt;/<span style="color:#268bd2;font-weight:bold">main</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#ff79c6">body</span> {
-	<span style="color:#ff79c6">background-color</span>: <span style="color:#bd93f9">#f06d06</span>;
-	<span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#268bd2;font-weight:bold">body</span> {
+	<span style="color:#859900">background-color</span>: <span style="color:#2aa198;font-weight:bold">#f06d06</span>;
+	<span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
 }
 
-<span style="color:#ff79c6">main</span> {
-	<span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
-  <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">0</span>;
-	<span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">80</span><span style="color:#8be9fd">px</span>;
+<span style="color:#268bd2;font-weight:bold">main</span> {
+	<span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">white</span>;
+  <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span> <span style="color:#2aa198;font-weight:bold">0</span>;
+	<span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">80</span><span style="color:#859900;font-weight:bold">px</span>;
 }
 
-<span style="color:#ff79c6">main</span> <span style="color:#ff79c6">a</span><span style="color:#ff79c6">,</span> <span style="color:#ff79c6">main</span> <span style="color:#ff79c6">span</span>{
-	<span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">black</span>;
-	<span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-	<span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">40</span><span style="color:#8be9fd">px</span>;
-	<span style="color:#ff79c6">text-decoration</span>: <span style="color:#ff79c6">none</span>;
+<span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2;font-weight:bold">a</span>, <span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2;font-weight:bold">span</span>{
+	<span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">black</span>;
+	<span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+	<span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">40</span><span style="color:#859900;font-weight:bold">px</span>;
+	<span style="color:#859900">text-decoration</span>: <span style="color:#859900;font-weight:bold">none</span>;
 }
 </code></pre></div><p>效果：</p>
 <p>
@@ -242,34 +240,34 @@
 
 
 <figure class="img-con" style="padding-top: 43.81551362683438%;">
-    <img class="lazyload" data-src="/uploads/center-inline.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-inline.png" alt=""   />
 </figure>
 </p>
 <h4 id="方式二设置line-height和父元素高度一致">方式二：设置<code>line-height</code>和父元素高度一致</h4>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">main</span>&gt;
-      &lt;<span style="color:#ff79c6">div</span>&gt;一些需要垂直居中的文本&lt;/<span style="color:#ff79c6">div</span>&gt;
-    &lt;/<span style="color:#ff79c6">main</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">main</span>&gt;
+      &lt;<span style="color:#268bd2;font-weight:bold">div</span>&gt;一些需要垂直居中的文本&lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">main</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#ff79c6">body</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#bd93f9">#f06d06</span>;
-        <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#268bd2;font-weight:bold">body</span> {
+        <span style="color:#859900">background</span>: <span style="color:#2aa198;font-weight:bold">#f06d06</span>;
+        <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
       }
 
-      <span style="color:#ff79c6">main</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">0</span>;
-        <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">40</span><span style="color:#8be9fd">px</span>;
+      <span style="color:#268bd2;font-weight:bold">main</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span> <span style="color:#2aa198;font-weight:bold">0</span>;
+        <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">40</span><span style="color:#859900;font-weight:bold">px</span>;
       }
 
-      <span style="color:#ff79c6">main</span> <span style="color:#ff79c6">div</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">black</span>;
-        <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">80</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">80</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">50</span><span style="color:#8be9fd">%</span>;
-        <span style="color:#ff79c6">white-space</span>: <span style="color:#ff79c6">nowrap</span>;
+      <span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2;font-weight:bold">div</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">black</span>;
+        <span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">80</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">line-height</span>: <span style="color:#2aa198;font-weight:bold">80</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">50</span><span style="color:#859900;font-weight:bold">%</span>;
+        <span style="color:#859900">white-space</span>: <span style="color:#859900;font-weight:bold">nowrap</span>;
       }
 </code></pre></div><p>效果：</p>
 <p>
@@ -278,7 +276,7 @@
 
 
 <figure class="img-con" style="padding-top: 32.972972972972975%;">
-    <img class="lazyload" data-src="/uploads/center-line-height.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-line-height.png" alt=""   />
 </figure>
 </p>
 <h3 id="多行">多行</h3>
@@ -287,58 +285,58 @@
 <p>我们来看看MDN对<code>vertical-align</code>属性的描述：</p>
 <p><strong><code>vertical-align</code></strong> 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。</p>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">table</span>&gt;
-      &lt;<span style="color:#ff79c6">tr</span>&gt;
-        &lt;<span style="color:#ff79c6">td</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">table</span>&gt;
+      &lt;<span style="color:#268bd2;font-weight:bold">tr</span>&gt;
+        &lt;<span style="color:#268bd2;font-weight:bold">td</span>&gt;
             我在好几篇小说中都提到过一座废弃的古园，实际就是地坛。许多年前旅游业还没有开展，园子荒芜冷落得如						同一片野地，很少被人记起。
-        &lt;/<span style="color:#ff79c6">td</span>&gt;
-      &lt;/<span style="color:#ff79c6">tr</span>&gt;
-    &lt;/<span style="color:#ff79c6">table</span>&gt;
-		<span style="color:#6272a4">&lt;!-- display: table --&gt;</span>
-    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;center-table&#34;</span>&gt;
-      &lt;<span style="color:#ff79c6">p</span>&gt;
+        &lt;/<span style="color:#268bd2;font-weight:bold">td</span>&gt;
+      &lt;/<span style="color:#268bd2;font-weight:bold">tr</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">table</span>&gt;
+		<span style="color:#93a1a1;font-style:italic">&lt;!-- display: table --&gt;</span>
+    &lt;<span style="color:#268bd2;font-weight:bold">div</span> <span style="color:#268bd2">class</span>=<span style="color:#2aa198">&#34;center-table&#34;</span>&gt;
+      &lt;<span style="color:#268bd2;font-weight:bold">p</span>&gt;
         地坛离我家很近。或者说我家离地坛很近。总之，只好认为这是缘分。地坛在我出生前四百多年就座落在那儿了，				而自从我的祖母年轻时带着我父亲来到北京，就一直住在离它不远的地方一五十多年间搬过几次家。
-      &lt;/<span style="color:#ff79c6">p</span>&gt;
-    &lt;/<span style="color:#ff79c6">div</span>&gt;
+      &lt;/<span style="color:#268bd2;font-weight:bold">p</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#ff79c6">body</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#bd93f9">#f06d06</span>;
-        <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#268bd2;font-weight:bold">body</span> {
+        <span style="color:#859900">background</span>: <span style="color:#2aa198;font-weight:bold">#f06d06</span>;
+        <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
       }
 
-      <span style="color:#ff79c6">table</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">240</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">border-collapse</span>: <span style="color:#ff79c6">separate</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">250</span><span style="color:#8be9fd">px</span>;
+      <span style="color:#268bd2;font-weight:bold">table</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">240</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">border-collapse</span>: <span style="color:#859900;font-weight:bold">separate</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">250</span><span style="color:#859900;font-weight:bold">px</span>;
       }
 
-      <span style="color:#ff79c6">table</span> <span style="color:#ff79c6">td</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">black</span>;
-        <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">10</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#ff79c6">white</span>;
-        <span style="color:#6272a4">/* 默认就是 vertical-align: middle; */</span>
+      <span style="color:#268bd2;font-weight:bold">table</span> <span style="color:#268bd2;font-weight:bold">td</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">black</span>;
+        <span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">border</span>: <span style="color:#2aa198;font-weight:bold">10</span><span style="color:#859900;font-weight:bold">px</span> <span style="color:#859900;font-weight:bold">solid</span> <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#93a1a1;font-style:italic">/* 默认就是 vertical-align: middle; */</span>
       }
-			<span style="color:#6272a4">/* 父元素设置为table */</span>
-      .<span style="color:#50fa7b">center-table</span> {
-        <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">table</span>;
-        <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">250</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">240</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+			<span style="color:#93a1a1;font-style:italic">/* 父元素设置为table */</span>
+      .<span style="color:#cb4b16">center-table</span> {
+        <span style="color:#859900">display</span>: <span style="color:#859900;font-weight:bold">table</span>;
+        <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">250</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">240</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
       }
-			<span style="color:#6272a4">/* 子元素设置为tabel-cell */</span>
-      .<span style="color:#50fa7b">center-table</span> <span style="color:#ff79c6">p</span> {
-        <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">table</span><span style="color:#ff79c6">-</span><span style="color:#ff79c6">cell</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">0</span>;
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">black</span>;
-        <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">10</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#ff79c6">white</span>;
-        <span style="color:#6272a4">/* 设置vertical-align: middle垂直居中 */</span>
-        <span style="color:#ff79c6">vertical-align</span>: <span style="color:#ff79c6">middle</span>;
+			<span style="color:#93a1a1;font-style:italic">/* 子元素设置为tabel-cell */</span>
+      .<span style="color:#cb4b16">center-table</span> <span style="color:#268bd2;font-weight:bold">p</span> {
+        <span style="color:#859900">display</span>: <span style="color:#859900;font-weight:bold">table</span>-<span style="color:#859900;font-weight:bold">cell</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">0</span>;
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">black</span>;
+        <span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">border</span>: <span style="color:#2aa198;font-weight:bold">10</span><span style="color:#859900;font-weight:bold">px</span> <span style="color:#859900;font-weight:bold">solid</span> <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#93a1a1;font-style:italic">/* 设置vertical-align: middle垂直居中 */</span>
+        <span style="color:#859900">vertical-align</span>: <span style="color:#859900;font-weight:bold">middle</span>;
       }
 </code></pre></div><p>效果：</p>
 <p>
@@ -347,43 +345,43 @@
 
 
 <figure class="img-con" style="padding-top: 184.21052631578948%;">
-    <img class="lazyload" data-src="/uploads/center-table.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-table.png" alt=""   />
 </figure>
 </p>
 <h4 id="方式二">方式二：</h4>
 <p><code>display: flex</code>和<code>justify-content: center</code></p>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;flex-center&#34;</span>&gt;
-      &lt;<span style="color:#ff79c6">p</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">div</span> <span style="color:#268bd2">class</span>=<span style="color:#2aa198">&#34;flex-center&#34;</span>&gt;
+      &lt;<span style="color:#268bd2;font-weight:bold">p</span>&gt;
         可搬来搬去总是在它周围，而且是越搬离它越近了。我常觉得这中间有着宿命的味道：仿佛这古园就是为了等我，				而历尽沧桑在那儿等待了四百多年。
-      &lt;/<span style="color:#ff79c6">p</span>&gt;
-    &lt;/<span style="color:#ff79c6">div</span>&gt;
+      &lt;/<span style="color:#268bd2;font-weight:bold">p</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-CSS" data-lang="CSS">      <span style="color:#ff79c6">body</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#bd93f9">#f06d06</span>;
-        <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-CSS" data-lang="CSS">      <span style="color:#268bd2;font-weight:bold">body</span> {
+        <span style="color:#859900">background</span>: <span style="color:#2aa198;font-weight:bold">#f06d06</span>;
+        <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
       }
 
-      <span style="color:#ff79c6">div</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">240</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+      <span style="color:#268bd2;font-weight:bold">div</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">240</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
       }
 
-      .<span style="color:#50fa7b">flex-center</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">black</span>;
-        <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">10</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">flex</span>;
-        <span style="color:#ff79c6">flex-direction</span>: <span style="color:#ff79c6">column</span>;
-        <span style="color:#ff79c6">justify-content</span>: <span style="color:#ff79c6">center</span>;
-        <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">200</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">resize</span>: <span style="color:#ff79c6">vertical</span>;
-        <span style="color:#ff79c6">overflow</span>: <span style="color:#ff79c6">auto</span>;
+      .<span style="color:#cb4b16">flex-center</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">black</span>;
+        <span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">border</span>: <span style="color:#2aa198;font-weight:bold">10</span><span style="color:#859900;font-weight:bold">px</span> <span style="color:#859900;font-weight:bold">solid</span> <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">display</span>: <span style="color:#859900;font-weight:bold">flex</span>;
+        <span style="color:#859900">flex-direction</span>: <span style="color:#859900;font-weight:bold">column</span>;
+        <span style="color:#859900">justify-content</span>: <span style="color:#859900;font-weight:bold">center</span>;
+        <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">200</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">resize</span>: <span style="color:#859900;font-weight:bold">vertical</span>;
+        <span style="color:#859900">overflow</span>: <span style="color:#859900;font-weight:bold">auto</span>;
       }
-      .<span style="color:#50fa7b">flex-center</span> <span style="color:#ff79c6">p</span> {
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">0</span>;
-        <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+      .<span style="color:#cb4b16">flex-center</span> <span style="color:#268bd2;font-weight:bold">p</span> {
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">0</span>;
+        <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
       }
 </code></pre></div><p>效果：</p>
 <p>
@@ -392,7 +390,7 @@
 
 
 <figure class="img-con" style="padding-top: 78.30188679245283%;">
-    <img class="lazyload" data-src="/uploads/center-flexbox.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-flexbox.png" alt=""   />
 </figure>
 </p>
 <p><strong>注意:</strong> 实现该效果的盒子必须要提前固定高度，我们知道，弹性盒子的“面积”就是里面的元素撑开的，设置<code>justify-content: center</code>系统就可以合理地分配上下的空间以达到居中。</p>
@@ -406,28 +404,28 @@
 <h4 id="方式一-1">方式一：</h4>
 <p>在<code>已知子父元素高度</code>情况下使用定位。</p>
 <p>html：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">main</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;parent&#34;</span>&gt;
-        &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;child&#34;</span>&gt;&lt;/<span style="color:#ff79c6">div</span>&gt;
-    &lt;/<span style="color:#ff79c6">main</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2">class</span>=<span style="color:#2aa198">&#34;parent&#34;</span>&gt;
+        &lt;<span style="color:#268bd2;font-weight:bold">div</span> <span style="color:#268bd2">class</span>=<span style="color:#2aa198">&#34;child&#34;</span>&gt;&lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">main</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">        <span style="color:#ff79c6">body</span>{
-            <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
-            <span style="color:#ff79c6">background-color</span>: <span style="color:#bd93f9">#f06d06</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">        <span style="color:#268bd2;font-weight:bold">body</span>{
+            <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
+            <span style="color:#859900">background-color</span>: <span style="color:#2aa198;font-weight:bold">#f06d06</span>;
         }
-        .<span style="color:#50fa7b">parent</span>{
-            <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">white</span>;
-            <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
+        .<span style="color:#cb4b16">parent</span>{
+            <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+            <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">position</span>: <span style="color:#859900;font-weight:bold">relative</span>;
         }
-				<span style="color:#6272a4">/* 子元素height/2 + top=100px = 父元素/2 */</span>
-        .<span style="color:#50fa7b">child</span>{
-            <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">absolute</span>;
-            <span style="color:#ff79c6">top</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">left</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">right</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">black</span>;
+				<span style="color:#93a1a1;font-style:italic">/* 子元素height/2 + top=100px = 父元素/2 */</span>
+        .<span style="color:#cb4b16">child</span>{
+            <span style="color:#859900">position</span>: <span style="color:#859900;font-weight:bold">absolute</span>;
+            <span style="color:#859900">top</span>: <span style="color:#2aa198;font-weight:bold">100</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">left</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">right</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">100</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">black</span>;
         }
 </code></pre></div><p>效果：</p>
 <p>
@@ -436,39 +434,39 @@
 
 
 <figure class="img-con" style="padding-top: 97.5%;">
-    <img class="lazyload" data-src="/uploads/center-block01.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-block01.png" alt=""   />
 </figure>
 </p>
 <h4 id="方式二-1">方式二：</h4>
 <p>知道父元素高度<code>不知道子元素高度</code>情况下：</p>
 <p>使用定位和<code>transform</code>.</p>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">main</span>&gt;
-      &lt;<span style="color:#ff79c6">div</span>&gt;一些内容撑开高度，但不知道具体高度。。&lt;/<span style="color:#ff79c6">div</span>&gt;
-    &lt;/<span style="color:#ff79c6">main</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">main</span>&gt;
+      &lt;<span style="color:#268bd2;font-weight:bold">div</span>&gt;一些内容撑开高度，但不知道具体高度。。&lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">main</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#ff79c6">body</span> {
-        <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
-        <span style="color:#ff79c6">background-color</span>: <span style="color:#bd93f9">#f06d06</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#268bd2;font-weight:bold">body</span> {
+        <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
+        <span style="color:#859900">background-color</span>: <span style="color:#2aa198;font-weight:bold">#f06d06</span>;
       }
 
-      <span style="color:#ff79c6">main</span> {
-        <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
+      <span style="color:#268bd2;font-weight:bold">main</span> {
+        <span style="color:#859900">background</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">position</span>: <span style="color:#859900;font-weight:bold">relative</span>;
       }
 
-      <span style="color:#ff79c6">main</span> <span style="color:#ff79c6">div</span> {
-          <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">absolute</span>;
-          <span style="color:#ff79c6">top</span>: <span style="color:#bd93f9">50</span><span style="color:#8be9fd">%</span>;
-          <span style="color:#ff79c6">left</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-          <span style="color:#ff79c6">right</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-          <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">black</span>;
-          <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-          <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#fff</span>;
-          <span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">translateY</span>(<span style="color:#bd93f9">-50</span><span style="color:#8be9fd">%</span>);
+      <span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2;font-weight:bold">div</span> {
+          <span style="color:#859900">position</span>: <span style="color:#859900;font-weight:bold">absolute</span>;
+          <span style="color:#859900">top</span>: <span style="color:#2aa198;font-weight:bold">50</span><span style="color:#859900;font-weight:bold">%</span>;
+          <span style="color:#859900">left</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+          <span style="color:#859900">right</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+          <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">black</span>;
+          <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+          <span style="color:#859900">color</span>: <span style="color:#2aa198;font-weight:bold">#fff</span>;
+          <span style="color:#859900">transform</span>: <span style="color:#cb4b16">translateY</span>(<span style="color:#2aa198;font-weight:bold">-50</span><span style="color:#859900;font-weight:bold">%</span>);
       }
 </code></pre></div><p>为什么要<code>translateY(-50%) </code>?</p>
 <p>因为使用定位进行移动时，位置是相对位置，如上面的<code>top: 50%(</code>main元素开启了相对定位，所以div参考自它的一半高度进行移动)，移动后的div元素最顶&quot;边框&quot;与main元素的垂直中&quot;线&quot;重合。</p>
@@ -479,7 +477,7 @@
 
 
 <figure class="img-con" style="padding-top: 99.06542056074767%;">
-    <img class="lazyload" data-src="/uploads/center-top50.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-top50.png" alt=""   />
 </figure>
 </p>
 <p>设置<code>transform: translateY(-50%)</code>后：</p>
@@ -489,40 +487,40 @@
 
 
 <figure class="img-con" style="padding-top: 96.94189602446484%;">
-    <img class="lazyload" data-src="/uploads/center-trans50.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-trans50.png" alt=""   />
 </figure>
 </p>
 <p>可以看到div元素相对于自己进行向上移动自身高度的50%以达到垂直居中。</p>
 <h4 id="方式三">方式三：</h4>
 <p>如果你不在乎container的高度被元素撑高的话，使用<code>display: table</code>和<code>display: table-cell</code>或者使用html的table元素设置<code>vertical-align: middle</code>。</p>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">main</span>&gt;
-        &lt;<span style="color:#ff79c6">div</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">main</span>&gt;
+        &lt;<span style="color:#268bd2;font-weight:bold">div</span>&gt;
            I&#39;m a block-level element with an unknown height, centered vertically within my parent.
-        &lt;/<span style="color:#ff79c6">div</span>&gt;
-      &lt;/<span style="color:#ff79c6">main</span>&gt;
+        &lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
+      &lt;/<span style="color:#268bd2;font-weight:bold">main</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">        <span style="color:#ff79c6">body</span> {
-            <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
-            <span style="color:#ff79c6">background-color</span>: <span style="color:#bd93f9">#f06d6d</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">        <span style="color:#268bd2;font-weight:bold">body</span> {
+            <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
+            <span style="color:#859900">background-color</span>: <span style="color:#2aa198;font-weight:bold">#f06d6d</span>;
         }
 
-        <span style="color:#ff79c6">main</span> {
-            <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">white</span>;
-            <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
-            <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">table</span>;
+        <span style="color:#268bd2;font-weight:bold">main</span> {
+            <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+            <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">position</span>: <span style="color:#859900;font-weight:bold">relative</span>;
+            <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">display</span>: <span style="color:#859900;font-weight:bold">table</span>;
         }
         
-        <span style="color:#ff79c6">main</span> <span style="color:#ff79c6">div</span> {
-            <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">black</span>;
-            <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-            <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-            <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">table</span><span style="color:#ff79c6">-</span><span style="color:#ff79c6">cell</span>;
-            <span style="color:#ff79c6">vertical-align</span>: <span style="color:#ff79c6">middle</span>;
+        <span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2;font-weight:bold">div</span> {
+            <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">black</span>;
+            <span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+            <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+            <span style="color:#859900">display</span>: <span style="color:#859900;font-weight:bold">table</span>-<span style="color:#859900;font-weight:bold">cell</span>;
+            <span style="color:#859900">vertical-align</span>: <span style="color:#859900;font-weight:bold">middle</span>;
         }
 </code></pre></div><p>效果：</p>
 <p>
@@ -531,39 +529,39 @@
 
 
 <figure class="img-con" style="padding-top: 96.96969696969697%;">
-    <img class="lazyload" data-src="/uploads/center-block02.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-block02.png" alt=""   />
 </figure>
 </p>
 <h3 id="flexbox">Flexbox</h3>
 <p>flexbox实现居中效果是最好的，也是比较简单的。</p>
 <p>html:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#ff79c6">main</span>&gt;
-      &lt;<span style="color:#ff79c6">div</span>&gt;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#268bd2;font-weight:bold">main</span>&gt;
+      &lt;<span style="color:#268bd2;font-weight:bold">div</span>&gt;
         I&#39;m a block-level element with an unknown height, centered vertically
         within my parent.
-      &lt;/<span style="color:#ff79c6">div</span>&gt;
-    &lt;/<span style="color:#ff79c6">main</span>&gt;
+      &lt;/<span style="color:#268bd2;font-weight:bold">div</span>&gt;
+    &lt;/<span style="color:#268bd2;font-weight:bold">main</span>&gt;
 </code></pre></div><p>CSS样式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#ff79c6">body</span> {
-        <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span>;
-        <span style="color:#ff79c6">background-color</span>: <span style="color:#bd93f9">#fd6d6d</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">      <span style="color:#268bd2;font-weight:bold">body</span> {
+        <span style="color:#859900">font-size</span>: <span style="color:#2aa198;font-weight:bold">1</span><span style="color:#859900;font-weight:bold">em</span>;
+        <span style="color:#859900">background-color</span>: <span style="color:#2aa198;font-weight:bold">#fd6d6d</span>;
       }
 
-      <span style="color:#ff79c6">main</span> {
-        <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">flex</span>;
-        <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">white</span>;
-        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
-        <span style="color:#ff79c6">flex-direction</span>: <span style="color:#ff79c6">column</span>;
-        <span style="color:#ff79c6">justify-content</span>: <span style="color:#ff79c6">center</span>;
+      <span style="color:#268bd2;font-weight:bold">main</span> {
+        <span style="color:#859900">display</span>: <span style="color:#859900;font-weight:bold">flex</span>;
+        <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+        <span style="color:#859900">width</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">height</span>: <span style="color:#2aa198;font-weight:bold">300</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">margin</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
+        <span style="color:#859900">flex-direction</span>: <span style="color:#859900;font-weight:bold">column</span>;
+        <span style="color:#859900">justify-content</span>: <span style="color:#859900;font-weight:bold">center</span>;
       }
 
-      <span style="color:#ff79c6">main</span> <span style="color:#ff79c6">div</span> {
-          <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">black</span>;
-          <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">white</span>;
-          <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+      <span style="color:#268bd2;font-weight:bold">main</span> <span style="color:#268bd2;font-weight:bold">div</span> {
+          <span style="color:#859900">background-color</span>: <span style="color:#859900;font-weight:bold">black</span>;
+          <span style="color:#859900">color</span>: <span style="color:#859900;font-weight:bold">white</span>;
+          <span style="color:#859900">padding</span>: <span style="color:#2aa198;font-weight:bold">20</span><span style="color:#859900;font-weight:bold">px</span>;
       }
 </code></pre></div><p>效果：</p>
 <p>
@@ -572,7 +570,7 @@
 
 
 <figure class="img-con" style="padding-top: 92.51870324189527%;">
-    <img class="lazyload" data-src="/uploads/center-block03.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/center-block03.png" alt=""   />
 </figure>
 </p>
 <p>Reference参考：</p>
@@ -594,10 +592,9 @@
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -613,7 +610,8 @@
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -648,6 +646,5 @@
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

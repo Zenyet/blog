@@ -20,7 +20,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -31,10 +30,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -44,70 +43,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -187,6 +184,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -209,14 +207,14 @@
 <p>如果参数为任何非字符串值，它会简单返回这个值。</p>
 <p>如果参数为字符串，eval会将该字符串当作JavaScript代码来解析，解析失败抛出SyntaxError，解析成功会求值代码并返回该字符串中最后一个表达式或语句的值。</p>
 <p>解析的语句或表达式返回值为空，则返回undefined。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">eval</span>(<span style="color:#ff79c6">undefined</span>); <span style="color:#6272a4">// =&gt; undefined
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">eval</span>(<span style="color:#ff79c6">true</span>); <span style="color:#6272a4">//=&gt; true
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">eval</span>(obj); <span style="color:#6272a4">// =&gt; obj
-</span><span style="color:#6272a4"></span>
-<span style="color:#8be9fd;font-style:italic">eval</span>(<span style="color:#f1fa8c">&#34;var a = &#39;value&#39;&#34;</span>); <span style="color:#6272a4">// declare var a
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">eval</span>(<span style="color:#f1fa8c">&#34;function f(x){return x*x}&#34;</span>);<span style="color:#6272a4">// 声明一局部函数或全局函数
-</span><span style="color:#6272a4"></span>
-<span style="color:#8be9fd;font-style:italic">eval</span>(<span style="color:#f1fa8c">&#34;return 0;&#34;</span>); <span style="color:#6272a4">// 无意义，return只在函数中有效
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#cb4b16">eval</span>(<span style="color:#859900;font-weight:bold">undefined</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; undefined
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">eval</span>(<span style="color:#859900;font-weight:bold">true</span>); <span style="color:#93a1a1;font-style:italic">//=&gt; true
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">eval</span>(<span style="color:#268bd2">obj</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; obj
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#cb4b16">eval</span>(<span style="color:#2aa198">&#34;var a = &#39;value&#39;&#34;</span>); <span style="color:#93a1a1;font-style:italic">// declare var a
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#cb4b16">eval</span>(<span style="color:#2aa198">&#34;function f(x){return x*x}&#34;</span>);<span style="color:#93a1a1;font-style:italic">// 声明一局部函数或全局函数
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#cb4b16">eval</span>(<span style="color:#2aa198">&#34;return 0;&#34;</span>); <span style="color:#93a1a1;font-style:italic">// 无意义，return只在函数中有效
 </span></code></pre></div><h3 id="总之evel操作符函数很危险永远不要在开发中使用">总之，evel操作符(函数)很危险，永远不要在开发中使用。</h3>
 
         </div>
@@ -234,10 +232,9 @@
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -253,7 +250,8 @@
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -288,6 +286,5 @@
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

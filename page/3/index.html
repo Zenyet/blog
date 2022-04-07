@@ -20,7 +20,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -31,10 +30,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -44,70 +43,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -190,16 +187,18 @@
         
         
         <div class="right-link-wrapper wrapper1">
-            <a class="right-link right1" href="https://yequalsx.com/2021/08/javascript%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript%e8%af%ad%e6%b3%95%e7%bb%93%e6%9e%84.jpg);background-position: center;
+            <a class="right-link right1" href="https://yequalsx.com/2021/09/javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript表达式.webp);
             background-size: cover;">
                 <div class="outline16">
-                    <header class="entry-header">JavaScript语法结构</header>
+                    <header class="entry-header">JavaScript表达式</header>
                     
                         
                         <span>JavaScript</span>
                         
+                        <span>basic</span>
+                        
                     
-                    <time class="time">2021-08-02</time>
+                    <time class="time">2021-09-25</time>
                 </div>
             </a>
         </div>
@@ -207,9 +206,66 @@
         <div class="right-link-wrapper wrapper2">
             <div class="layout1">
                 <div class="triangle00">
-                    <a class="right-link rightT0" href="https://yequalsx.com/2021/06/factorypattern/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/%e5%b7%a5%e5%8e%82%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f.jpg);background-position: center;
+                    <a class="right-link rightT0" href="https://yequalsx.com/2021/09/symbol%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/Symbol和解构赋值详解.png);
                     background-size: cover;">
                         <div class="outline20">
+                            <header class="entry-header">Symbol和解构赋值详解</header>
+                            
+                                
+                                <span>JavaScript</span>
+                                
+                                <span>ES6</span>
+                                
+                                <span>basic</span>
+                                
+                            
+                            <time class="time">2021-09-25</time>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="triangle01">
+                    <a class="right-link rightT1" href="https://yequalsx.com/2021/08/javascript%E7%B1%BB%E5%9E%8B%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript类型、值和变量.png);
+                    background-size: cover;">
+                        <div class="outline21">
+                            <header class="entry-header">JavaScript类型、值和变量</header>
+                            
+                                
+                                <span>JavaScript</span>
+                                
+                                <span>ES6</span>
+                                
+                            
+                            <time class="time">2021-08-02</time>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="right-link-wrapper wrapper3">
+            <div class="layout2">
+                <div class="triangle10">
+                    <a class="right-link rightT0" href="https://yequalsx.com/2021/08/javascript%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));url(/uploads/covers/JavaScript%e8%af%ad%e6%b3%95%e7%bb%93%e6%9e%84.jpg);;
+                    background-size: cover;" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript语法结构.jpg);;
+                    background-size: cover;" >
+                        <div class="outline30">
+                            <header class="entry-header">JavaScript语法结构</header>
+                            
+                                
+                                <span>JavaScript</span>
+                                
+                            
+                            <time class="time">2021-08-02</time>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="triangle11">
+                    <a class="right-link rightT1" href="https://yequalsx.com/2021/06/factorypattern/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));url(/uploads/covers/%e5%b7%a5%e5%8e%82%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f.jpg);;
+                    background-size: cover;" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/工厂设计模式.jpg);;
+                    background-size: cover;" >
+                        <div class="outline31">
                             <header class="entry-header">工厂设计模式</header>
                             
                                 
@@ -221,10 +277,6 @@
                     </a>
                 </div>
                 
-            </div>
-        </div>
-        <div class="right-link-wrapper wrapper3">
-            <div class="layout2">
             </div>
         </div>
         
@@ -288,6 +340,20 @@
     ){
         const pagination = document.querySelector(".pagination");
         pagination.classList.add("mobile");
+    }
+
+    
+    const anchors = document.querySelectorAll(".right-link");
+    let flag = true;
+    if(flag) {
+        window.addEventListener("load", () => {
+            let attr = null;
+            flag = false;
+            for (const anchor of anchors) {
+                attr = anchor.getAttribute("style-attr");
+                anchor.style = attr;
+            }
+        });
     }
 </script>
 </body>

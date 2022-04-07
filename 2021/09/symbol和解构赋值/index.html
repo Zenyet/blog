@@ -20,7 +20,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -31,10 +30,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -44,70 +43,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -187,6 +184,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -208,17 +206,17 @@
 <p>符号(Symbol)是ES6新增的一种原始类型(primitive data type)，用作非字符串的属性名。我们知道，JavaScript的基础类型Object是一个属性(Property)的无序集合，其中每个属性(Property)都有一个名字(name)和值(value)。</p>
 <p>在ES6之前属性名必须是字符串，ES6后符号也可以作为属性名。</p>
 <p>查了下，发现Symbol在IE浏览器中不兼容的。。:)))</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> strname <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;string name&#34;</span>;
-<span style="color:#8be9fd;font-style:italic">let</span> symname <span style="color:#ff79c6">=</span> Symbol(<span style="color:#f1fa8c">&#34;propname&#34;</span>);
-console.log(<span style="color:#ff79c6">typeof</span> strname); <span style="color:#6272a4">// =&gt; &#34;string&#34;
-</span><span style="color:#6272a4"></span>console.log(<span style="color:#ff79c6">typeof</span> symname); <span style="color:#6272a4">// =&gt; &#34;symbol&#34;
-</span><span style="color:#6272a4"></span>
-<span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {};
-o[strname] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
-o[symname] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>;<span style="color:#6272a4">// 定义属性
-</span><span style="color:#6272a4"></span>
-console.log(o[strname]);
-console.log(o[symname]); <span style="color:#6272a4">// 访问属性
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">strname</span> = <span style="color:#2aa198">&#34;string name&#34;</span>;
+<span style="color:#859900">let</span> <span style="color:#268bd2">symname</span> = <span style="color:#268bd2">Symbol</span>(<span style="color:#2aa198">&#34;propname&#34;</span>);
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#859900">typeof</span> <span style="color:#268bd2">strname</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;string&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#859900">typeof</span> <span style="color:#268bd2">symname</span>); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;symbol&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#859900">let</span> <span style="color:#268bd2">o</span> = {};
+<span style="color:#268bd2">o</span>[<span style="color:#268bd2">strname</span>] = <span style="color:#2aa198;font-weight:bold">1</span>;
+<span style="color:#268bd2">o</span>[<span style="color:#268bd2">symname</span>] = <span style="color:#2aa198;font-weight:bold">2</span>;<span style="color:#93a1a1;font-style:italic">// 定义属性
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">o</span>[<span style="color:#268bd2">strname</span>]);
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">o</span>[<span style="color:#268bd2">symname</span>]); <span style="color:#93a1a1;font-style:italic">// 访问属性
 </span></code></pre></div><h4 id="创建symbol对象">创建Symbol对象</h4>
 <p>Symbol类型没有字面量语法，而且不支持new Symbol()语法。</p>
 <ul>
@@ -237,12 +235,12 @@ console.log(o[symname]); <span style="color:#6272a4">// 访问属性
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> s1 <span style="color:#ff79c6">=</span> symbol(<span style="color:#f1fa8c">&#34;univalue&#34;</span>);
-s1.toString(); <span style="color:#6272a4">// =&gt; &#34;Symbol(univalue)&#34;
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> s2 <span style="color:#ff79c6">=</span> symbol(<span style="color:#f1fa8c">&#34;univalue&#34;</span>);
-s2.toString(); <span style="color:#6272a4">// =&gt; &#34;Symbol(univalue)&#34;
-</span><span style="color:#6272a4"></span>s1 <span style="color:#ff79c6">==</span> s2; <span style="color:#6272a4">//=&gt; false!!
-</span><span style="color:#6272a4"></span>s1 <span style="color:#ff79c6">===</span> s2; <span style="color:#6272a4">//-&gt; false!
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">s1</span> = <span style="color:#268bd2">symbol</span>(<span style="color:#2aa198">&#34;univalue&#34;</span>);
+<span style="color:#268bd2">s1</span>.<span style="color:#268bd2">toString</span>(); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;Symbol(univalue)&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">s2</span> = <span style="color:#268bd2">symbol</span>(<span style="color:#2aa198">&#34;univalue&#34;</span>);
+<span style="color:#268bd2">s2</span>.<span style="color:#268bd2">toString</span>(); <span style="color:#93a1a1;font-style:italic">// =&gt; &#34;Symbol(univalue)&#34;
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">s1</span> == <span style="color:#268bd2">s2</span>; <span style="color:#93a1a1;font-style:italic">//=&gt; false!!
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">s1</span> === <span style="color:#268bd2">s2</span>; <span style="color:#93a1a1;font-style:italic">//-&gt; false!
 </span></code></pre></div><ul>
 <li>
 <p>静态函数</p>
@@ -261,12 +259,12 @@ s2.toString(); <span style="color:#6272a4">// =&gt; &#34;Symbol(univalue)&#34;
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> s <span style="color:#ff79c6">=</span> Symbol.<span style="color:#ff79c6">for</span>(<span style="color:#f1fa8c">&#34;shared&#34;</span>);
-<span style="color:#8be9fd;font-style:italic">let</span> a <span style="color:#ff79c6">=</span> Symbol.<span style="color:#ff79c6">for</span>(<span style="color:#f1fa8c">&#34;shared&#34;</span>);
-s <span style="color:#ff79c6">==</span> a; <span style="color:#6272a4">// =&gt; true
-</span><span style="color:#6272a4"></span>s <span style="color:#ff79c6">===</span> a; <span style="color:#6272a4">// =&gt; true
-</span><span style="color:#6272a4"></span>
-Symbol.keyFor(s); <span style="color:#6272a4">// &#34;shared&#34;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">s</span> = <span style="color:#268bd2">Symbol</span>.<span style="color:#859900">for</span>(<span style="color:#2aa198">&#34;shared&#34;</span>);
+<span style="color:#859900">let</span> <span style="color:#268bd2">a</span> = <span style="color:#268bd2">Symbol</span>.<span style="color:#859900">for</span>(<span style="color:#2aa198">&#34;shared&#34;</span>);
+<span style="color:#268bd2">s</span> == <span style="color:#268bd2">a</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; true
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">s</span> === <span style="color:#268bd2">a</span>; <span style="color:#93a1a1;font-style:italic">// =&gt; true
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#268bd2">Symbol</span>.<span style="color:#268bd2">keyFor</span>(<span style="color:#268bd2">s</span>); <span style="color:#93a1a1;font-style:italic">// &#34;shared&#34;
 </span></code></pre></div><h4 id="属性">属性</h4>
 <ul>
 <li>Symbol.length 值为0</li>
@@ -293,10 +291,9 @@ Symbol.keyFor(s); <span style="color:#6272a4">// &#34;shared&#34;
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -312,7 +309,8 @@ Symbol.keyFor(s); <span style="color:#6272a4">// &#34;shared&#34;
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -347,6 +345,5 @@ Symbol.keyFor(s); <span style="color:#6272a4">// &#34;shared&#34;
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

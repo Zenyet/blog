@@ -21,7 +21,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -32,10 +31,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -45,70 +44,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -188,6 +185,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -210,23 +208,23 @@
 <ol>
 <li>
 <p>迭代法</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">/**
-</span><span style="color:#6272a4"> * 迭代法
-</span><span style="color:#6272a4"> * @param {Node} head
-</span><span style="color:#6272a4"> * @returns {Node}
-</span><span style="color:#6272a4"> */</span>
-<span style="color:#8be9fd;font-style:italic">var</span> reverseList <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(head) {
-  <span style="color:#8be9fd;font-style:italic">let</span> prev <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span>;
-  <span style="color:#8be9fd;font-style:italic">let</span> current <span style="color:#ff79c6">=</span> head;
-  <span style="color:#ff79c6">while</span>(current) {
-    <span style="color:#ff79c6">const</span> next <span style="color:#ff79c6">=</span> current.next; <span style="color:#6272a4">//保存下一个结点
-</span><span style="color:#6272a4"></span>    current.next <span style="color:#ff79c6">=</span> prev;
-    prev <span style="color:#ff79c6">=</span> current; <span style="color:#6272a4">// 移动prev
-</span><span style="color:#6272a4"></span>    current <span style="color:#ff79c6">=</span> next; <span style="color:#6272a4">// 移动current
-</span><span style="color:#6272a4"></span>  }
-  <span style="color:#ff79c6">return</span> prev;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#93a1a1;font-style:italic">/**
+</span><span style="color:#93a1a1;font-style:italic"> * 迭代法
+</span><span style="color:#93a1a1;font-style:italic"> * @param {Node} head
+</span><span style="color:#93a1a1;font-style:italic"> * @returns {Node}
+</span><span style="color:#93a1a1;font-style:italic"> */</span>
+<span style="color:#859900">var</span> <span style="color:#268bd2">reverseList</span> = <span style="color:#859900">function</span>(<span style="color:#268bd2">head</span>) {
+  <span style="color:#859900">let</span> <span style="color:#268bd2">prev</span> = <span style="color:#859900;font-weight:bold">null</span>;
+  <span style="color:#859900">let</span> <span style="color:#268bd2">current</span> = <span style="color:#268bd2">head</span>;
+  <span style="color:#859900">while</span>(<span style="color:#268bd2">current</span>) {
+    <span style="color:#859900">const</span> <span style="color:#268bd2">next</span> = <span style="color:#268bd2">current</span>.<span style="color:#268bd2">next</span>; <span style="color:#93a1a1;font-style:italic">//保存下一个结点
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#268bd2">current</span>.<span style="color:#268bd2">next</span> = <span style="color:#268bd2">prev</span>;
+    <span style="color:#268bd2">prev</span> = <span style="color:#268bd2">current</span>; <span style="color:#93a1a1;font-style:italic">// 移动prev
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#268bd2">current</span> = <span style="color:#268bd2">next</span>; <span style="color:#93a1a1;font-style:italic">// 移动current
+</span><span style="color:#93a1a1;font-style:italic"></span>  }
+  <span style="color:#859900">return</span> <span style="color:#268bd2">prev</span>;
 }
-reverseList(head);
+<span style="color:#268bd2">reverseList</span>(<span style="color:#268bd2">head</span>);
 </code></pre></div></li>
 <li>
 <p>递归法</p>
@@ -309,16 +307,16 @@ reverseList(head);
 <p>剪不断，理还乱。</p>
 </blockquote>
 <p>我们停一下，来点代码将它们捋一下好吗？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> compare(value1, value2) {
-	<span style="color:#ff79c6">if</span>(value1 <span style="color:#ff79c6">&gt;</span> value2){
-    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">true</span>;
-  }<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span>(value1 <span style="color:#ff79c6">&lt;</span> value2){
-    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>;
-  }<span style="color:#ff79c6">else</span> {
-		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">function</span> <span style="color:#268bd2">compare</span>(<span style="color:#268bd2">value1</span>, <span style="color:#268bd2">value2</span>) {
+	<span style="color:#859900">if</span>(<span style="color:#268bd2">value1</span> &gt; <span style="color:#268bd2">value2</span>){
+    <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">true</span>;
+  }<span style="color:#859900">else</span> <span style="color:#859900">if</span>(<span style="color:#268bd2">value1</span> &lt; <span style="color:#268bd2">value2</span>){
+    <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">false</span>;
+  }<span style="color:#859900">else</span> {
+		<span style="color:#859900">return</span> -<span style="color:#2aa198;font-weight:bold">1</span>;
   }
 }
-<span style="color:#8be9fd;font-style:italic">let</span> result <span style="color:#ff79c6">=</span> compare(<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>);
+<span style="color:#859900">let</span> <span style="color:#268bd2">result</span> = <span style="color:#268bd2">compare</span>(<span style="color:#2aa198;font-weight:bold">1</span>,<span style="color:#2aa198;font-weight:bold">2</span>);
 </code></pre></div><p>我们直接看图：</p>
 <p>
 
@@ -326,27 +324,27 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 37.152034261241965%;">
-    <img class="lazyload" data-src="/uploads/context-example.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/context-example.png" alt=""   />
 </figure>
 </p>
 <p>图源：<a href="https://book.douban.com/subject/35175321/" target="_blank" rel="noopener">JavaScript高级程序设计</a></p>
 <h2 id="反转">“反转”</h2>
 <p>了解了上面的内容后(主要是执行上下文栈)，我们可以开始使用这些性质反转链表了！递归解法代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#6272a4">/**
-</span><span style="color:#6272a4"> * 递归法
-</span><span style="color:#6272a4"> * @param {Node} head 
-</span><span style="color:#6272a4"> * @returns {Node}
-</span><span style="color:#6272a4"> */</span>
-<span style="color:#8be9fd;font-style:italic">var</span> reverseList <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(head) {
-  <span style="color:#ff79c6">if</span>(head <span style="color:#ff79c6">===</span> <span style="color:#ff79c6">null</span> <span style="color:#ff79c6">||</span> head.next <span style="color:#ff79c6">===</span> <span style="color:#ff79c6">null</span>) {
-    <span style="color:#ff79c6">return</span> head;
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#93a1a1;font-style:italic">/**
+</span><span style="color:#93a1a1;font-style:italic"> * 递归法
+</span><span style="color:#93a1a1;font-style:italic"> * @param {Node} head 
+</span><span style="color:#93a1a1;font-style:italic"> * @returns {Node}
+</span><span style="color:#93a1a1;font-style:italic"> */</span>
+<span style="color:#859900">var</span> <span style="color:#268bd2">reverseList</span> = <span style="color:#859900">function</span>(<span style="color:#268bd2">head</span>) {
+  <span style="color:#859900">if</span>(<span style="color:#268bd2">head</span> === <span style="color:#859900;font-weight:bold">null</span> || <span style="color:#268bd2">head</span>.<span style="color:#268bd2">next</span> === <span style="color:#859900;font-weight:bold">null</span>) {
+    <span style="color:#859900">return</span> <span style="color:#268bd2">head</span>;
   }
-  <span style="color:#8be9fd;font-style:italic">let</span> rset <span style="color:#ff79c6">=</span> reverseList(head.next);
-  head.next.next <span style="color:#ff79c6">=</span> head;
-  head.next <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span>;
-  <span style="color:#ff79c6">return</span> rset;
+  <span style="color:#859900">let</span> <span style="color:#268bd2">rset</span> = <span style="color:#268bd2">reverseList</span>(<span style="color:#268bd2">head</span>.<span style="color:#268bd2">next</span>);
+  <span style="color:#268bd2">head</span>.<span style="color:#268bd2">next</span>.<span style="color:#268bd2">next</span> = <span style="color:#268bd2">head</span>;
+  <span style="color:#268bd2">head</span>.<span style="color:#268bd2">next</span> = <span style="color:#859900;font-weight:bold">null</span>;
+  <span style="color:#859900">return</span> <span style="color:#268bd2">rset</span>;
 }
-reverseList(head);
+<span style="color:#268bd2">reverseList</span>(<span style="color:#268bd2">head</span>);
 </code></pre></div><p>为此我特地画了图(图示用3个结点的链表以方便理解)：</p>
 <ol>
 <li>在全局上下文调用reverseList()</li>
@@ -357,7 +355,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 22.873563218390807%;">
-    <img class="lazyload" data-src="/uploads/step1.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step1.png" alt=""   />
 </figure>
 </p>
 <ol start="2">
@@ -369,7 +367,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 18.470705064548163%;">
-    <img class="lazyload" data-src="/uploads/step2.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step2.png" alt=""   />
 </figure>
 </p>
 <ol start="3">
@@ -381,7 +379,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 17.137096774193548%;">
-    <img class="lazyload" data-src="/uploads/step3.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step3.png" alt=""   />
 </figure>
 </p>
 <p>此时head.next = null了。而且我们可以看到其实图的左边head的指向原理就是函数调用<code>有各自的执行上下文</code>，其活动对象中保存的变量都是当时的值。</p>
@@ -394,7 +392,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 20.049710024855013%;">
-    <img class="lazyload" data-src="/uploads/step4.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step4.png" alt=""   />
 </figure>
 </p>
 <ol start="5">
@@ -406,7 +404,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 24.694835680751172%;">
-    <img class="lazyload" data-src="/uploads/step5.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step5.png" alt=""   />
 </figure>
 </p>
 <ol start="6">
@@ -418,7 +416,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 20.85661080074488%;">
-    <img class="lazyload" data-src="/uploads/step6.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step6.png" alt=""   />
 </figure>
 </p>
 <ol start="7">
@@ -430,7 +428,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 25.22851919561243%;">
-    <img class="lazyload" data-src="/uploads/step7.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step7.png" alt=""   />
 </figure>
 </p>
 <ol start="8">
@@ -442,7 +440,7 @@ reverseList(head);
 
 
 <figure class="img-con" style="padding-top: 25%;">
-    <img class="lazyload" data-src="/uploads/step8.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/step8.png" alt=""   />
 </figure>
 </p>
 <p>Reference参考：</p>
@@ -465,10 +463,9 @@ reverseList(head);
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -484,7 +481,8 @@ reverseList(head);
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -519,6 +517,5 @@ reverseList(head);
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

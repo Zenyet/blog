@@ -21,7 +21,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -32,10 +31,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -45,70 +44,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -188,6 +185,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -212,46 +210,46 @@
 <li>实现</li>
 <li>抽象产品</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">abstract</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Product</span><span style="color:#ff79c6">{</span>
-  <span style="color:#6272a4">//Other public business methods
-</span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">businessMethods</span><span style="color:#ff79c6">(){}</span>
-  <span style="color:#6272a4">//different methods of concrete products
-</span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">abstract</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">concreteMethods</span><span style="color:#ff79c6">();</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">abstract</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">Product</span>{
+  <span style="color:#93a1a1;font-style:italic">//Other public business methods
+</span><span style="color:#93a1a1;font-style:italic"></span>  <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">businessMethods</span>(){}
+  <span style="color:#93a1a1;font-style:italic">//different methods of concrete products
+</span><span style="color:#93a1a1;font-style:italic"></span>  <span style="color:#859900">public</span> <span style="color:#859900">abstract</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">concreteMethods</span>();
+}
 </code></pre></div><ul>
 <li>具体产品</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ConcreteProductA</span> <span style="color:#8be9fd;font-style:italic">extends</span> Product<span style="color:#ff79c6">{</span>
-    <span style="color:#6272a4">/**
-</span><span style="color:#6272a4">     * 实现业务方法
-</span><span style="color:#6272a4">     */</span>
-    @Override
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">methodDiff</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Product A&#34;</span><span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ConcreteProductB</span> <span style="color:#8be9fd;font-style:italic">extends</span> Product <span style="color:#ff79c6">{</span>
-    @Override
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">methodDiff</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Product B&#34;</span><span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">ConcreteProductA</span> <span style="color:#859900">extends</span> <span style="color:#268bd2">Product</span>{
+    <span style="color:#93a1a1;font-style:italic">/**
+</span><span style="color:#93a1a1;font-style:italic">     * 实现业务方法
+</span><span style="color:#93a1a1;font-style:italic">     */</span>
+    <span style="color:#268bd2">@Override</span>
+    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">methodDiff</span>() {
+        <span style="color:#268bd2">System</span>.<span style="color:#268bd2">out</span>.<span style="color:#268bd2">println</span>(<span style="color:#2aa198">&#34;Product A&#34;</span>);
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">ConcreteProductB</span> <span style="color:#859900">extends</span> <span style="color:#268bd2">Product</span> {
+    <span style="color:#268bd2">@Override</span>
+    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">methodDiff</span>() {
+        <span style="color:#268bd2">System</span>.<span style="color:#268bd2">out</span>.<span style="color:#268bd2">println</span>(<span style="color:#2aa198">&#34;Product B&#34;</span>);
+    }
+}
 </code></pre></div><ul>
 <li>工厂角色</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Factory</span> <span style="color:#ff79c6">{</span>
-    <span style="color:#6272a4">//Static factory method
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> Product <span style="color:#50fa7b">getProduct</span><span style="color:#ff79c6">(</span>String arg<span style="color:#ff79c6">){</span>
-        Product product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
-        <span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>arg<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equalsIgnoreCase</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;A&#34;</span><span style="color:#ff79c6">)){</span>
-            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcreteProductA<span style="color:#ff79c6">();</span>
-            <span style="color:#6272a4">//Initialize product
-</span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>arg<span style="color:#ff79c6">.</span><span style="color:#50fa7b">equalsIgnoreCase</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;B&#34;</span><span style="color:#ff79c6">)){</span>
-            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcreteProductB<span style="color:#ff79c6">();</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">return</span> product<span style="color:#ff79c6">;</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">Factory</span> {
+    <span style="color:#93a1a1;font-style:italic">//Static factory method
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">public</span> <span style="color:#859900">static</span> <span style="color:#268bd2">Product</span> <span style="color:#268bd2">getProduct</span>(<span style="color:#268bd2">String</span> <span style="color:#268bd2">arg</span>){
+        <span style="color:#268bd2">Product</span> <span style="color:#268bd2">product</span> = <span style="color:#859900;font-weight:bold">null</span>;
+        <span style="color:#859900">if</span>(<span style="color:#268bd2">arg</span>.<span style="color:#268bd2">equalsIgnoreCase</span>(<span style="color:#2aa198">&#34;A&#34;</span>)){
+            <span style="color:#268bd2">product</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">ConcreteProductA</span>();
+            <span style="color:#93a1a1;font-style:italic">//Initialize product
+</span><span style="color:#93a1a1;font-style:italic"></span>        }<span style="color:#859900">else</span> <span style="color:#859900">if</span>(<span style="color:#268bd2">arg</span>.<span style="color:#268bd2">equalsIgnoreCase</span>(<span style="color:#2aa198">&#34;B&#34;</span>)){
+            <span style="color:#268bd2">product</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">ConcreteProductB</span>();
+        }
+        <span style="color:#859900">return</span> <span style="color:#268bd2">product</span>;
+    }
+}
 </code></pre></div><ul>
 <li>总结
 <ul>
@@ -266,7 +264,7 @@
 
 
 <figure class="img-con" style="padding-top: 47.147147147147145%;">
-    <img class="lazyload" data-src="/uploads/simplefactoryUML.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/simplefactoryUML.png" alt=""   />
 </figure>
 </p>
 </li>
@@ -280,63 +278,63 @@
 <ul>
 <li>抽象产品</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">Product</span> <span style="color:#ff79c6">{</span>
-      <span style="color:#6272a4">//产品默认信息
-</span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">info</span><span style="color:#ff79c6">();</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">interface</span> <span style="color:#cb4b16">Product</span> {
+      <span style="color:#93a1a1;font-style:italic">//产品默认信息
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">info</span>();
+}
 </code></pre></div><ul>
 <li>具体产品</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//Product food
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Food</span> <span style="color:#8be9fd;font-style:italic">implements</span> Product<span style="color:#ff79c6">{</span>
-    @Override
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">info</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;I am the food!&#34;</span><span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//Product clothe
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Clothe</span> <span style="color:#8be9fd;font-style:italic">implements</span> Product <span style="color:#ff79c6">{</span>
-    @Override
-    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">info</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
-        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Iam a clothe!&#34;</span><span style="color:#ff79c6">);</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#93a1a1;font-style:italic">//Product food
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">Food</span> <span style="color:#859900">implements</span> <span style="color:#268bd2">Product</span>{
+    <span style="color:#268bd2">@Override</span>
+    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">info</span>() {
+        <span style="color:#268bd2">System</span>.<span style="color:#268bd2">out</span>.<span style="color:#268bd2">println</span>(<span style="color:#2aa198">&#34;I am the food!&#34;</span>);
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#93a1a1;font-style:italic">//Product clothe
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">Clothe</span> <span style="color:#859900">implements</span> <span style="color:#268bd2">Product</span> {
+    <span style="color:#268bd2">@Override</span>
+    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">info</span>() {
+        <span style="color:#268bd2">System</span>.<span style="color:#268bd2">out</span>.<span style="color:#268bd2">println</span>(<span style="color:#2aa198">&#34;Iam a clothe!&#34;</span>);
+    }
+}
 </code></pre></div><ul>
 <li>抽象工厂</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//a interface
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">Factory</span><span style="color:#ff79c6">{</span>
-  Product <span style="color:#50fa7b">produceProduct</span><span style="color:#ff79c6">(</span>String className<span style="color:#ff79c6">);</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#93a1a1;font-style:italic">//a interface
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">public</span> <span style="color:#859900">interface</span> <span style="color:#cb4b16">Factory</span>{
+  <span style="color:#268bd2">Product</span> <span style="color:#268bd2">produceProduct</span>(<span style="color:#268bd2">String</span> <span style="color:#268bd2">className</span>);
+}
 </code></pre></div><ul>
 <li>具体工厂</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//concrete food factory
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">FoodFactory</span> <span style="color:#8be9fd;font-style:italic">implements</span> Factory<span style="color:#ff79c6">{</span>
-    Product product<span style="color:#ff79c6">;</span>
-    @Override
-    <span style="color:#8be9fd;font-style:italic">public</span> Product <span style="color:#50fa7b">produceProduct</span><span style="color:#ff79c6">(</span>String className<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">try</span> <span style="color:#ff79c6">{</span>
-            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Product<span style="color:#ff79c6">)</span> Class<span style="color:#ff79c6">.</span><span style="color:#50fa7b">forName</span><span style="color:#ff79c6">(</span>className<span style="color:#ff79c6">).</span><span style="color:#50fa7b">getDeclaredConstructor</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">newInstance</span><span style="color:#ff79c6">();</span>
-        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">catch</span><span style="color:#ff79c6">(</span>Exception e<span style="color:#ff79c6">){</span>
-            e<span style="color:#ff79c6">.</span><span style="color:#50fa7b">printStackTrace</span><span style="color:#ff79c6">();</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">return</span> product<span style="color:#ff79c6">;</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#6272a4">//concrete clothe factory
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ClotheFactory</span> <span style="color:#8be9fd;font-style:italic">implements</span> Factory <span style="color:#ff79c6">{</span>
-    Product product<span style="color:#ff79c6">;</span>
-    @Override
-    <span style="color:#8be9fd;font-style:italic">public</span> Product <span style="color:#50fa7b">produceProduct</span><span style="color:#ff79c6">(</span>String className<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
-        <span style="color:#ff79c6">try</span><span style="color:#ff79c6">{</span>
-            product <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Product<span style="color:#ff79c6">)</span> Class<span style="color:#ff79c6">.</span><span style="color:#50fa7b">forName</span><span style="color:#ff79c6">(</span>className<span style="color:#ff79c6">).</span><span style="color:#50fa7b">getDeclaredConstructor</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">newInstance</span><span style="color:#ff79c6">();</span>
-        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">catch</span> <span style="color:#ff79c6">(</span>Exception e<span style="color:#ff79c6">){</span>
-            e<span style="color:#ff79c6">.</span><span style="color:#50fa7b">printStackTrace</span><span style="color:#ff79c6">();</span>
-        <span style="color:#ff79c6">}</span>
-        <span style="color:#ff79c6">return</span> product<span style="color:#ff79c6">;</span>
-    <span style="color:#ff79c6">}</span>
-<span style="color:#ff79c6">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#93a1a1;font-style:italic">//concrete food factory
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">FoodFactory</span> <span style="color:#859900">implements</span> <span style="color:#268bd2">Factory</span>{
+    <span style="color:#268bd2">Product</span> <span style="color:#268bd2">product</span>;
+    <span style="color:#268bd2">@Override</span>
+    <span style="color:#859900">public</span> <span style="color:#268bd2">Product</span> <span style="color:#268bd2">produceProduct</span>(<span style="color:#268bd2">String</span> <span style="color:#268bd2">className</span>) {
+        <span style="color:#859900">try</span> {
+            <span style="color:#268bd2">product</span> = (<span style="color:#268bd2">Product</span>) <span style="color:#268bd2">Class</span>.<span style="color:#268bd2">forName</span>(<span style="color:#268bd2">className</span>).<span style="color:#268bd2">getDeclaredConstructor</span>().<span style="color:#268bd2">newInstance</span>();
+        }<span style="color:#859900">catch</span>(<span style="color:#268bd2">Exception</span> <span style="color:#268bd2">e</span>){
+            <span style="color:#268bd2">e</span>.<span style="color:#268bd2">printStackTrace</span>();
+        }
+        <span style="color:#859900">return</span> <span style="color:#268bd2">product</span>;
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#93a1a1;font-style:italic">//concrete clothe factory
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">ClotheFactory</span> <span style="color:#859900">implements</span> <span style="color:#268bd2">Factory</span> {
+    <span style="color:#268bd2">Product</span> <span style="color:#268bd2">product</span>;
+    <span style="color:#268bd2">@Override</span>
+    <span style="color:#859900">public</span> <span style="color:#268bd2">Product</span> <span style="color:#268bd2">produceProduct</span>(<span style="color:#268bd2">String</span> <span style="color:#268bd2">className</span>) {
+        <span style="color:#859900">try</span>{
+            <span style="color:#268bd2">product</span> = (<span style="color:#268bd2">Product</span>) <span style="color:#268bd2">Class</span>.<span style="color:#268bd2">forName</span>(<span style="color:#268bd2">className</span>).<span style="color:#268bd2">getDeclaredConstructor</span>().<span style="color:#268bd2">newInstance</span>();
+        }<span style="color:#859900">catch</span> (<span style="color:#268bd2">Exception</span> <span style="color:#268bd2">e</span>){
+            <span style="color:#268bd2">e</span>.<span style="color:#268bd2">printStackTrace</span>();
+        }
+        <span style="color:#859900">return</span> <span style="color:#268bd2">product</span>;
+    }
+}
 </code></pre></div></li>
 <li>
 <p>总结</p>
@@ -364,7 +362,7 @@
 
 
 <figure class="img-con" style="padding-top: 52.732240437158474%;">
-    <img class="lazyload" data-src="/uploads/factoryUML.png" alt=""   />
+    <img class="lazyload" data-zoomable data-src="/uploads/factoryUML.png" alt=""   />
 </figure>
 </p>
 </li>
@@ -387,10 +385,9 @@
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -406,7 +403,8 @@
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -441,6 +439,5 @@
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>

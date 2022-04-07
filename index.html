@@ -20,7 +20,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -31,10 +30,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -44,70 +43,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -190,18 +187,22 @@
         
         
         <div class="right-link-wrapper wrapper1">
-            <a class="right-link right1" href="https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2.webp);background-position: center;
+            <a class="right-link right1" href="https://yequalsx.com/2022/04/%E5%BC%82%E6%AD%A5%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/异步和事件循环.webp);
             background-size: cover;">
                 <div class="outline16">
-                    <header class="entry-header">类型转换??</header>
+                    <header class="entry-header">异步和事件循环</header>
                     
                         
-                        <span>类型转换</span>
+                        <span>事件循环</span>
+                        
+                        <span>JavaScript运行机制</span>
+                        
+                        <span>异步</span>
                         
                         <span>JavaScript</span>
                         
                     
-                    <time class="time">2022-03-13</time>
+                    <time class="time">2022-04-04</time>
                 </div>
             </a>
         </div>
@@ -209,9 +210,66 @@
         <div class="right-link-wrapper wrapper2">
             <div class="layout1">
                 <div class="triangle00">
-                    <a class="right-link rightT0" href="https://yequalsx.com/2022/02/%E4%BB%8E%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E5%88%B0%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/%e4%bb%8e%e5%8f%8d%e8%bd%ac%e9%93%be%e8%a1%a8%e5%88%b0%e6%89%a7%e8%a1%8c%e4%b8%8a%e4%b8%8b%e6%96%87.png);background-position: center;
+                    <a class="right-link rightT0" href="https://yequalsx.com/2022/03/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/事件委托.png);
                     background-size: cover;">
                         <div class="outline20">
+                            <header class="entry-header">事件委托</header>
+                            
+                                
+                                <span>JavaScript</span>
+                                
+                                <span>事件委托</span>
+                                
+                            
+                            <time class="time">2022-03-26</time>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="triangle01">
+                    <a class="right-link rightT1" href="https://yequalsx.com/2022/03/javascript%E4%B8%AD%E7%9A%84this/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/JavaScript中的this.png);
+                    background-size: cover;">
+                        <div class="outline21">
+                            <header class="entry-header">JavaScript中的this</header>
+                            
+                                
+                                <span>this</span>
+                                
+                                <span>JavaScript</span>
+                                
+                            
+                            <time class="time">2022-03-21</time>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="right-link-wrapper wrapper3">
+            <div class="layout2">
+                <div class="triangle10">
+                    <a class="right-link rightT0" href="https://yequalsx.com/2022/03/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));url(/uploads/covers/%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2.webp);;
+                    background-size: cover;" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/类型转换.webp);;
+                    background-size: cover;" >
+                        <div class="outline30">
+                            <header class="entry-header">类型转换??</header>
+                            
+                                
+                                <span>类型转换</span>
+                                
+                                <span>JavaScript</span>
+                                
+                            
+                            <time class="time">2022-03-13</time>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="triangle11">
+                    <a class="right-link rightT1" href="https://yequalsx.com/2022/02/%E4%BB%8E%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E5%88%B0%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));url(/uploads/covers/%e4%bb%8e%e5%8f%8d%e8%bd%ac%e9%93%be%e8%a1%a8%e5%88%b0%e6%89%a7%e8%a1%8c%e4%b8%8a%e4%b8%8b%e6%96%87.png);;
+                    background-size: cover;" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/从反转链表到执行上下文.png);;
+                    background-size: cover;" >
+                        <div class="outline31">
                             <header class="entry-header">从反转链表到执行上下文</header>
                             
                                 
@@ -225,77 +283,20 @@
                     </a>
                 </div>
                 
-                <div class="triangle01">
-                    <a class="right-link rightT1" href="https://yequalsx.com/2022/02/%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/%e5%ae%9e%e7%8e%b0%e5%9e%82%e7%9b%b4%e5%b1%85%e4%b8%ad.png);background-position: center;
-                    background-size: cover;">
-                        <div class="outline21">
-                            <header class="entry-header">实现垂直居中</header>
-                            
-                                
-                                <span>CSS</span>
-                                
-                            
-                            <time class="time">2022-02-01</time>
-                        </div>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-        <div class="right-link-wrapper wrapper3">
-            <div class="layout2">
-                <div class="triangle10">
-                    <a class="right-link rightT0" href="https://yequalsx.com/2022/01/%E6%B5%85%E8%B0%88javascript%E5%8E%9F%E5%9E%8B/"  style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/%e6%b5%85%e8%b0%88JavaScript%e5%8e%9f%e5%9e%8b.webp);background-position: center;
-                    background-size: cover;" >
-                        <div class="outline30">
-                            <header class="entry-header">浅谈JavaScript原型</header>
-                            
-                                
-                                <span>原型</span>
-                                
-                                <span>JavaScript</span>
-                                
-                            
-                            <time class="time">2022-01-12</time>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="triangle11">
-                    <a class="right-link rightT1" href="https://yequalsx.com/2022/01/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/"  style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/%e4%bd%9c%e7%94%a8%e5%9f%9f%e5%92%8c%e9%97%ad%e5%8c%85.png);background-position: center;
-                    background-size: cover;" >
-                        <div class="outline31">
-                            <header class="entry-header">作用域和闭包</header>
-                            
-                                
-                                <span>ES6</span>
-                                
-                                <span>闭包Closure</span>
-                                
-                                <span>作用域</span>
-                                
-                                <span>JavaScript</span>
-                                
-                            
-                            <time class="time">2022-01-02</time>
-                        </div>
-                    </a>
-                </div>
-                
             </div>
         </div>
         
         <div class="right-link-wrapper wrapper4" >
-            <a class="right-link right6" href="https://yequalsx.com/2021/10/webstorm%E5%8E%8B%E7%BC%A9css/"  style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/WebStorm%e5%8e%8b%e7%bc%a9css.png);background-position: center;
+            <a class="right-link right6" href="https://yequalsx.com/2022/02/%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/" style="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15));" style-attr="background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.15)),url(/uploads/covers/实现垂直居中.png);
             background-size: cover;" >
                 <div class="outline16">
-                    <header class="entry-header">Webstorm压缩css</header>
+                    <header class="entry-header">实现垂直居中</header>
                     
                         
-                        <span>WebStorm</span>
+                        <span>CSS</span>
                         
                     
-                    <time class="time">2021-10-23</time>
+                    <time class="time">2022-02-01</time>
                 </div>
             </a>
         </div>
@@ -360,6 +361,20 @@
     ){
         const pagination = document.querySelector(".pagination");
         pagination.classList.add("mobile");
+    }
+
+    
+    const anchors = document.querySelectorAll(".right-link");
+    let flag = true;
+    if(flag) {
+        window.addEventListener("load", () => {
+            let attr = null;
+            flag = false;
+            for (const anchor of anchors) {
+                attr = anchor.getAttribute("style-attr");
+                anchor.style = attr;
+            }
+        });
     }
 </script>
 </body>

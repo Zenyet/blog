@@ -5,13 +5,58 @@
     <link>https://yequalsx.com/tags/</link>
     <description>Recent content in Tags on Zenyet&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yequalsx.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript</title>
       <link>https://yequalsx.com/tags/javascript/</link>
-      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yequalsx.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript运行机制</title>
+      <link>https://yequalsx.com/tags/javascript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/javascript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>事件循环</title>
+      <link>https://yequalsx.com/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>异步</title>
+      <link>https://yequalsx.com/tags/%E5%BC%82%E6%AD%A5/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E5%BC%82%E6%AD%A5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>事件委托</title>
+      <link>https://yequalsx.com/tags/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</link>
+      <pubDate>Sat, 26 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>this</title>
+      <link>https://yequalsx.com/tags/this/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yequalsx.com/tags/this/</guid>
       <description></description>
     </item>
     

@@ -20,7 +20,6 @@
     
     <script>
         "use strict";
-
         document.addEventListener("DOMContentLoaded", function(){
             if(!(window.matchMedia("(prefers-color-scheme: dark)").matches)){
                 let hours = new Date().getHours();
@@ -31,10 +30,10 @@
             if(window.navigator.appVersion.indexOf("iPhone") !== -1 || window.navigator.appVersion.indexOf("iPad") !== -1){
                 document.body.addEventListener('touchstart', () => {}, false);
             }
-                function setFoxPollyfill(target){
+                function setFoxPolyfill(target){
                     target.style = "filter: saturate(180%) blur(20px);transition: all .56s ease-in;"
                 }
-                function remFoxPollyfill(target){
+                function remFoxPolyfill(target){
                     target.style = "filter: unset;transition: all .56s ease-out;"
                 }
                 const arrow = document.querySelector(".arrow");
@@ -44,70 +43,68 @@
                 const content_con = document.querySelector(".content-container");
                 const taxo_con = document.querySelector(".taxonomy-container");
                 arrow.addEventListener('click', () => {
-                    if (arrow.classList.contains("arrow-active")) {
-                        arrow.classList.remove("arrow-active");
-                        document.body.classList.remove("trans");
+                    arrow.classList.toggle("arrow-active");
+                    document.body.classList.toggle("trans");
+                    if (!arrow.classList.contains("arrow-active")) {
                         if(right_post){
                             right_post.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(right_post);
+                                remFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(archive_con);
+                                remFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(tags_con);
+                                remFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(content_con);
+                                remFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.remove("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                remFoxPollyfill(taxo_con);
+                                remFoxPolyfill(taxo_con);
                             }
                         }
                     } else {
-                        arrow.classList.add("arrow-active");
-                        document.body.classList.add("trans");
                         if(right_post){
                             right_post.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(right_post);
+                                setFoxPolyfill(right_post);
                             }
                         }
                         if(archive_con){
                             archive_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(archive_con);
+                                setFoxPolyfill(archive_con);
                             }
                         }
                         if(tags_con){
                             tags_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(tags_con);
+                                setFoxPolyfill(tags_con);
                             }
                         }
                         if(content_con){
                             content_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(content_con);
+                                setFoxPolyfill(content_con);
                             }
                         }
                         if(taxo_con){
                             taxo_con.classList.add("drop");
                             if(window.navigator.userAgent.indexOf("Firefox") !== -1){
-                                setFoxPollyfill(taxo_con);
+                                setFoxPolyfill(taxo_con);
                             }
                         }
                     }
@@ -187,6 +184,7 @@
 </div>
 
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
+<script type="text/javascript" src="/js/medium-zoom.min.js"></script>
 <div class="content-container">
     <main class="content-main">
         <header class="post-header">
@@ -207,44 +205,44 @@
 <h3 id="主表达式primary-expression">主表达式(primary expression)</h3>
 <p>独立存在，不再包含更简单表达式的表达式为主表达式，为最简单的表达式。</p>
 <h4 id="常量或字面量值">常量或字面量值</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#bd93f9">123</span>; 
-<span style="color:#bd93f9">3.14</span>; <span style="color:#6272a4">// 数值字面量
-</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">&#34;hello js&#34;</span>; <span style="color:#6272a4">//字符串字面量
-</span><span style="color:#6272a4"></span><span style="color:#f1fa8c">/pattern/</span>; <span style="color:#6272a4">//正则表达式字面量
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#2aa198;font-weight:bold">123</span>; 
+<span style="color:#2aa198;font-weight:bold">3.14</span>; <span style="color:#93a1a1;font-style:italic">// 数值字面量
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198">&#34;hello js&#34;</span>; <span style="color:#93a1a1;font-style:italic">//字符串字面量
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#2aa198">/pattern/</span>; <span style="color:#93a1a1;font-style:italic">//正则表达式字面量
 </span></code></pre></div><h4 id="语言关键字保留字">语言关键字、保留字</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">true</span>;
-<span style="color:#ff79c6">false</span>;
-<span style="color:#ff79c6">null</span>;
-<span style="color:#ff79c6">this</span>; <span style="color:#6272a4">//上下文
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900;font-weight:bold">true</span>;
+<span style="color:#859900;font-weight:bold">false</span>;
+<span style="color:#859900;font-weight:bold">null</span>;
+<span style="color:#859900">this</span>; <span style="color:#93a1a1;font-style:italic">//上下文
 </span></code></pre></div><h4 id="变量常量或全局对象属性的引用">变量、常量或全局对象属性的引用</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">i; <span style="color:#6272a4">// 求值为变量i的值
-</span><span style="color:#6272a4"></span>temp; <span style="color:#6272a4">//求值为变量temp的值
-</span><span style="color:#6272a4"></span>PI;<span style="color:#6272a4">//
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">undefined</span>; <span style="color:#6272a4">//全局对象undefined属性的值
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#268bd2">i</span>; <span style="color:#93a1a1;font-style:italic">// 求值为变量i的值
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">temp</span>; <span style="color:#93a1a1;font-style:italic">//求值为变量temp的值
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">PI</span>;<span style="color:#93a1a1;font-style:italic">//
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900;font-weight:bold">undefined</span>; <span style="color:#93a1a1;font-style:italic">//全局对象undefined属性的值
 </span></code></pre></div><h3 id="对象和数组初始化程序">对象和数组初始化程序</h3>
 <p>这些初始化程序表达式有时被称为对象字面量或数组字面量。但与真正的字面量不同，它们不是主表达式，因为他们包含用于指定属性或元素值的子表达式(即不是最简单的表达式)。</p>
 <h4 id="数组初始化">数组初始化</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">[]; <span style="color:#6272a4">//空数组
-</span><span style="color:#6272a4"></span>[<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#f1fa8c">&#39;3&#39;</span>,<span style="color:#bd93f9">1</span><span style="color:#ff79c6">+</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">+</span><span style="color:#bd93f9">3</span>,<span style="color:#ff79c6">false</span>];
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">[]; <span style="color:#93a1a1;font-style:italic">//空数组
+</span><span style="color:#93a1a1;font-style:italic"></span>[<span style="color:#2aa198;font-weight:bold">1</span>,<span style="color:#2aa198;font-weight:bold">2</span>,<span style="color:#2aa198">&#39;3&#39;</span>,<span style="color:#2aa198;font-weight:bold">1</span>+<span style="color:#2aa198;font-weight:bold">2</span>+<span style="color:#2aa198;font-weight:bold">3</span>,<span style="color:#859900;font-weight:bold">false</span>];
 
-<span style="color:#8be9fd;font-style:italic">let</span> matrix <span style="color:#ff79c6">=</span> [[<span style="color:#bd93f9">1</span>],[<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>],[<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span>]];
-<span style="color:#8be9fd;font-style:italic">let</span> sparseArray <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,,,,<span style="color:#bd93f9">6</span>];
+<span style="color:#859900">let</span> <span style="color:#268bd2">matrix</span> = [[<span style="color:#2aa198;font-weight:bold">1</span>],[<span style="color:#2aa198;font-weight:bold">1</span>,<span style="color:#2aa198;font-weight:bold">2</span>],[<span style="color:#2aa198;font-weight:bold">1</span>,<span style="color:#2aa198;font-weight:bold">2</span>,<span style="color:#2aa198;font-weight:bold">3</span>]];
+<span style="color:#859900">let</span> <span style="color:#268bd2">sparseArray</span> = [<span style="color:#2aa198;font-weight:bold">1</span>,,,,<span style="color:#2aa198;font-weight:bold">6</span>];
 
-<span style="color:#8be9fd;font-style:italic">let</span> undefArray <span style="color:#ff79c6">=</span> [<span style="color:#bd93f9">1</span>,,,<span style="color:#bd93f9">4</span>,];
-console.log(undefArray[<span style="color:#bd93f9">4</span>]); <span style="color:#6272a4">// undefined
+<span style="color:#859900">let</span> <span style="color:#268bd2">undefArray</span> = [<span style="color:#2aa198;font-weight:bold">1</span>,,,<span style="color:#2aa198;font-weight:bold">4</span>,];
+<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">undefArray</span>[<span style="color:#2aa198;font-weight:bold">4</span>]); <span style="color:#93a1a1;font-style:italic">// undefined
 </span></code></pre></div><h4 id="对象初始化">对象初始化</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {};<span style="color:#6272a4">//对象
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> obj <span style="color:#ff79c6">=</span> {a<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>,b<span style="color:#ff79c6">:</span><span style="color:#bd93f9">2</span>};
-o.a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; o.b <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>;<span style="color:#6272a4">//赋值
-</span><span style="color:#6272a4"></span>
-<span style="color:#6272a4">//ES6对象字面量嵌套
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">let</span> inObj <span style="color:#ff79c6">=</span> {
-  upperLeft <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">2</span>,y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">4</span>},
-	upperRight <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">3</span>,y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">5</span>}
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">o</span> = {};<span style="color:#93a1a1;font-style:italic">//对象
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">obj</span> = {<span style="color:#268bd2">a</span>: <span style="color:#2aa198;font-weight:bold">1</span>,<span style="color:#268bd2">b</span>:<span style="color:#2aa198;font-weight:bold">2</span>};
+<span style="color:#268bd2">o</span>.<span style="color:#268bd2">a</span> = <span style="color:#2aa198;font-weight:bold">1</span>; <span style="color:#268bd2">o</span>.<span style="color:#268bd2">b</span> = <span style="color:#2aa198;font-weight:bold">2</span>;<span style="color:#93a1a1;font-style:italic">//赋值
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#93a1a1;font-style:italic">//ES6对象字面量嵌套
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#859900">let</span> <span style="color:#268bd2">inObj</span> = {
+  <span style="color:#268bd2">upperLeft</span> = {<span style="color:#268bd2">x</span>: <span style="color:#2aa198;font-weight:bold">2</span>,<span style="color:#268bd2">y</span>: <span style="color:#2aa198;font-weight:bold">4</span>},
+	<span style="color:#268bd2">upperRight</span> = {<span style="color:#268bd2">x</span>: <span style="color:#2aa198;font-weight:bold">3</span>,<span style="color:#268bd2">y</span>: <span style="color:#2aa198;font-weight:bold">5</span>}
 };
 </code></pre></div><h3 id="函数定义表达式">函数定义表达式</h3>
 <p>某种意义上，函数定义表达式也是&quot;函数字面量&quot;，因为函数也是对象。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> square <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span>(x){<span style="color:#ff79c6">return</span> x<span style="color:#ff79c6">*</span>x};
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">square</span> = <span style="color:#859900">function</span>(<span style="color:#268bd2">x</span>){<span style="color:#859900">return</span> <span style="color:#268bd2">x</span>*<span style="color:#268bd2">x</span>};
 </code></pre></div><h3 id="属性访问表达式">属性访问表达式</h3>
 <p>属性访问表达式求值为对象属性或数组元素的值。JS定义以下两种访问属性的语法：</p>
 <ul>
@@ -252,20 +250,20 @@ o.a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; o
 <li>expression[expression]</li>
 </ul>
 <p>无论哪种访问表达式，前面的expression都会先进行求值，如果expression求值为null或undefined，表达式抛出TypeError错误</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">let</span> o <span style="color:#ff79c6">=</span> {x<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">1</span>,y<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">2</span>};
-o.x;<span style="color:#6272a4">// x =&gt; 1
-</span><span style="color:#6272a4"></span>o.y;<span style="color:#6272a4">// y =&gt; 2
-</span><span style="color:#6272a4"></span>
-o[<span style="color:#f1fa8c">&#34;x&#34;</span>]; <span style="color:#6272a4">//x =&gt; 1 
-</span><span style="color:#6272a4"></span>o[<span style="color:#f1fa8c">&#34;y&#34;</span>]; <span style="color:#6272a4">//y =&gt; 2
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">let</span> <span style="color:#268bd2">o</span> = {<span style="color:#268bd2">x</span>: <span style="color:#2aa198;font-weight:bold">1</span>,<span style="color:#268bd2">y</span>: <span style="color:#2aa198;font-weight:bold">2</span>};
+<span style="color:#268bd2">o</span>.<span style="color:#268bd2">x</span>;<span style="color:#93a1a1;font-style:italic">// x =&gt; 1
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">o</span>.<span style="color:#268bd2">y</span>;<span style="color:#93a1a1;font-style:italic">// y =&gt; 2
+</span><span style="color:#93a1a1;font-style:italic"></span>
+<span style="color:#268bd2">o</span>[<span style="color:#2aa198">&#34;x&#34;</span>]; <span style="color:#93a1a1;font-style:italic">//x =&gt; 1 
+</span><span style="color:#93a1a1;font-style:italic"></span><span style="color:#268bd2">o</span>[<span style="color:#2aa198">&#34;y&#34;</span>]; <span style="color:#93a1a1;font-style:italic">//y =&gt; 2
 </span></code></pre></div><h4 id="条件式属性访问es2020">条件式属性访问(ES2020)</h4>
 <p>&hellip;</p>
 <h3 id="调用表达式">调用表达式</h3>
 <p>调用表达式是JavaScript中调用(或执行)函数或方法的一种语法。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span> f(x){console.log(x)};
-f(<span style="color:#bd93f9">0</span>);
-<span style="color:#8be9fd;font-style:italic">Math</span>.max(x,y,z);
-n.sort();
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#859900">function</span> <span style="color:#268bd2">f</span>(<span style="color:#268bd2">x</span>){<span style="color:#268bd2">console</span>.<span style="color:#268bd2">log</span>(<span style="color:#268bd2">x</span>)};
+<span style="color:#268bd2">f</span>(<span style="color:#2aa198;font-weight:bold">0</span>);
+<span style="color:#cb4b16">Math</span>.<span style="color:#268bd2">max</span>(<span style="color:#268bd2">x</span>,<span style="color:#268bd2">y</span>,<span style="color:#268bd2">z</span>);
+<span style="color:#268bd2">n</span>.<span style="color:#268bd2">sort</span>();
 </code></pre></div><h4 id="条件式调用">条件式调用</h4>
 
         </div>
@@ -283,10 +281,9 @@ n.sort();
     "use strict";
     
     lazyload();
-    
-    let images = document.body.querySelectorAll(".img-con");
-    
-
+    mediumZoom('[data-zoomable]', {
+        background: "rgba(0,0,0,.7)"
+    });
     const remark42 = document.getElementById("remark42");
     if("IntersectionObserver" in window) {
         let io = new IntersectionObserver((entries, observer) => {
@@ -302,7 +299,8 @@ n.sort();
                             (r.src = remark_config.host + '/web/' + e[o] + c),
                             d.appendChild(r)
                     }
-                })(remark_config.components || ['embed'], document);
+                    })(remark_config.components || ['embed'], document);
+                    io.unobserve(remark42);
             }
             })
         });
@@ -337,6 +335,5 @@ n.sort();
         show_email_subscription: true
     };
 </script>
-
 </body>
 </html>
